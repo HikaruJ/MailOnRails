@@ -1,0 +1,33 @@
+{
+  "name": "mail_on_rails",
+  "description": "",
+  "main": [
+    "index.js"
+  ],
+  "authors": [
+    "Or Perlman"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.12.0",
+    "font-awesome": "^4.6.3",
+    "bootstrap-sass": "^3.3.6"
+  },
+  "overrides": {
+    "bootstrap-less": {
+      "main": [
+        "dist/js/bootstrap.js",
+        "dist/css/bootstrap.css",
+        "less/bootstrap.less"
+      ]
+    }
+  }
+}
