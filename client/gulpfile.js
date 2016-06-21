@@ -49,6 +49,10 @@ var paths = {
       home: './assets/css/home/'
     },
 
+    images: {
+      root: './assets/img'
+    },
+
     javascript: {
       root: './assets/js'
     }
@@ -64,6 +68,10 @@ var paths = {
 
     fonts: {
       root: './dist/fonts'
+    },
+
+    images: {
+      root: './dist/img'
     },
 
     javascript: {
@@ -103,6 +111,7 @@ var target = {
 
 // Delete all files and folders from distribution folder
 gulp.task('clean', function(cb){
+  if (cb) return;
   return del([
     paths.target.css.maps + '/**/*',
     paths.target.css.root + '/**/*',
@@ -154,8 +163,14 @@ gulp.task('inject-vendor', function(){
     .pipe(gulp.dest(paths.target.css.root));
 });
 
+//  Copy images to the distribution folder
+gulp.task('copy-images', function() { 
+  return gulp.src(paths.assets.images.root + '/**.*') 
+    .pipe(gulp.dest(paths.target.images.root)); 
+});
+
 //  Copy fonts to the distribution folder
-gulp.task('build-fonts', function() { 
+gulp.task('copy-fonts', function() { 
   return gulp.src(config.bowerDir + '/font-awesome/fonts/**.*') 
     .pipe(gulp.dest(paths.target.fonts.root)); 
 });
@@ -188,7 +203,7 @@ gulp.task('browserify', function() {
 });
 
 // Inject css and javascript to the index.html and copy it to the distribution folder
-gulp.task('html', ['build-admin', 'build-home', 'inject-vendor', 'build-fonts', 'build-template-cache', 'browserify'], function(){
+gulp.task('html', ['build-admin', 'build-home', 'inject-vendor', 'copy-images', 'copy-fonts', 'build-template-cache', 'browserify'], function(){
   var cssInjectFiles = gulp.src([target.css.admin, target.css.home, target.css.vendor]);
 
   var injectOptions = {
@@ -215,7 +230,7 @@ gulp.task('webserver', function() {
     middleware: function(connect) {
         return [connect().use('/bower_components', connect.static('bower_components'))];
     },
-    port: 8080,
+    port: 9000,
     root: 'dist'
   });
 });
