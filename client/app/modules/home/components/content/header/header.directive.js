@@ -5,7 +5,7 @@ var homeHeaderDirective = function() {
     controller: HomeHeaderController,
     restrict: 'E',
     scope: {},
-    templateUrl: '/partials/home/components/header/header.html',
+    templateUrl: '/partials/home/components/content/header/header.html',
     link: function(scope, elem, attrs) {
     }
   }

@@ -65,3 +65,11 @@ body.boxed, body.mailbox {height: auto}
 }
 
 .page-content.page-calendar {min-width: 600px;}
+
+.center {
+  text-align:center;
+}
+
+.input-group-margin {
+  margin-bottom: 15px;
+}

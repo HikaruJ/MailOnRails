@@ -39,9 +39,13 @@ h6 {
     background-size: cover;
 }
 
+.center-header {
+    margin-left:415px;
+}
+
 .intro-message {
     position: relative;
-    padding-top: 20%;
+    padding-top: 10%;
     padding-bottom: 20%;
 }
 

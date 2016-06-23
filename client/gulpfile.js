@@ -41,12 +41,16 @@ var paths = {
   },
 
   assets: {
-    root: './assets/',
+    root: './assets',
 
     css: {
       root: './assets/css',
-      admin: './assets/css/admin/',
-      home: './assets/css/home/'
+      admin: './assets/css/admin',
+      home: './assets/css/home'
+    },
+
+    icons: {
+      root: './assets/icons'
     },
 
     images: {
@@ -55,11 +59,15 @@ var paths = {
 
     javascript: {
       root: './assets/js'
+    },
+
+    plugins: {
+      root: './assets/plugins'
     }
   },
 
   target: {
-    root: './dist/',
+    root: './dist',
 
     css: {
       root: './dist/css',
@@ -70,6 +78,10 @@ var paths = {
       root: './dist/fonts'
     },
 
+    icons: {
+      root: './dist/icons'
+    },
+
     images: {
       root: './dist/img'
     },
@@ -77,6 +89,10 @@ var paths = {
     javascript: {
       root: './dist/js',
       maps: './dist/js/maps'
+    },
+
+    plugins: {
+      root: './dist/plugins'
     }
   }
 };
@@ -84,7 +100,7 @@ var paths = {
 //  Assets file paths
 var assets = {
   css: {
-    admin: paths.assets.css.admin + '/**/*.css',
+    admin: paths.assets.css.admin + '/*.css',
     home: paths.assets.css.home + '/**/*.css',
     vendor: paths.assets.css.root + '/vendor.scss'
   },
@@ -111,15 +127,7 @@ var target = {
 
 // Delete all files and folders from distribution folder
 gulp.task('clean', function(cb){
-  if (cb) return;
-  return del([
-    paths.target.css.maps + '/**/*',
-    paths.target.css.root + '/**/*',
-    paths.target.fonts.root + '/**/*',
-    paths.target.javascript.maps + '/**/*',
-    paths.target.javascript.root + '/**/*',
-    paths.target.root + '/**/*'
-  ], cb);
+  return del(paths.target.root, cb);
 });
 
 //  Lint javascript files
@@ -129,8 +137,30 @@ gulp.task('lint', function() {
     .pipe(jshint.reporter(stylish));
 });
 
+//  Copy fonts to the distribution folder
+gulp.task('copy-fonts', function() { 
+  return gulp.src(config.bowerDir + '/font-awesome/fonts/**.*') 
+    .pipe(gulp.dest(paths.target.fonts.root)); 
+});
+
+gulp.task('copy-icons', function(){
+  return gulp.src(paths.assets.icons.root + '/**/*.*')
+    .pipe(gulp.dest(paths.target.icons.root))
+});
+
+//  Copy images to the distribution folder
+gulp.task('copy-images', function() { 
+  return gulp.src(paths.assets.images.root + '/**.*') 
+    .pipe(gulp.dest(paths.target.images.root)); 
+});
+
+gulp.task('copy-plugins', function(){
+  return gulp.src(paths.assets.plugins.root + '/**/*.*')
+    .pipe(gulp.dest(paths.target.plugins.root))
+});
+
 // Convert and minify the admin css/less files to a single css file and copy it to the css distribution folder
-gulp.task('build-admin', function(){
+gulp.task('build-admin-template', function(){
   return gulp.src([assets.css.admin, assets.less.admin])
     .pipe(sourcemaps.init())
     .pipe(concat('admin.min.css'))
@@ -141,7 +171,7 @@ gulp.task('build-admin', function(){
 });
 
 // Convert and minify the home css/less files to a single css file and copy it to the css distribution folder
-gulp.task('build-home', function(){
+gulp.task('build-home-template', function(){
   return gulp.src([assets.css.home, assets.less.home])
     .pipe(sourcemaps.init())
     .pipe(concat('home.min.css'))
@@ -161,18 +191,6 @@ gulp.task('inject-vendor', function(){
     .pipe(rename('vendor.min.css'))
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(paths.target.css.root));
-});
-
-//  Copy images to the distribution folder
-gulp.task('copy-images', function() { 
-  return gulp.src(paths.assets.images.root + '/**.*') 
-    .pipe(gulp.dest(paths.target.images.root)); 
-});
-
-//  Copy fonts to the distribution folder
-gulp.task('copy-fonts', function() { 
-  return gulp.src(config.bowerDir + '/font-awesome/fonts/**.*') 
-    .pipe(gulp.dest(paths.target.fonts.root)); 
 });
 
 //  Build a minified version of the angular view templates in a single file
@@ -203,21 +221,26 @@ gulp.task('browserify', function() {
 });
 
 // Inject css and javascript to the index.html and copy it to the distribution folder
-gulp.task('html', ['build-admin', 'build-home', 'inject-vendor', 'copy-images', 'copy-fonts', 'build-template-cache', 'browserify'], function(){
-  var cssInjectFiles = gulp.src([target.css.admin, target.css.home, target.css.vendor]);
+gulp.task('html', [
+  'copy-fonts', 'copy-icons', 'copy-images', 'copy-plugins',
+  'build-admin-template', 'build-home-template',
+  'inject-vendor', 'build-template-cache', 'browserify'
+  ],
+  function(){
+    var cssInjectFiles = gulp.src([target.css.admin, target.css.home, target.css.vendor]);
 
-  var injectOptions = {
-    addRootSlash: false,
-    ignorePath: ['src', 'dist']
-  };
+    var injectOptions = {
+      addRootSlash: false,
+      ignorePath: ['src', 'dist']
+    };
 
-  return gulp.src('./index.html')
-    .pipe(wiredep({
-      ignorePath: /^(\.\.\/)+/
-    }))
-    .pipe(inject(gulp.src(paths.target.javascript.root + '/**/*.js', {read: false}), injectOptions))
-    .pipe(inject(cssInjectFiles, injectOptions))
-    .pipe(gulp.dest(paths.target.root))
+    return gulp.src('./index.html')
+      .pipe(wiredep({
+        ignorePath: /^(\.\.\/)+/
+      }))
+      .pipe(inject(gulp.src(paths.target.javascript.root + '/**/*.js', {read: false}), injectOptions))
+      .pipe(inject(cssInjectFiles, injectOptions))
+      .pipe(gulp.dest(paths.target.root))
 });
 
 //  Load webserver for the application on port 9000
@@ -243,6 +266,6 @@ gulp.task('watch', function(){
   gulp.watch(paths.assets.root + '/**/*.*', ['clean', 'html']);
 });
 
-gulp.task('default', ['clean', 'lint', 'html', 'webserver', 'watch'], function() {
+gulp.task('default', ['lint', 'html', 'webserver', 'watch'], function() {
   return gutil.log('Gulp is running!');
 });

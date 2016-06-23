@@ -1,9 +1,11 @@
-var angular = require('angular');
-var homeDirective = require("./components/home.directive");
+//  Modules
+var registerModule = require('../register/register.module');
 
+//  Directives
+var homeDirective = require("./components/home.directive");
 var contentDirective = require('./components/content/content.directive');
+var headerDirective = require('./components/content/header/header.directive');
 var footerDirective = require('./components/footer/footer.directive');
-var headerDirective = require('./components/header/header.directive');
 var navigationDirective = require('./components/navigation/navigation.directive');
 
 module.exports = angular.module('home', [])

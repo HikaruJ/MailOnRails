@@ -17,8 +17,17 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "1.12.0",
+    "jquery": "2.1.4",
     "font-awesome": "^4.6.3",
-    "bootstrap-sass": "^3.3.6"
+    "bootstrap-sass": "^3.3.6",
+    "bootstrap-editable": "*",
+    "bootstrap-tagsinput": "^0.8.0",
+    "bootstrap-loading": "*",
+    "weather-icons": "^2.0.10",
+    "octicons": "^4.2.0",
+    "jasny-bootstrap": "^3.1.3",
+    "iCheck": "icheck#^1.0.2",
+    "select2": "^4.0.3",
+    "slick-carousel": "^1.6.0"
   }
 }
