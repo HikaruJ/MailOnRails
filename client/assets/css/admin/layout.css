@@ -73,3 +73,7 @@ body.boxed, body.mailbox {height: auto}
 .input-group-margin {
   margin-bottom: 15px;
 }
+
+.black-text {
+  color: black;
+}

@@ -1,17 +1,19 @@
-'use strict';
-var homeDirective = function() {
-  return {
-    controller: HomeController,
-    restrict: 'E',
-    scope: {},
-    templateUrl: '/partials/home/components/home.html',
-    link: function(scope, elem, attrs) {
-    }
-  }
-};
+(function() {
+    "use strict";
 
-var HomeController = function($scope) {
+    var homeDirective = function() {
+        return {
+            controller: HomeController,
+            restrict: 'E',
+            scope: {},
+            templateUrl: '/partials/home/components/home.html',
+            link: function(scope, elem, attrs) {}
+        };
+    };
 
-};
+    var HomeController = function($scope) {
 
-module.exports = homeDirective;
+    };
+
+    module.exports = homeDirective;
+}());

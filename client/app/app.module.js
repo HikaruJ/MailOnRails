@@ -1,20 +1,27 @@
-'use strict';
+(function() {
+    "use strict";
 
-var angular = require('angular');
-var angularConfig = require('./app.constants');
-var angularRoutes = require('./app.routes');
+    var angular = require('angular');
+    var angularBootstrap = require('angular-bootstrap-npm');
+    var angularMessages = require('angular-messages');
 
-var homeModule = require('./modules/home/home.module');
-var registerModule = require('./modules/register/register.module');
-var uiRouter = require('angular-ui-router/release/angular-ui-router');
+    var angularConfig = require('./app.constants');
+    var angularRoutes = require('./app.routes');
 
-require('../dist/js/templates.min.js');
+    var homeModule = require('./modules/home/home.module');
+    var registerModule = require('./modules/register/register.module');
+    var uiRouter = require('angular-ui-router/release/angular-ui-router');
 
-var app = angular.module("mail_on_rails", [
-  homeModule.name,
-  registerModule.name,
-  'angularPartials',
-  uiRouter,
-])
-.config(angularRoutes)
-.constant('angularConfig', angularConfig);
+    require('../dist/js/templates.min.js');
+
+    var app = angular.module("mail_on_rails", [
+            angularBootstrap,
+            angularMessages,
+            'angularPartials',
+            homeModule.name,
+            registerModule.name,
+            uiRouter
+        ])
+        .config(angularRoutes)
+        .constant('angularConfig', angularConfig);
+}());
