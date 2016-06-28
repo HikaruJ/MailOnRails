@@ -8,15 +8,25 @@
                 abstract: true
             })
 
-        .state('home.index', {
-            template: '<home-content></home-content>',
-            url: '/'
-        })
+                .state('home.index', {
+                    template: '<home-content></home-content>',
+                    url: '/'
+                })
 
-        .state('home.register', {
-            template: '<register></register>',
-            url: '/register'
-        });
+                .state('home.register', {
+                    template: '<register></register>',
+                    url: '/register'
+                })
+
+            .state('mail', {
+                template: '<mail></mail>',
+                abstract: true,
+            })
+
+                .state('mail.inbox', {
+                    template: '<mail-inbox></mail-inbox>',
+                    url: '/inbox'
+                });
 
         $urlRouterProvider.otherwise('/');
     };

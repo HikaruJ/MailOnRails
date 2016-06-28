@@ -3,13 +3,13 @@
 
     var angular = require('angular');
 
-    var registerDirective = require('./register.directive');
     var registerService = require('./register.factory');
 
-    var passwordInput = require('./components/input/password/password.directive');
+    var passwordInputOptions = require('./components/input/password/password.component');
+    var registerOptions = require('./register.component');
 
     module.exports = angular.module('register', [])
-        .directive('passwordInput', passwordInput)
-        .directive('register', registerDirective)
+        .component('passwordInput', passwordInputOptions)
+        .component('register', registerOptions)
         .factory('registerService', registerService);
 }());

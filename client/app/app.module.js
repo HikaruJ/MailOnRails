@@ -9,6 +9,7 @@
     var angularRoutes = require('./app.routes');
 
     var homeModule = require('./modules/home/home.module');
+    var mailModule = require('./modules/mail/mail.module');
     var registerModule = require('./modules/register/register.module');
     var uiRouter = require('angular-ui-router/release/angular-ui-router');
 
@@ -19,6 +20,7 @@
             angularMessages,
             'angularPartials',
             homeModule.name,
+            mailModule.name,
             registerModule.name,
             uiRouter
         ])

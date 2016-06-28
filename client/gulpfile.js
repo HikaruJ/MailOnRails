@@ -25,8 +25,8 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     wiredep = require('wiredep').stream;
 
-var config = { 
-    bowerDir: './bower_components' ,
+var config = {
+    bowerDir: './bower_components',
     bowerJson: './bower.json'
 };
 
@@ -45,8 +45,8 @@ var paths = {
 
         css: {
             root: './assets/css',
-            admin: './assets/css/admin',
-            home: './assets/css/home'
+            home: './assets/css/home',
+            mail: './assets/css/mail'
         },
 
         icons: {
@@ -100,14 +100,14 @@ var paths = {
 //  Assets file paths
 var assets = {
     css: {
-        admin: paths.assets.css.admin + '/*.css',
         home: paths.assets.css.home + '/**/*.css',
+        mail: paths.assets.css.mail + '/*.css',
         vendor: paths.assets.css.root + '/vendor.scss'
     },
 
     less: {
-        admin: paths.assets.css.admin + '/**/*.less',
-        home: paths.assets.css.home + '/**/*.less'
+        home: paths.assets.css.home + '/**/*.less',
+        mail: paths.assets.css.mail + '/**/*.less'
     },
 
     javascript: {
@@ -119,8 +119,8 @@ var assets = {
 //  Distribution target file paths
 var target = {
     css: {
-        admin: paths.target.css.root + '/admin.min.css',
         home: paths.target.css.root + '/home.min.css',
+        mail: paths.target.css.root + '/mail.min.css',
         vendor: paths.target.css.root + '/vendor.min.css'
     }
 };
@@ -139,35 +139,38 @@ gulp.task('lint', function() {
 
 //  Copy fonts to the distribution folder
 gulp.task('copy-fonts', function() { 
-    return gulp.src(config.bowerDir + '/font-awesome/fonts/**.*') 
-        .pipe(gulp.dest(paths.target.fonts.root)); 
+    return gulp.src(config.bowerDir + '/font-awesome/fonts/**.*')
+        .pipe(gulp.dest(paths.target.fonts.root));
 });
 
 gulp.task('copy-icons', function() {
     return gulp.src(paths.assets.icons.root + '/**/*.*')
-        .pipe(gulp.dest(paths.target.icons.root))
+        .pipe(gulp.dest(paths.target.icons.root));
 });
 
 //  Copy images to the distribution folder
-gulp.task('copy-images', function() { 
-    return gulp.src(paths.assets.images.root + '/**.*') 
-        .pipe(gulp.dest(paths.target.images.root)); 
+gulp.task('copy-images', function() {
+    return gulp.src([
+            paths.assets.images.root + '/*.*',
+            paths.assets.images.root + '/**/*.*'
+        ])
+        .pipe(gulp.dest(paths.target.images.root));
 });
 
 gulp.task('copy-plugins', function() {
     return gulp.src(paths.assets.plugins.root + '/**/*.*')
-        .pipe(gulp.dest(paths.target.plugins.root))
+        .pipe(gulp.dest(paths.target.plugins.root));
 });
 
-// Convert and minify the admin css/less files to a single css file and copy it to the css distribution folder
-gulp.task('build-admin-template', function() {
-    return gulp.src([assets.css.admin, assets.less.admin])
+// Convert and minify the mail css/less files to a single css file and copy it to the css distribution folder
+gulp.task('build-mail-template', function() {
+    return gulp.src([assets.css.mail, assets.less.mail])
         .pipe(sourcemaps.init())
-        .pipe(concat('admin.min.css'))
+        .pipe(concat('mail.min.css'))
         .pipe(less())
         .pipe(csso())
         .pipe(sourcemaps.write('./maps'))
-        .pipe(gulp.dest(paths.target.css.root))
+        .pipe(gulp.dest(paths.target.css.root));
 });
 
 // Convert and minify the home css/less files to a single css file and copy it to the css distribution folder
@@ -178,7 +181,7 @@ gulp.task('build-home-template', function() {
         .pipe(less())
         .pipe(csso())
         .pipe(sourcemaps.write('./maps'))
-        .pipe(gulp.dest(paths.target.css.root))
+        .pipe(gulp.dest(paths.target.css.root));
 });
 
 //  Inject a minified css file containing the bower css packages to the html file
@@ -224,12 +227,12 @@ gulp.task('browserify', function() {
 
 // Inject css and javascript to the index.html and copy it to the distribution folder
 gulp.task('html', [
-        'copy-fonts', 'copy-icons', 'copy-images', 'copy-plugins',
-        'build-admin-template', 'build-home-template',
-        'inject-vendor', 'build-template-cache', 'browserify'
+        'build-template-cache', 'copy-fonts', 'copy-icons', 'copy-images', 'copy-plugins',
+        'build-mail-template', 'build-home-template',
+        'inject-vendor', 'browserify'
     ],
     function() {
-        var cssInjectFiles = gulp.src([target.css.admin, target.css.home, target.css.vendor]);
+        var cssInjectFiles = gulp.src([target.css.vendor, target.css.home, target.css.mail]);
 
         var injectOptions = {
             addRootSlash: false,
