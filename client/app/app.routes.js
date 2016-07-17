@@ -13,6 +13,10 @@
                     url: '/'
                 })
 
+                .state('home.login', {
+                    url: '/login'
+                })
+
                 .state('home.register', {
                     template: '<register></register>',
                     url: '/register'
