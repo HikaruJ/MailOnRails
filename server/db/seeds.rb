@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+## Populate Message types table
+message_types = ['inbox', 'sent', 'drafts', 'trash', 'spam']
+
+message_types.each do |name|
+  MessageType.create!( type_name: name)
+end

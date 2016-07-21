@@ -15,6 +15,7 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -35,3 +36,8 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end
+
+DOORKEEPER_APP_ID = "375c2e3fdef2acba33ceefaa14be2b251d5174b9defc2a3b8e27fee8103a5aeb"
+DOORKEEPER_APP_NAME = "MailOnRails"
+DOORKEEPER_APP_SECRET = "6a2fa82ab6f7b565c8f8f57f677e408ebcda208709bde6eae0a784b48b49205c"
+DOORKEEPER_APP_URL = "http://mailonrails.com:9000/mail"

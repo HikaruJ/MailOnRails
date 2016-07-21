@@ -29,6 +29,13 @@ module FakeLunchHub
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    config.middleware.insert_before 0, "Rack::Cors" do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
+
     config.generators do |g|
       g.test_framework :rspec,
         fixtures: false,
@@ -38,5 +45,7 @@ module FakeLunchHub
         request_specs: false,
         controller_specs: true
     end
+
+    config.secret_token = '3ace7b9d54576168b84ddc89502c902abd47c25eb41390a5cb6c91f53ff192312e37fc7931a6507cf5cd58c49136c57c8fb170423aa64b796fd458bf162c654b'
   end
 end

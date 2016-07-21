@@ -5,10 +5,17 @@ gem 'rails', '4.1.12'
 gem 'rails-api'
 gem 'spring', :group => :development
 gem 'pg'
+gem 'devise', '3.3.0'
+gem 'rack-cors', :require => 'rack/cors'
+gem 'active_model_serializers', '~> 0.10.0'
+gem 'doorkeeper'
+gem 'devise-doorkeeper'
 
 group :test, :development do
+   gem 'byebug'
    gem "rspec"
    gem "rspec-rails", "~> 2.0"
+   gem 'factory_girl'
 end
 
 # To use ActiveModel has_secure_password

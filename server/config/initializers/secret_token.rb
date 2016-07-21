@@ -16,4 +16,3 @@
 # Using secret_token for rails3 compatibility. Change to secret_key_base
 # to avoid deprecation warning.
 # Can be safely removed in a rails3 api-only application.
-MailOnRails::Application.config.secret_token = '3ace7b9d54576168b84ddc89502c902abd47c25eb41390a5cb6c91f53ff192312e37fc7931a6507cf5cd58c49136c57c8fb170423aa64b796fd458bf162c654b'
