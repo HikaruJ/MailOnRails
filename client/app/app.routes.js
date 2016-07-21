@@ -8,29 +8,30 @@
                 abstract: true
             })
 
-                .state('home.index', {
-                    template: '<home-content></home-content>',
-                    url: '/'
-                })
+        .state('home.index', {
+            template: '<home-content></home-content>',
+            url: '/'
+        })
 
-                .state('home.login', {
-                    url: '/login'
-                })
+        .state('home.login', {
+            template: '<login></login>',
+            url: '/login'
+        })
 
-                .state('home.register', {
-                    template: '<register></register>',
-                    url: '/register'
-                })
+        .state('home.register', {
+            template: '<register></register>',
+            url: '/register'
+        })
 
-            .state('mail', {
-                template: '<mail></mail>',
-                abstract: true,
-            })
+        .state('mail', {
+            template: '<mail></mail>',
+            abstract: true
+        })
 
-                .state('mail.inbox', {
-                    template: '<mail-inbox></mail-inbox>',
-                    url: '/inbox'
-                });
+        .state('mail.inbox', {
+            template: '<mail-inbox></mail-inbox>',
+            url: '/inbox'
+        });
 
         $urlRouterProvider.otherwise('/');
     };

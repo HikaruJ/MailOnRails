@@ -15,6 +15,7 @@
         "jquery": "./bower_components/jquery/dist/jquery.js",
         "angular": "./bower_components/angular/angular.min.js",
         "angular-bootstrap": "./bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js",
+        "angular-cookie": "./bower_components/angular-cookie/angular-cookie.min.js",
         "angular-messages": "./bower_components/angular-messages/angular-messages.min.js",
         "angular-ui-router": "./bower_components/angular-ui-router/release/angular-ui-router.min.js"
     },
@@ -27,6 +28,10 @@
         "angular-bootstrap": {
             "depends": "angular",
             "exports": "angular.module('ui.bootstrap')"
+        },
+        "angular-cookie": {
+            "depends": "angular",
+            "exports": "angular.module('ipCookie')"
         },
         "angular-messages": {
             "depends": "angular",

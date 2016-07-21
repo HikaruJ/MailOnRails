@@ -29,8 +29,18 @@
         };
 
         ctrl.submit = function() {
-            var user = ctrl.viewModel;
-            registerService.registerUser(user);
+            var user = {
+                email: ctrl.viewModel.email,
+                first_name: ctrl.viewModel.firstName,
+                last_name: ctrl.viewModel.lastName,
+                password: ctrl.viewModel.password,
+                password_confirmation: ctrl.viewModel.passwordConfirm
+            };
+
+            registerService.registerUser(user)
+                .then(function(resp) {
+                    debugger
+                });
         };
     }
 
