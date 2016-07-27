@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160719134445) do
+ActiveRecord::Schema.define(version: 20160727123712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,8 +22,7 @@ ActiveRecord::Schema.define(version: 20160719134445) do
     t.datetime "updated_at"
   end
 
-  create_table "messages", id: false, force: true do |t|
-    t.integer  "id",         limit: 8
+  create_table "messages", force: true do |t|
     t.string   "subject"
     t.text     "body"
     t.datetime "created_at"
@@ -70,8 +69,7 @@ ActiveRecord::Schema.define(version: 20160719134445) do
 
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
 
-  create_table "user_messages", id: false, force: true do |t|
-    t.integer  "id",              limit: 8
+  create_table "user_messages", force: true do |t|
     t.integer  "user_id",         limit: 8
     t.integer  "message_id",      limit: 8
     t.integer  "message_type_id"
@@ -80,9 +78,8 @@ ActiveRecord::Schema.define(version: 20160719134445) do
     t.datetime "updated_at"
   end
 
-  create_table "users", id: false, force: true do |t|
-    t.integer  "id"
-    t.string   "email",                  limit: 50, default: "", null: false
+  create_table "users", force: true do |t|
+    t.string   "email",                             default: "", null: false
     t.string   "encrypted_password",                default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -94,8 +91,6 @@ ActiveRecord::Schema.define(version: 20160719134445) do
     t.inet     "last_sign_in_ip"
     t.string   "first_name",             limit: 35
     t.string   "last_name",              limit: 35
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -1,9 +1,6 @@
 class CreateMessages < ActiveRecord::Migration
   def change
-    create_table :messages, :id => false do |t|
-      ## Primary key
-      t.integer :id, :limit => 8
-
+    create_table :messages do |t|
       ## Fields
       t.string :subject
       t.text :body

@@ -5,11 +5,13 @@ gem 'rails', '4.1.12'
 gem 'rails-api'
 gem 'spring', :group => :development
 gem 'pg'
-gem 'devise', '3.3.0'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'devise'
 gem 'doorkeeper'
-gem 'devise-doorkeeper'
+gem 'auto_increment'
+gem 'omniauth'
+gem 'omniauth-oauth2'
 
 group :test, :development do
    gem 'byebug'

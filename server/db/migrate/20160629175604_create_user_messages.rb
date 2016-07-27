@@ -1,9 +1,6 @@
 class CreateUserMessages < ActiveRecord::Migration
   def change
-    create_table :user_messages, :id => false do |t|
-      ## Primary key
-      t.integer :id, :limit => 8
-
+    create_table :user_messages do |t|
       ## Fields
       t.integer :user_id, :limit => 8
       t.integer :message_id, :limit => 8

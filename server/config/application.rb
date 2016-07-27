@@ -36,6 +36,9 @@ module FakeLunchHub
       end
     end
 
+    config.middleware.insert_after(ActiveRecord::QueryCache, ActionDispatch::Cookies)
+    config.middleware.insert_after(ActionDispatch::Cookies, ActionDispatch::Session::CookieStore)
+
     config.generators do |g|
       g.test_framework :rspec,
         fixtures: false,

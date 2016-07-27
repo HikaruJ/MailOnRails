@@ -1,11 +1,11 @@
+require File.expand_path('lib/omniauth/strategies/doorkeeper', Rails.root)
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-  Devise::Doorkeeper.configure_devise(config)
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  # config.secret_key = '4fd88f629f91be336e53fe0d18e8c946050158c3b09a4fdef22a44785ca0b1dff10469289f2b6ae7c3451386f2d46f74e48ebb569a28712d0f0bf6449ccb5637'
+  config.secret_key = 'f1dce87f4fd2cec544ff438b9eeabe333305aea87f50d06f79bc57d80e68147a50c326ea5324f645a91a047b8ca889c421e198e73020f13ce452f9704d03dda3'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -63,7 +63,7 @@ Devise.setup do |config|
   # config.http_authenticatable = false
 
   # If http headers should be returned for AJAX requests. True by default.
-  config.http_authenticatable_on_xhr = true
+  # config.http_authenticatable_on_xhr = true
 
   # The realm used in Http Basic Authentication. 'Application' by default.
   # config.http_authentication_realm = 'Application'
@@ -79,7 +79,6 @@ Devise.setup do |config|
   # may want to disable generating routes to Devise's sessions controller by
   # passing skip: :sessions to `devise_for` in your config/routes.rb
   config.skip_session_storage = [:http_auth]
-  # config.skip_session_storage << :doorkeeper # disable session storage for oauth requests
 
   # By default, Devise cleans up the CSRF token on authentication to
   # avoid CSRF token fixation attacks. This means that, when using AJAX
@@ -99,7 +98,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = '15cb238e77ba258ef5b89e47bb3f88dfb4ba966bd9407aae1dfe1d973c4c8f580e4b5b0fa8ecbdb0d02d1b2d974227467859134525dacbe08a341b1a375522c7'
+  # config.pepper = '9ead7a27f1e8c6940520ba4fb08f81937e65d48a03dd1c06a9160b42885dbf4931caad1467459ef78de56fbaedf6ad0d0559e6fa1ff7d60e8396659c4bce4a4e'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -152,7 +151,7 @@ Devise.setup do |config|
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
   # time the user will be asked for credentials again. Default is 30 minutes.
-  # config.timeout_in = 30.minutes
+  config.timeout_in = 1.hour
 
   # If true, expires auth token on session timeout.
   # config.expire_auth_token_on_timeout = false
@@ -234,8 +233,8 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-
+  config.omniauth :doorkeeper,  DOORKEEPER_APP_ID, DOORKEEPER_APP_SECRET, :client_options =>  {:site => DOORKEEPER_APP_URL}
+  
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
