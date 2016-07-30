@@ -4715,3 +4715,1182 @@ Can't verify CSRF token authenticity
   [1m[35m (0.9ms)[0m  COMMIT
 [active_model_serializers] Rendered UserSerializer with Hash (0.3ms)
 Completed 201 Created in 142ms (Views: 8.0ms | ActiveRecord: 20.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-29 23:15:07 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Or", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (43.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.2ms)
+Completed 409 Conflict in 11287ms (Views: 57.4ms | ActiveRecord: 2940.6ms)
+  [1m[36mSQL (72.9ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mSQL (53.3ms)[0m  DELETE FROM "oauth_applications"
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-29 23:17:49 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Or", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (1.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (27.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+  [1m[36mSQL (21.4ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "first_name", "last_name") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "hikarij@gmail.com"], ["encrypted_password", "$2a$10$K/O4/3nZqE6WhiCK5Hc0ZeQq5bIHZESlmCbVQgik6wLHzny.Wp/2y"], ["first_name", "Or"], ["last_name", "Perlman"]]
+  [1m[35m (1.6ms)[0m  COMMIT
+  [1m[36mDoorkeeper::Application Load (0.5ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "oauth_applications"  WHERE "oauth_applications"."uid" = 'e2bf2877d05fbba745532f02d4c772a65130b6baa1e473360f20ea68dfe86324' LIMIT 1[0m
+  [1m[35mSQL (23.4ms)[0m  INSERT INTO "oauth_applications" ("created_at", "name", "redirect_uri", "secret", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2016-07-29 20:17:49.774957"], ["name", "MailOnRails"], ["redirect_uri", "http://mailonrails.com:9000/mail"], ["secret", "8a471a66a50449d913a939cc3e1f18a22a388bd3fabf7c6bb5c26347ab9b5e1b"], ["uid", "e2bf2877d05fbba745532f02d4c772a65130b6baa1e473360f20ea68dfe86324"], ["updated_at", "2016-07-29 20:17:49.774957"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Load (0.3ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1[0m  [["id", 375]]
+  [1m[35mDoorkeeper::AccessToken Exists (1.0ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = '98527068b0acc2f0ed6e8cdff0d5f0f2eee26615cc2be9c79e1f890ab2e60bfa' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Exists (29.7ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = '080d36ce0152766a14de9801868e99c76b23a9a16e621a578f98f9014529739f' LIMIT 1[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "resource_owner_id", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["application_id", 375], ["created_at", "2016-07-29 20:17:49.955932"], ["expires_in", 7200], ["refresh_token", "080d36ce0152766a14de9801868e99c76b23a9a16e621a578f98f9014529739f"], ["resource_owner_id", 11], ["scopes", "public write preferences"], ["token", "98527068b0acc2f0ed6e8cdff0d5f0f2eee26615cc2be9c79e1f890ab2e60bfa"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+[active_model_serializers] Rendered UserSerializer with Hash (0.22ms)
+Completed 201 Created in 509ms (Views: 8.7ms | ActiveRecord: 119.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-29 23:26:52 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.19ms)
+Completed 409 Conflict in 191ms (Views: 154.6ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-29 23:27:34 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJp@gmail.com", "first_name"=>"Hikarip", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarijp@gmail.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'hikarijp@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (201.5ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "first_name", "last_name") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "hikarijp@gmail.com"], ["encrypted_password", "$2a$10$PPwV7/Tx4kuakIOaRcDpiOAV393hUlTkvOMImiVvTD6xaUfDDwLeq"], ["first_name", "Hikarip"], ["last_name", "Perlman"]]
+  [1m[36m (30.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mDoorkeeper::Application Load (0.3ms)[0m  SELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mDoorkeeper::Application Load (0.2ms)[0m  SELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1  [["id", 375]]
+  [1m[36mDoorkeeper::AccessToken Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = '41672e558ea303f51e2af43846e77c30d9cfa32f70782dd34f4bf7f2dfb2f32f' LIMIT 1[0m
+  [1m[35mDoorkeeper::AccessToken Exists (0.2ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = 'd3e0316728f6a64bb17ecfec3774b68b817d13116955b6595cec5ceab6c3ca6b' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "resource_owner_id", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["application_id", 375], ["created_at", "2016-07-29 20:27:34.548042"], ["expires_in", 7200], ["refresh_token", "d3e0316728f6a64bb17ecfec3774b68b817d13116955b6595cec5ceab6c3ca6b"], ["resource_owner_id", 12], ["scopes", "public write preferences"], ["token", "41672e558ea303f51e2af43846e77c30d9cfa32f70782dd34f4bf7f2dfb2f32f"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+[active_model_serializers] Rendered UserSerializer with Hash (0.11ms)
+Completed 201 Created in 394ms (Views: 0.8ms | ActiveRecord: 235.2ms)
+  [1m[36mSQL (1.6ms)[0m  [1mDELETE FROM "users"[0m
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-29 23:28:23 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "first_name", "last_name") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "hikarij@gmail.com"], ["encrypted_password", "$2a$10$BFqdx3QSm1CnJ16X311UU.IhcSa.y5kFjMgAQap6FfL536GwsJKse"], ["first_name", "Hikari"], ["last_name", "Perlman"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mDoorkeeper::Application Load (0.2ms)[0m  SELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mDoorkeeper::Application Load (0.1ms)[0m  SELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1  [["id", 375]]
+  [1m[36mDoorkeeper::AccessToken Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = 'dce7768101759bc931c8b1cc144d44efb46a8cf508593cfd04cb1618b2057626' LIMIT 1[0m
+  [1m[35mDoorkeeper::AccessToken Exists (0.1ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = '1947a6dac4914bf4358c377dd85e4a7b0b82e08103e784be565cb17e399cc3d7' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "resource_owner_id", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["application_id", 375], ["created_at", "2016-07-29 20:28:23.899095"], ["expires_in", 7200], ["refresh_token", "1947a6dac4914bf4358c377dd85e4a7b0b82e08103e784be565cb17e399cc3d7"], ["resource_owner_id", 13], ["scopes", "public write preferences"], ["token", "dce7768101759bc931c8b1cc144d44efb46a8cf508593cfd04cb1618b2057626"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+[active_model_serializers] Rendered UserSerializer with Hash (0.11ms)
+Completed 201 Created in 81ms (Views: 0.6ms | ActiveRecord: 3.2ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-29 23:35:43 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (19.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 409 Conflict in 25ms (Views: 1.1ms | ActiveRecord: 19.2ms)
+  [1m[36mSQL (51.2ms)[0m  [1mDELETE FROM "users"[0m
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-29 23:36:01 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (17.9ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "first_name", "last_name") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "hikarij@gmail.com"], ["encrypted_password", "$2a$10$.8Y3fg7CPFR5x7enYN2rFOOBAvSxDPY2PDDr9k29HmoaDNX.jQoYC"], ["first_name", "Hikari"], ["last_name", "Perlman"]]
+  [1m[35m (1.0ms)[0m  COMMIT
+  [1m[36mDoorkeeper::Application Load (0.4ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Load (0.3ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1[0m  [["id", 375]]
+  [1m[35mDoorkeeper::AccessToken Exists (0.3ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = 'f61889883780029b7f0e44786d80de9863f24c6c57d33750ad439c22e1652414' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = 'c63b5434cd0b22254bc5db6decd9a053d60561ccc899a20b6def12efcd308f08' LIMIT 1[0m
+  [1m[35mSQL (28.7ms)[0m  INSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "resource_owner_id", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["application_id", 375], ["created_at", "2016-07-29 20:36:01.531482"], ["expires_in", 7200], ["refresh_token", "c63b5434cd0b22254bc5db6decd9a053d60561ccc899a20b6def12efcd308f08"], ["resource_owner_id", 14], ["scopes", "public write preferences"], ["token", "f61889883780029b7f0e44786d80de9863f24c6c57d33750ad439c22e1652414"]]
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+[active_model_serializers] Rendered UserSerializer with Hash (0.25ms)
+Completed 201 Created in 135ms (Views: 1.8ms | ActiveRecord: 51.3ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-29 23:36:16 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 409 Conflict in 3ms (Views: 0.8ms | ActiveRecord: 0.4ms)
+  [1m[35mSQL (181.1ms)[0m  DELETE FROM "users"
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 02:28:09 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (20.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "first_name", "last_name") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "hikarij@gmail.com"], ["encrypted_password", "$2a$10$c.Id2g89PYxDpbDRLbiLJ.FvNY0zjlu4mAZK5AvssJPKysgVq4FaC"], ["first_name", "Hikari"], ["last_name", "Perlman"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mDoorkeeper::Application Load (0.2ms)[0m  SELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mDoorkeeper::Application Load (0.4ms)[0m  SELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1  [["id", 375]]
+  [1m[36mDoorkeeper::AccessToken Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = 'aee93cb42f3166b152c66b26e3e91cbf5d1be04e583386c0ab0fd593441ed3a2' LIMIT 1[0m
+  [1m[35mDoorkeeper::AccessToken Exists (0.2ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = '0a2340611a1ce09946a753fb5d4240404d838f20b70e1f2624a88d7eb1c0d9d7' LIMIT 1
+  [1m[36mSQL (27.8ms)[0m  [1mINSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "resource_owner_id", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["application_id", 375], ["created_at", "2016-07-29 23:28:12.692319"], ["expires_in", 7200], ["refresh_token", "0a2340611a1ce09946a753fb5d4240404d838f20b70e1f2624a88d7eb1c0d9d7"], ["resource_owner_id", 15], ["scopes", "public write preferences"], ["token", "aee93cb42f3166b152c66b26e3e91cbf5d1be04e583386c0ab0fd593441ed3a2"]]
+  [1m[35m (14.2ms)[0m  COMMIT
+[active_model_serializers] Rendered UserSerializer with Hash (44.92ms)
+Completed 201 Created in 451ms (Views: 51.1ms | ActiveRecord: 185.1ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 02:28:22 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (29.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.28ms)
+Completed 409 Conflict in 34ms (Views: 1.7ms | ActiveRecord: 29.7ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 02:29:03 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 409 Conflict in 47ms (Views: 8.4ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 02:30:05 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 409 Conflict in 15ms (Views: 5.8ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 02:34:31 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.28ms)
+Completed 200 OK in 27ms (Views: 8.3ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 02:42:59 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (16.98ms)
+Completed 409 Conflict in 137ms (Views: 24.8ms | ActiveRecord: 101.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 02:44:56 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+Completed 409 Conflict in 33ms (Views: 8.8ms | ActiveRecord: 5.1ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 02:45:44 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+Completed 409 Conflict in 3ms (Views: 0.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 02:48:45 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 409 Conflict in 17ms (Views: 5.8ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 11:56:29 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (78.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (64.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.25ms)
+Completed 409 Conflict in 468ms (Views: 97.6ms | ActiveRecord: 192.2ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 15:48:33 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (111.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (210.08ms)
+Completed 409 Conflict in 4208ms (Views: 561.0ms | ActiveRecord: 111.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 15:50:31 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.34ms)
+Completed 409 Conflict in 17ms (Views: 2.2ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 15:52:45 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Completed 409 Conflict in 26ms (Views: 2.0ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 15:56:08 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (33.5ms)
+Completed 409 Conflict in 390ms (Views: 40.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 15:59:38 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Completed 409 Conflict in 5ms (Views: 1.7ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 16:02:44 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.2ms)
+Completed 409 Conflict in 25ms (Views: 4.0ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 16:03:38 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.17ms)
+Completed 409 Conflict in 29ms (Views: 22.7ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 16:06:32 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.17ms)
+Completed 409 Conflict in 74ms (Views: 33.0ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 16:11:18 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Completed 409 Conflict in 72ms (Views: 43.8ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 16:14:38 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.41ms)
+Completed 409 Conflict in 29ms (Views: 10.5ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 16:27:53 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (43.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Completed 409 Conflict in 366ms (Views: 75.3ms | ActiveRecord: 43.7ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 16:31:51 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Completed 409 Conflict in 139ms (Views: 51.3ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 16:34:36 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 409 Conflict in 166ms (Views: 112.6ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 16:36:46 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 409 Conflict in 423ms (Views: 371.6ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 16:39:21 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 409 Conflict in 154ms (Views: 43.8ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 16:42:15 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.22ms)
+Completed 409 Conflict in 236ms (Views: 108.7ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 16:44:03 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 409 Conflict in 135ms (Views: 33.6ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 16:45:03 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (20.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (16.03ms)
+Completed 409 Conflict in 296ms (Views: 96.8ms | ActiveRecord: 20.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 16:48:33 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (29.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (6.4ms)
+Completed 409 Conflict in 122ms (Views: 7.2ms | ActiveRecord: 29.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 16:48:42 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 409 Conflict in 130ms (Views: 48.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 16:48:46 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (14.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.28ms)
+Completed 409 Conflict in 155ms (Views: 52.6ms | ActiveRecord: 14.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 16:52:54 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 409 Conflict in 198ms (Views: 53.1ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 16:54:44 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (1.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (11.21ms)
+Completed 409 Conflict in 313ms (Views: 146.7ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 16:57:35 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (1.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.25ms)
+Completed 409 Conflict in 367ms (Views: 1.7ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 17:11:14 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 409 Conflict in 18ms (Views: 14.7ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 17:14:45 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (48.53ms)
+Completed 409 Conflict in 1924ms (Views: 355.8ms | ActiveRecord: 822.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 17:15:16 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Completed 409 Conflict in 51ms (Views: 20.4ms | ActiveRecord: 6.2ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 17:17:06 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 409 Conflict in 13ms (Views: 4.1ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 17:17:08 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 409 Conflict in 3ms (Views: 0.9ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 17:17:41 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.21ms)
+Completed 409 Conflict in 22ms (Views: 7.3ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 17:17:57 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 409 Conflict in 17ms (Views: 5.8ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 17:17:59 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 409 Conflict in 3ms (Views: 0.8ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 17:20:09 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.2ms)
+Completed 409 Conflict in 25ms (Views: 6.4ms | ActiveRecord: 3.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 17:25:56 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.2ms)
+Completed 409 Conflict in 21ms (Views: 5.9ms | ActiveRecord: 4.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 17:33:12 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (23.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.3ms)
+Completed 409 Conflict in 27ms (Views: 1.2ms | ActiveRecord: 23.2ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 17:38:02 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.21ms)
+Completed 409 Conflict in 6ms (Views: 2.0ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 17:38:32 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 409 Conflict in 4ms (Views: 1.0ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 17:38:34 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 409 Conflict in 3ms (Views: 1.1ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 17:38:35 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.23ms)
+Completed 409 Conflict in 4ms (Views: 1.4ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 17:38:55 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 409 Conflict in 4ms (Views: 0.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 17:38:59 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Completed 409 Conflict in 74ms (Views: 1.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 17:39:06 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 409 Conflict in 3ms (Views: 1.0ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 17:40:07 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Completed 409 Conflict in 5ms (Views: 1.2ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 17:43:52 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 409 Conflict in 3ms (Views: 0.7ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 17:44:08 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 409 Conflict in 3ms (Views: 0.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 17:51:05 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.27ms)
+Completed 409 Conflict in 4ms (Views: 1.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 17:51:08 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.45ms)
+Completed 409 Conflict in 7ms (Views: 2.8ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 18:02:39 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ1@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij1@gmail.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (24.0ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'hikarij1@gmail.com' LIMIT 1
+  [1m[36mSQL (239.1ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "first_name", "last_name") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "hikarij1@gmail.com"], ["encrypted_password", "$2a$10$Lx/I.LOc4peUSrDdqPAJMOWemtaIgK2JtrhDG2MjFSx/5KJLNDWnq"], ["first_name", "Hikari"], ["last_name", "Perlman"]]
+  [1m[35m (109.2ms)[0m  COMMIT
+  [1m[36mDoorkeeper::Application Load (119.9ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Load (57.3ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1[0m  [["id", 375]]
+  [1m[35mDoorkeeper::AccessToken Exists (42.9ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = '73a6986bc92c9c362d2d802728de7a081de959a3e9673f46a1e4e46cb1eb90e4' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Exists (6.6ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = '5b2f38aa0127df6de8e4054063dd829d40f8ac6c06aafb83822ca6d9c681d9e8' LIMIT 1[0m
+  [1m[35mSQL (62.4ms)[0m  INSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "resource_owner_id", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["application_id", 375], ["created_at", "2016-07-30 15:02:47.501751"], ["expires_in", 7200], ["refresh_token", "5b2f38aa0127df6de8e4054063dd829d40f8ac6c06aafb83822ca6d9c681d9e8"], ["resource_owner_id", 16], ["scopes", "public write preferences"], ["token", "73a6986bc92c9c362d2d802728de7a081de959a3e9673f46a1e4e46cb1eb90e4"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.8ms)
+Completed 201 Created in 7950ms (Views: 2.3ms | ActiveRecord: 898.6ms)
+  [1m[36mDoorkeeper::Application Load (50.2ms)[0m  [1mSELECT "oauth_applications".* FROM "oauth_applications"[0m
+  [1m[35mSQL (89.0ms)[0m  DELETE FROM "oauth_applications"
+  [1m[36mSQL (40.4ms)[0m  [1mDELETE FROM "users"[0m
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 22:47:59 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (32.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (24.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+  [1m[36mSQL (19.8ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "first_name", "last_name") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "hikarij@gmail.com"], ["encrypted_password", "$2a$10$EqKNZ.7tXMINAJQbkr./V.poSFOvqtfis4aHXqMmkNs/U7of89Ji."], ["first_name", "Hikari"], ["last_name", "Perlman"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36mDoorkeeper::Application Load (0.5ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Exists (55.8ms)[0m  [1mSELECT  1 AS one FROM "oauth_applications"  WHERE "oauth_applications"."uid" = '581be260862444d8d4c852a8bb69eaba328b136f1a204cf56fd9ed5ef6a09d9f' LIMIT 1[0m
+  [1m[35mSQL (77.8ms)[0m  INSERT INTO "oauth_applications" ("created_at", "name", "redirect_uri", "secret", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2016-07-30 19:48:13.516150"], ["name", "MailOnRails"], ["redirect_uri", "http://mailonrails.com:9000/mail"], ["secret", "e0688276bad2c5ce5ae5c36266284ea13346a2d66f872a94ba3ab8a0258b736a"], ["uid", "581be260862444d8d4c852a8bb69eaba328b136f1a204cf56fd9ed5ef6a09d9f"], ["updated_at", "2016-07-30 19:48:13.516150"]]
+  [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Load (0.4ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1[0m  [["id", 375]]
+  [1m[35mDoorkeeper::AccessToken Exists (22.2ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = '2dc4da10ab17fc5ab30dfd7cb56ae4e2723de64fb167776355d7679cfe976bdc' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = '98a6706b16ea7896b082d15bd66ae4cb5651cc208e7292ef62d2257a75de220b' LIMIT 1[0m
+  [1m[35mSQL (16.8ms)[0m  INSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "resource_owner_id", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["application_id", 375], ["created_at", "2016-07-30 19:48:13.962528"], ["expires_in", 7200], ["refresh_token", "98a6706b16ea7896b082d15bd66ae4cb5651cc208e7292ef62d2257a75de220b"], ["resource_owner_id", 17], ["scopes", "public write preferences"], ["token", "2dc4da10ab17fc5ab30dfd7cb56ae4e2723de64fb167776355d7679cfe976bdc"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (162.85ms)
+Completed 201 Created in 9205ms (Views: 513.7ms | ActiveRecord: 253.7ms)
+  [1m[36mSQL (40.8ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mSQL (1.1ms)[0m  DELETE FROM "oauth_applications"
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 23:01:47 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (31.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (52.8ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.5ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+  [1m[36mSQL (57.2ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "first_name", "last_name") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "hikarij@gmail.com"], ["encrypted_password", "$2a$10$GnczpedtAJuamfPCWV/n3OatvGsYAQ3LAGsTpBWQL4P113qeA.fGq"], ["first_name", "Hikari"], ["last_name", "Perlman"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36mDoorkeeper::Application Load (0.2ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "oauth_applications"  WHERE "oauth_applications"."uid" = '7765bc22c411b4b42d87adfecd61932dbf368cb65fcac73e462c4337b380ed69' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "oauth_applications" ("created_at", "name", "redirect_uri", "secret", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2016-07-30 20:01:49.089132"], ["name", "MailOnRails"], ["redirect_uri", "http://mailonrails.com:9000/mail"], ["secret", "0fbbcb66a38fb25801a0a637ce96d6cdf8a08dd95eeb4ed44c1fd54565b0145c"], ["uid", "7765bc22c411b4b42d87adfecd61932dbf368cb65fcac73e462c4337b380ed69"], ["updated_at", "2016-07-30 20:01:49.089132"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Load (0.2ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1[0m  [["id", 375]]
+  [1m[35mDoorkeeper::AccessToken Exists (25.1ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = '7f21f421ee2fc7b9b185029330bd9206ecc928df3e1172f24754a3079abdc9b4' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = 'd45951a2b729405da83a41453842c01536f3b8d7eee337e0688cd4b2ce8b421a' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "resource_owner_id", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["application_id", 375], ["created_at", "2016-07-30 20:01:49.202790"], ["expires_in", 7200], ["refresh_token", "d45951a2b729405da83a41453842c01536f3b8d7eee337e0688cd4b2ce8b421a"], ["resource_owner_id", 18], ["scopes", "public write preferences"], ["token", "7f21f421ee2fc7b9b185029330bd9206ecc928df3e1172f24754a3079abdc9b4"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.48ms)
+Completed 201 Created in 705ms (Views: 101.7ms | ActiveRecord: 143.8ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 23:05:19 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 409 Conflict in 14ms (Views: 5.2ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 23:08:05 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.19ms)
+Completed 409 Conflict in 22ms (Views: 8.1ms | ActiveRecord: 2.2ms)
+  [1m[36mSQL (2.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mSQL (2.3ms)[0m  DELETE FROM "oauth_applications"
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 23:08:21 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "first_name", "last_name") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "hikarij@gmail.com"], ["encrypted_password", "$2a$10$8QHA4mqdZr8BRmpv2mdhpO02dx35w/6ohUgJQB1Slw7ieCR85cdFi"], ["first_name", "Hikari"], ["last_name", "Perlman"]]
+  [1m[35m (1.2ms)[0m  COMMIT
+  [1m[36mDoorkeeper::Application Load (0.3ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "oauth_applications"  WHERE "oauth_applications"."uid" = '5b256c83b8124ca1e5ccd33186528df508a8491baf5da8af310ccf515d40a1af' LIMIT 1[0m
+  [1m[35mSQL (21.3ms)[0m  INSERT INTO "oauth_applications" ("created_at", "name", "redirect_uri", "secret", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2016-07-30 20:08:22.003510"], ["name", "MailOnRails"], ["redirect_uri", "http://mailonrails.com:9000/mail"], ["secret", "039e562ab6cfc174863dc707f854b9bdd1d950245e00c6b02142176404ad84e7"], ["uid", "5b256c83b8124ca1e5ccd33186528df508a8491baf5da8af310ccf515d40a1af"], ["updated_at", "2016-07-30 20:08:22.003510"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Load (0.3ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1[0m  [["id", 375]]
+  [1m[35mDoorkeeper::AccessToken Exists (0.3ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = '63370384e679ee4ff926f811b5fbb5559e2a3e63355393fb6d5a913f64234d18' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = '1664a6025f5f18f749dd1f817dc1b000695c98a7ddf6c99b260b4d04c77e9a9b' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "resource_owner_id", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["application_id", 375], ["created_at", "2016-07-30 20:08:22.034275"], ["expires_in", 7200], ["refresh_token", "1664a6025f5f18f749dd1f817dc1b000695c98a7ddf6c99b260b4d04c77e9a9b"], ["resource_owner_id", 19], ["scopes", "public write preferences"], ["token", "63370384e679ee4ff926f811b5fbb5559e2a3e63355393fb6d5a913f64234d18"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.39ms)
+Completed 201 Created in 125ms (Views: 1.1ms | ActiveRecord: 31.8ms)
+  [1m[36mSQL (1.5ms)[0m  [1mDELETE FROM "oauth_applications"[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "oauth_applications"
+  [1m[36mSQL (2.2ms)[0m  [1mDELETE FROM "users"[0m
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 23:10:59 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+  [1m[36m (1.0ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.6ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "first_name", "last_name") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "hikarij@gmail.com"], ["encrypted_password", "$2a$10$NeTuq3ZJqiW9/ALrQOUw2.UpvvS5OWqgbrgArRSO43CktIHrqGMnG"], ["first_name", "Hikari"], ["last_name", "Perlman"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36mDoorkeeper::Application Load (0.4ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "oauth_applications"  WHERE "oauth_applications"."uid" = '14061147791bd276d25aecda48ede25bded7441b2f128201a9aeec342db4e19d' LIMIT 1[0m
+  [1m[35mSQL (28.3ms)[0m  INSERT INTO "oauth_applications" ("created_at", "name", "redirect_uri", "secret", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2016-07-30 20:10:59.758043"], ["name", "MailOnRails"], ["redirect_uri", "http://mailonrails.com:9000/mail"], ["secret", "e43382ccfae33aa5e976a3a2bfc7586e436eaaa8874888b54e0b8359bba97747"], ["uid", "14061147791bd276d25aecda48ede25bded7441b2f128201a9aeec342db4e19d"], ["updated_at", "2016-07-30 20:10:59.758043"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Load (0.2ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1[0m  [["id", 375]]
+  [1m[35mDoorkeeper::AccessToken Exists (0.3ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = 'fab098a01008a3247b82e250b678de12fb5da1ecc8b5db97dfbe69562ad090e8' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = '8e54072a4c636a664551bbf3267114f213dde82f30155e76bd81f30781be882c' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "resource_owner_id", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["application_id", 375], ["created_at", "2016-07-30 20:10:59.793250"], ["expires_in", 7200], ["refresh_token", "8e54072a4c636a664551bbf3267114f213dde82f30155e76bd81f30781be882c"], ["resource_owner_id", 20], ["scopes", "public write preferences"], ["token", "fab098a01008a3247b82e250b678de12fb5da1ecc8b5db97dfbe69562ad090e8"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.46ms)
+Completed 201 Created in 124ms (Views: 1.8ms | ActiveRecord: 34.7ms)
+
+
+Started GET "/users/email_exists/email=HikariJ@gmail.com" for 127.0.0.1 at 2016-07-30 23:44:08 +0300
+
+ActionController::RoutingError (No route matches [GET] "/users/email_exists/email=HikariJ@gmail.com"):
+  actionpack (4.1.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.12) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.12) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.1.12) lib/rails/engine.rb:514:in `call'
+  railties (4.1.12) lib/rails/application.rb:144:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  rack (1.5.5) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.5) lib/rack/handler/webrick.rb:60:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/routes/_route.html.erb (7.6ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/routes/_table.html.erb (139.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (498.4ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-07-30 23:45:57 +0300
+Error occurred while parsing request parameters.
+Contents:
+
+HikariJ@gmail.com
+
+ActionDispatch::ParamsParser::ParseError (795: unexpected token at 'HikariJ@gmail.com'):
+  actionpack (4.1.12) lib/action_dispatch/middleware/params_parser.rb:53:in `rescue in parse_formatted_parameters'
+  actionpack (4.1.12) lib/action_dispatch/middleware/params_parser.rb:32:in `parse_formatted_parameters'
+  actionpack (4.1.12) lib/action_dispatch/middleware/params_parser.rb:23:in `call'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.12) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.12) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.12) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.12) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.12) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.1.12) lib/rails/engine.rb:514:in `call'
+  railties (4.1.12) lib/rails/application.rb:144:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  rack (1.5.5) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.5) lib/rack/handler/webrick.rb:60:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (22.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.7ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (33.6ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-07-30 23:48:38 +0300
+
+ActionController::RoutingError (No route matches [POST] "/users/email_exists"):
+  actionpack (4.1.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.12) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.12) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.1.12) lib/rails/engine.rb:514:in `call'
+  railties (4.1.12) lib/rails/application.rb:144:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  rack (1.5.5) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.5) lib/rack/handler/webrick.rb:60:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.0ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (41.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 23:49:42 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 709ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `email_exists?' for #<Class:0x007fe0645d3170>):
+  app/controllers/users_controller.rb:5:in `create'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.7ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (49.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-30 23:50:09 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `email_exists?' for #<Class:0x000000060f1a58>):
+  app/controllers/users_controller.rb:5:in `create'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.8ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-07-30 23:53:00 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 84ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `email_exists?' for #<Class:0x000000060f1a58>):
+  app/controllers/users_controller.rb:27:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.8ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-07-30 23:56:08 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 63ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `find_by_email' for #<UsersController:0x007fe064760ad8>):
+  app/controllers/users_controller.rb:34:in `email_exists?'
+  app/controllers/users_controller.rb:27:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.6ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-07-30 23:58:10 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (95.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'HikariJ@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.01ms)
+Completed 200 OK in 144ms (Views: 8.1ms | ActiveRecord: 98.7ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-07-31 00:26:30 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'HikariJ@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 200 OK in 12ms (Views: 5.4ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-07-31 00:27:22 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (65.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'HikariJ@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Completed 200 OK in 89ms (Views: 1.1ms | ActiveRecord: 83.6ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-07-31 00:27:29 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'HikariJ@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 200 OK in 6ms (Views: 1.4ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-07-31 00:32:17 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'HikariJ@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.55ms)
+Completed 200 OK in 7ms (Views: 2.3ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-07-31 00:32:22 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'HikariJ@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-07-31 00:32:25 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'HikariJ@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 200 OK in 6ms (Views: 1.2ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-07-31 00:33:10 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'HikariJ@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-07-31 00:33:32 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'HikariJ@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-07-31 00:34:23 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'HikariJ@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 200 OK in 4ms (Views: 1.2ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-07-31 00:42:04 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (36.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'HikariJ@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (13.33ms)
+Completed 200 OK in 82ms (Views: 24.1ms | ActiveRecord: 36.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-31 00:42:30 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'HikariJ@gmail.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (68.6ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36mDoorkeeper::Application Load (0.3ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Load (39.8ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1[0m  [["id", 375]]
+  [1m[35mDoorkeeper::AccessToken Exists (26.8ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = 'b8714290bd917a96efb900f16df8015dc5206f8ff07d60029c2f2c01b51d061a' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Exists (1.1ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = 'e7ddbba09676281a30b26c0832d414a7770cc1bbdce76b65800463a6330f8c12' LIMIT 1[0m
+  [1m[35mSQL (53.1ms)[0m  INSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["application_id", 375], ["created_at", "2016-07-30 21:42:35.094560"], ["expires_in", 7200], ["refresh_token", "e7ddbba09676281a30b26c0832d414a7770cc1bbdce76b65800463a6330f8c12"], ["scopes", "public write preferences"], ["token", "b8714290bd917a96efb900f16df8015dc5206f8ff07d60029c2f2c01b51d061a"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.4ms)
+Completed 201 Created in 4425ms (Views: 1.3ms | ActiveRecord: 272.9ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-07-31 00:43:07 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'HikariJ@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.19ms)
+Completed 200 OK in 6ms (Views: 1.6ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-07-31 00:43:13 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'HikariJ@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-07-31 00:43:32 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'HikariJ@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.4ms)
+  [1m[36mUser Load (19.5ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mSQL (9.4ms)[0m  DELETE FROM "users"
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-07-31 00:48:21 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 200 OK in 33ms (Views: 5.8ms | ActiveRecord: 20.2ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-07-31 00:48:30 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-07-31 00:48:52 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (17.5ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "first_name", "last_name") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "hikarij@gmail.com"], ["encrypted_password", "$2a$10$tLhFRQZ7y64giAM9uKNN1uR8Ns7d6dgVZuC6MIMdjc1Yr9g0bo.B2"], ["first_name", "Hikari"], ["last_name", "Perlman"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mDoorkeeper::Application Load (0.6ms)[0m  SELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mDoorkeeper::Application Load (0.4ms)[0m  SELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1  [["id", 375]]
+  [1m[36mDoorkeeper::AccessToken Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = '0f167e5eb5154eff23f59e2262deb02864b37290c9256ca7c98e6ba4e66577c4' LIMIT 1[0m
+  [1m[35mDoorkeeper::AccessToken Exists (0.3ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = 'bd8a24a41e8809dc3990348f91621727cdfc5d971cd803fcbdbb0e6da5e74571' LIMIT 1
+  [1m[36mSQL (16.3ms)[0m  [1mINSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "resource_owner_id", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["application_id", 375], ["created_at", "2016-07-30 21:48:52.751227"], ["expires_in", 7200], ["refresh_token", "bd8a24a41e8809dc3990348f91621727cdfc5d971cd803fcbdbb0e6da5e74571"], ["resource_owner_id", 21], ["scopes", "public write preferences"], ["token", "0f167e5eb5154eff23f59e2262deb02864b37290c9256ca7c98e6ba4e66577c4"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.34ms)
+Completed 201 Created in 179ms (Views: 1.2ms | ActiveRecord: 40.8ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-07-31 00:49:08 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 409 Conflict in 7ms (Views: 1.1ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-07-31 00:49:19 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.27ms)
+Completed 409 Conflict in 9ms (Views: 3.5ms | ActiveRecord: 0.7ms)
