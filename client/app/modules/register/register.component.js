@@ -7,7 +7,7 @@
         templateUrl: '/partials/register/register.view.html'
     };
 
-    function RegisterController($scope, registerService) {
+    function RegisterController($scope, $state, modalService, registerService) {
         var ctrl = this;
 
         ctrl.viewModel = {
@@ -28,8 +28,21 @@
             }
         };
 
+        ctrl.emailExists = function(email) {
+            var request = {
+                email: email
+            };
+
+            registerService.emailExists(request)
+                .then(function(data) {
+                    if (data.status != 200) {
+                        modalService.alert(data.response, 'md');
+                    }
+                });
+        };
+
         ctrl.submit = function() {
-            var user = {
+            var request = {
                 email: ctrl.viewModel.email,
                 first_name: ctrl.viewModel.firstName,
                 last_name: ctrl.viewModel.lastName,
@@ -37,9 +50,15 @@
                 password_confirmation: ctrl.viewModel.passwordConfirm
             };
 
-            registerService.registerUser(user)
-                .then(function(resp) {
-                    debugger
+            registerService.registerUser(request)
+                .then(function(data) {
+                    if (data.status == 201) {
+                        $state.go('mail.inbox', {
+                            user: data.response
+                        });
+                    } else {
+                        modalService.alert(data.response, 'md');
+                    }
                 });
         };
     }

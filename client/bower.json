@@ -35,6 +35,7 @@
     "angular-messages": "^1.5.7",
     "angular-sanitize": "^1.5.7",
     "angular-ui-router": "^0.3.1",
-    "angular-cookie": "^4.1.0"
+    "angular-cookie": "^4.1.0",
+    "angular-local-storage": "^0.3.0"
   }
 }

@@ -30,7 +30,10 @@
 
         .state('mail.inbox', {
             template: '<mail-inbox></mail-inbox>',
-            url: '/inbox'
+            url: '/inbox',
+            params: {
+                user: null
+            }
         });
 
         $urlRouterProvider.otherwise('/');

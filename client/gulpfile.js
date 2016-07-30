@@ -247,7 +247,7 @@ gulp.task('html', [
                 read: false
             }), injectOptions))
             .pipe(inject(cssInjectFiles, injectOptions))
-            .pipe(gulp.dest(paths.target.root))
+            .pipe(gulp.dest(paths.target.root));
     });
 
 //  Load webserver for the application on port 9000
