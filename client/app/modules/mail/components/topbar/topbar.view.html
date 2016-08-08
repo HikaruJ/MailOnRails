@@ -213,26 +213,21 @@
             <li class="dropdown" id="user-header">
                 <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                     <img src="img/avatars/user1.png" alt="user image">
-                    <span class="username">Hi, John Doe</span>
+                    <span>{{$ctrl.user.email}}</span>
                 </a>
                 <ul class="dropdown-menu">
                     <li>
                         <a href="#"><i class="icon-user"></i><span>My Profile</span></a>
                     </li>
                     <li>
-                        <a href="#"><i class="icon-calendar"></i><span>My Calendar</span></a>
-                    </li>
-                    <li>
                         <a href="#"><i class="icon-settings"></i><span>Account Settings</span></a>
                     </li>
                     <li>
-                        <a href="#"><i class="icon-logout"></i><span>Logout</span></a>
+                        <a data-ng-click="$ctrl.logout()"><i class="icon-logout"></i><span>Logout</span></a>
                     </li>
                 </ul>
             </li>
             <!-- END USER DROPDOWN -->
-            <!-- CHAT BAR ICON -->
-            <li id="quickview-toggle"><a href="#"><i class="icon-bubbles"></i></a></li>
         </ul>
     </div>
     <!-- header-right -->

@@ -16,6 +16,7 @@
         "angular": "./bower_components/angular/angular.min.js",
         "angular-bootstrap": "./bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js",
         "angular-cookie": "./bower_components/angular-cookie/angular-cookie.min.js",
+        "angular-loading": "./bower_components/angular-loading/angular-loading.min.js",
         "angular-local-storage": "./bower_components/angular-local-storage/dist/angular-local-storage.min.js",
         "angular-messages": "./bower_components/angular-messages/angular-messages.min.js",
         "angular-ui-router": "./bower_components/angular-ui-router/release/angular-ui-router.min.js"
@@ -33,6 +34,10 @@
         "angular-cookie": {
             "depends": "angular",
             "exports": "angular.module('ipCookie')"
+        },
+        "angular-loading": {
+            "depends": "angular",
+            "exports": "angular.module('darthwade.dwLoading')"
         },
         "angular-local-storage": {
             "depends": "angular",

@@ -1,0 +1,50 @@
+ <div class="box small" dw-loading="progress"> 
+    <!-- Login -->
+    <div class="intro-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message center">
+                        <h1>Login</h1>
+                        <hr class="intro-divider">
+                        <form novalidate id="loginForm" name="registerForm" data-ng-submit="$ctrl.submit()" role="form">
+                            <div class="row">
+                                <div class="col-md-6 col-md-offset-4">
+                                    <div class="col-sm-8">
+                                        <div class="input-group input-group-margin" style="margin-bottom:0px;">
+                                            <input class="form-control form-white" data-ng-disabled="$ctrl.viewModel.disableInput"
+                                                data-ng-model="$ctrl.viewModel.username" data-ng-maxlength="35" data-ng-minlength="2"
+                                                data-ng-pattern="/^[a-zA-Z0-9]+$/" id="username" name="username" type="text" required>
+                                            <span class="input-group-addon">@</span>
+                                            <input class="form-control" data-ng-disabled="true" placeholder="MailOnRails.com" type="teStarxt">
+                                        </div>
+                                        <div class="validation-color" data-ng-messages="registerForm.username.$error" style="margin-bottom:15px;">
+                                            <div ng-message="maxlength">Username is longer then allowed</div>
+                                            <div ng-message="minlength">Username is shorter then allowed</div>
+                                            <div ng-message="pattern">Please enter a valid username</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-md-offset-4">
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <input class="form-control" data-ng-disabled="$ctrl.viewModel.disableInput" 
+                                                data-ng-model="$ctrl.viewModel.password"  name="password" id="password" 
+                                                placeholder="Password" required="required" type="password">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-lg" data-ng-disabled="$ctrl.viewModel.disableInput" type="submit">
+                                <i class="fa fa-sign-in"></i>
+                                <span class="network-name">Login</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

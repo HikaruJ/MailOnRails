@@ -241,6 +241,10 @@ gulp.task('html', [
 
         return gulp.src('./index.html')
             .pipe(wiredep({
+                exclude: [
+                    'bower_components/angular/angular.js',
+                    'bower_components/bootstrap-sass/assets/javascripts/bootstrap.js'
+                ],
                 ignorePath: /^(\.\.\/)+/
             }))
             .pipe(inject(gulp.src(paths.target.javascript.root + '/**/*.js', {

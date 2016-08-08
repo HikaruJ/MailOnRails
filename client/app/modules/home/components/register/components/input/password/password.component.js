@@ -7,7 +7,7 @@
             isValid: '=',
             password: '=',
         },
-        templateUrl: '/partials/register/components/input/password/password.view.html',
+        templateUrl: '/partials/home/components/register/components/input/password/password.view.html',
     };
 
     function PasswordInputController($scope) {
