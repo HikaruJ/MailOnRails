@@ -4,8 +4,8 @@ module OmniAuth
       option :name, :doorkeeper
 
       option :client_options, {
-        :site => "http://localhost:3000",
-        :authorize_path => "/oauth/authorize"
+        site: 'http://localhost:3000',
+        authorize_path: 'oauth/authorize'
       }
 
       uid do
@@ -19,7 +19,7 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= access_token.get('/api/v1/me.json').parsed
+        @raw_info ||= access_token.get('/me').parsed
       end
     end
   end

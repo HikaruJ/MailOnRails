@@ -5894,3 +5894,2172 @@ Can't verify CSRF token authenticity
   [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
 [active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.27ms)
 Completed 409 Conflict in 9ms (Views: 3.5ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-07-31 12:42:38 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (81.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (79.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.5ms)
+Completed 409 Conflict in 537ms (Views: 68.8ms | ActiveRecord: 208.2ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-07-31 12:42:42 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>""}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = '' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.2ms)
+Completed 200 OK in 6ms (Views: 1.6ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-01 14:44:08 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (109.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (98.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.44ms)
+Completed 409 Conflict in 520ms (Views: 70.3ms | ActiveRecord: 227.4ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-01 14:44:17 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ1@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij1@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 200 OK in 4ms (Views: 1.0ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-08-01 14:44:24 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ1@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij1@gmail.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (26.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'hikarij1@gmail.com' LIMIT 1
+  [1m[36mSQL (38.4ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "first_name", "last_name") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "hikarij1@gmail.com"], ["encrypted_password", "$2a$10$iH9R25MjIrH.HHbNGeh.ge3JJYtpivSLS7AR/DBfCF.VEb2pnB3mu"], ["first_name", "Hikari"], ["last_name", "Perlman"]]
+  [1m[35m (62.5ms)[0m  COMMIT
+  [1m[36mDoorkeeper::Application Load (71.0ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Load (0.3ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1[0m  [["id", 375]]
+  [1m[35mDoorkeeper::AccessToken Exists (14.8ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = '58e2a0008e4f1dee9e3fa25c6d9f972f04e4cd578ac61ce4be01ab1370422931' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Exists (5.1ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = '9ea6fd39beae7a33b053ca8de85dc04eef9d740c5b2cfb514614e79c6bcf72bc' LIMIT 1[0m
+  [1m[35mSQL (35.2ms)[0m  INSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "resource_owner_id", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["application_id", 375], ["created_at", "2016-08-01 11:44:24.646719"], ["expires_in", 7200], ["refresh_token", "9ea6fd39beae7a33b053ca8de85dc04eef9d740c5b2cfb514614e79c6bcf72bc"], ["resource_owner_id", 22], ["scopes", "public write preferences"], ["token", "58e2a0008e4f1dee9e3fa25c6d9f972f04e4cd578ac61ce4be01ab1370422931"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.29ms)
+Completed 201 Created in 525ms (Views: 1.2ms | ActiveRecord: 259.4ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-01 15:00:28 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (15.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (39.77ms)
+Completed 409 Conflict in 59ms (Views: 40.8ms | ActiveRecord: 15.0ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-01 15:10:38 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 409 Conflict in 3ms (Views: 0.7ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-01 15:10:42 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 409 Conflict in 4ms (Views: 1.1ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-01 15:10:45 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 409 Conflict in 3ms (Views: 1.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-01 15:10:47 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 409 Conflict in 3ms (Views: 0.7ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-01 15:10:49 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 409 Conflict in 3ms (Views: 0.9ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-01 15:10:51 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 409 Conflict in 4ms (Views: 1.5ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-01 15:10:56 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ1@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij1@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Completed 409 Conflict in 6ms (Views: 2.3ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-01 15:10:58 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ1@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij1@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 409 Conflict in 3ms (Views: 1.0ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-01 15:11:00 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ1@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij1@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 409 Conflict in 3ms (Views: 0.8ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-01 15:11:03 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ21@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij21@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Completed 200 OK in 4ms (Views: 1.2ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-01 17:34:28 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ1@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (1.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij1@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.35ms)
+Completed 409 Conflict in 13ms (Views: 2.2ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-01 17:34:32 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ1@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij1@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.21ms)
+Completed 409 Conflict in 4ms (Views: 1.1ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-01 17:34:34 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ1@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij1@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 409 Conflict in 3ms (Views: 1.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-01 17:34:36 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ1@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij1@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 409 Conflict in 4ms (Views: 0.7ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-01 17:49:15 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>""}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = '' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 200 OK in 5ms (Views: 1.0ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-01 17:49:18 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.17ms)
+Completed 409 Conflict in 8ms (Views: 1.9ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-01 17:49:24 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ32432@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij32432@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 200 OK in 4ms (Views: 1.0ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-01 17:49:28 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ32432@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij32432@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 200 OK in 4ms (Views: 0.9ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-01 17:51:17 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.19ms)
+Completed 409 Conflict in 7ms (Views: 2.2ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-01 17:55:54 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 409 Conflict in 4ms (Views: 0.8ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-01 17:56:41 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ1@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij1@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 409 Conflict in 5ms (Views: 1.4ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-01 18:00:25 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>""}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = '' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 200 OK in 5ms (Views: 1.1ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-06 23:14:07 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>""}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = '' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.42ms)
+Completed 200 OK in 7ms (Views: 2.3ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-06 23:14:08 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>""}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (1.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = '' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.29ms)
+Completed 200 OK in 7ms (Views: 1.9ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-06 23:14:09 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>""}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = '' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.29ms)
+Completed 200 OK in 5ms (Views: 1.7ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-06 23:15:11 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>""}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = '' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Completed 200 OK in 5ms (Views: 1.3ms | ActiveRecord: 0.7ms)
+  [1m[36mSQL (194.8ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mSQL (80.9ms)[0m  DELETE FROM "oauth_applications"
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-06 23:36:57 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.22ms)
+Completed 200 OK in 313ms (Views: 37.3ms | ActiveRecord: 124.9ms)
+  [1m[36mSQL (54.6ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "oauth_applications"
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-06 23:41:22 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (37.8ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 200 OK in 43ms (Views: 0.9ms | ActiveRecord: 37.8ms)
+  [1m[36mSQL (0.5ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mSQL (0.8ms)[0m  DELETE FROM "oauth_applications"
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "users"[0m
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-06 23:45:51 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-06 23:56:01 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.23ms)
+Completed 200 OK in 5ms (Views: 1.1ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-07 00:25:31 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (23.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 200 OK in 29ms (Views: 1.4ms | ActiveRecord: 23.4ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-07 00:27:46 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 200 OK in 4ms (Views: 1.1ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-07 00:30:31 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (1.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 200 OK in 14ms (Views: 1.0ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-08-07 00:30:44 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"HikariJ@gmail.com", "first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+  [1m[35m (22.9ms)[0m  BEGIN
+  [1m[36mUser Exists (54.9ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'hikarij@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (59.7ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "first_name", "last_name") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "hikarij@gmail.com"], ["encrypted_password", "$2a$10$XIt9iLrGjobcpiM8kc4pZOh8N2MWXNkgvFJXU9DyZqXpkxKlZ47bm"], ["first_name", "Hikari"], ["last_name", "Perlman"]]
+  [1m[36m (43.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mDoorkeeper::Application Load (3.2ms)[0m  SELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mDoorkeeper::Application Exists (53.9ms)[0m  SELECT  1 AS one FROM "oauth_applications"  WHERE "oauth_applications"."uid" = 'bced5726d88a7430ac4bcd6ebf335b5a56b1108b4eca493746b9fa4f7772fc4b' LIMIT 1
+  [1m[36mSQL (90.3ms)[0m  [1mINSERT INTO "oauth_applications" ("created_at", "name", "redirect_uri", "secret", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2016-08-06 21:30:46.737395"], ["name", "MailOnRails"], ["redirect_uri", "http://mailonrails.com:9000/mail"], ["secret", "adc2d6baba34e37cb41afe1c38144de47e155cab71675bad6e4eac5d543a1abc"], ["uid", "bced5726d88a7430ac4bcd6ebf335b5a56b1108b4eca493746b9fa4f7772fc4b"], ["updated_at", "2016-08-06 21:30:46.737395"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mDoorkeeper::Application Load (0.9ms)[0m  SELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1  [["id", 375]]
+  [1m[36mDoorkeeper::AccessToken Exists (23.6ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = 'f4599758d3cc12665786706abe3e0632ba27aa0abc013faaa9c321aa0cddc529' LIMIT 1[0m
+  [1m[35mDoorkeeper::AccessToken Exists (3.0ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = 'c334574f465cb3cdcaa962db70afb61d34de27e49ba8d98902be91d5a851345f' LIMIT 1
+  [1m[36mSQL (45.7ms)[0m  [1mINSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "resource_owner_id", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["application_id", 375], ["created_at", "2016-08-06 21:30:47.266274"], ["expires_in", 7200], ["refresh_token", "c334574f465cb3cdcaa962db70afb61d34de27e49ba8d98902be91d5a851345f"], ["resource_owner_id", 23], ["scopes", "public write preferences"], ["token", "f4599758d3cc12665786706abe3e0632ba27aa0abc013faaa9c321aa0cddc529"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.43ms)
+Completed 201 Created in 3278ms (Views: 1.0ms | ActiveRecord: 671.4ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-07 16:27:20 +0300
+Processing by UsersController#email_exists as HTML
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 1508ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `downcase' for nil:NilClass):
+  app/controllers/users_controller.rb:40:in `email_exists?'
+  app/controllers/users_controller.rb:26:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (281.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (658.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (585.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (3244.1ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-07 16:28:27 +0300
+Processing by UsersController#email_exists as HTML
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `downcase' for nil:NilClass):
+  app/controllers/users_controller.rb:40:in `email_exists?'
+  app/controllers/users_controller.rb:26:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (53.5ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (43.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (42.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (241.3ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-07 16:28:30 +0300
+Processing by UsersController#email_exists as HTML
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `downcase' for nil:NilClass):
+  app/controllers/users_controller.rb:40:in `email_exists?'
+  app/controllers/users_controller.rb:26:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.8ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (14.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (21.2ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (105.1ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-07 16:29:02 +0300
+Processing by UsersController#email_exists as HTML
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `downcase' for nil:NilClass):
+  app/controllers/users_controller.rb:40:in `email_exists?'
+  app/controllers/users_controller.rb:26:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (29.5ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (7523.6ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7576.6ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-07 16:29:55 +0300
+Processing by UsersController#email_exists as HTML
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `downcase' for nil:NilClass):
+  app/controllers/users_controller.rb:40:in `email_exists?'
+  app/controllers/users_controller.rb:26:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (28.0ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-07 16:29:58 +0300
+Processing by UsersController#email_exists as HTML
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `downcase' for nil:NilClass):
+  app/controllers/users_controller.rb:40:in `email_exists?'
+  app/controllers/users_controller.rb:26:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (35.2ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-07 16:30:22 +0300
+Processing by UsersController#email_exists as HTML
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `downcase' for nil:NilClass):
+  app/controllers/users_controller.rb:40:in `email_exists?'
+  app/controllers/users_controller.rb:26:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.0ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (35.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (59.7ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (200.3ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-07 16:30:25 +0300
+Processing by UsersController#email_exists as HTML
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `downcase' for nil:NilClass):
+  app/controllers/users_controller.rb:40:in `email_exists?'
+  app/controllers/users_controller.rb:26:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.6ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (9.8ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (29.2ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-07 16:30:41 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"email"=>"ds43sds45r3242"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (271.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'ds43sds45r3242' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (21.64ms)
+Completed 200 OK in 603ms (Views: 106.3ms | ActiveRecord: 271.5ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-07 16:33:23 +0300
+Processing by UsersController#email_exists as HTML
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `downcase' for nil:NilClass):
+  app/controllers/users_controller.rb:40:in `email_exists?'
+  app/controllers/users_controller.rb:26:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.6ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-07 16:33:32 +0300
+Processing by UsersController#email_exists as HTML
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `downcase' for nil:NilClass):
+  app/controllers/users_controller.rb:40:in `email_exists?'
+  app/controllers/users_controller.rb:26:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.2ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-07 16:37:14 +0300
+Processing by UsersController#email_exists as HTML
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `downcase' for nil:NilClass):
+  app/controllers/users_controller.rb:40:in `email_exists?'
+  app/controllers/users_controller.rb:26:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (24.8ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (26.8ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (62.7ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-08 11:15:18 +0300
+Processing by UsersController#email_exists as HTML
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (51.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = '@{domain}' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.55ms)
+Completed 200 OK in 2132ms (Views: 61.1ms | ActiveRecord: 1687.9ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-08 11:16:39 +0300
+Processing by UsersController#email_exists as HTML
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = '@{domain}' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.17ms)
+Completed 200 OK in 8ms (Views: 1.5ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-08 11:16:45 +0300
+Processing by UsersController#email_exists as HTML
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = '@{domain}' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Completed 200 OK in 5ms (Views: 1.3ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-08 11:17:37 +0300
+Processing by UsersController#email_exists as HTML
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 180142ms (ActiveRecord: 0.0ms)
+
+SystemExit (exit):
+  app/controllers/users_controller.rb:29:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (7.6ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (5.7ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (86.6ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-08 11:21:31 +0300
+Processing by UsersController#email_exists as HTML
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 102882ms (ActiveRecord: 0.0ms)
+
+SystemExit (exit):
+  app/controllers/users_controller.rb:29:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.6ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (5.7ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (38.6ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-08 11:25:44 +0300
+Processing by UsersController#email_exists as HTML
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 126025ms (ActiveRecord: 0.0ms)
+
+SystemExit (exit):
+  app/controllers/users_controller.rb:29:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (21.2ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (5.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (59.6ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-08 11:27:52 +0300
+Processing by UsersController#email_exists as HTML
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 2396ms (ActiveRecord: 0.0ms)
+
+SystemExit (exit):
+  app/controllers/users_controller.rb:29:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (22.8ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.2ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (81.2ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-08 11:28:11 +0300
+Processing by UsersController#email_exists as HTML
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 88086ms (ActiveRecord: 0.0ms)
+
+SystemExit (exit):
+  app/controllers/users_controller.rb:29:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (14.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.6ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (44.0ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-08 11:29:46 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"username"=>"123"}
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 9059ms (ActiveRecord: 0.0ms)
+
+SystemExit (exit):
+  app/controllers/users_controller.rb:29:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (15.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (59.8ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-08 11:35:32 +0300
+Processing by UsersController#email_exists as HTML
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 18352ms (ActiveRecord: 0.0ms)
+
+SystemExit (exit):
+  app/controllers/users_controller.rb:29:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (21.5ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (57.3ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-08 11:41:57 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"username"=>"11"}
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 2129356ms (ActiveRecord: 0.0ms)
+
+SystemExit (exit):
+  app/controllers/users_controller.rb:29:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.6ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (20.2ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (18.0ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (107.2ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-08 12:32:05 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"username"=>"123"}
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 15716ms (ActiveRecord: 0.0ms)
+
+SystemExit (exit):
+  app/controllers/users_controller.rb:29:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (15.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (59.6ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (14.7ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (163.4ms)
+  [1m[36mSQL (134.5ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mSQL (59.2ms)[0m  DELETE FROM "oauth_applications"
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-08 13:49:34 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#email_exists as HTML
+  Parameters: {"username"=>"Hikarij"}
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+NameError (undefined local variable or method `cookies' for #<UsersController:0x007f84e02af6e0>):
+  angular_rails_csrf (1.0.4) lib/angular_rails_csrf/concern.rb:10:in `set_xsrf_token_cookie'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:429:in `block in make_lambda'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:161:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:161:in `block in halting'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:501:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:501:in `block in call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:501:in `each'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:501:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.12) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.12) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.1.12) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.12) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.12) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  activerecord (4.1.12) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.12) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.12) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.12) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.12) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.12) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/mapper.rb:45:in `call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  rack (1.5.5) lib/rack/etag.rb:23:in `call'
+  rack (1.5.5) lib/rack/conditionalget.rb:35:in `call'
+  rack (1.5.5) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.12) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.12) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.12) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.12) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.12) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.1.12) lib/rails/engine.rb:514:in `call'
+  railties (4.1.12) lib/rails/application.rb:144:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  rack (1.5.5) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.5) lib/rack/handler/webrick.rb:60:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (31.7ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (47.3ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-08-08 13:49:44 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "username"=>"Hikarij"}
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms)
+
+NameError (undefined local variable or method `cookies' for #<UsersController:0x007f84e05b30f8>):
+  angular_rails_csrf (1.0.4) lib/angular_rails_csrf/concern.rb:10:in `set_xsrf_token_cookie'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:429:in `block in make_lambda'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:161:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:161:in `block in halting'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:501:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:501:in `block in call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:501:in `each'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:501:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.12) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.12) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.1.12) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.12) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.12) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  activerecord (4.1.12) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.12) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.12) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.12) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.12) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.12) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/mapper.rb:45:in `call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  rack (1.5.5) lib/rack/etag.rb:23:in `call'
+  rack (1.5.5) lib/rack/conditionalget.rb:35:in `call'
+  rack (1.5.5) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.12) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.12) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.12) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.12) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.12) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.1.12) lib/rails/engine.rb:514:in `call'
+  railties (4.1.12) lib/rails/application.rb:144:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  rack (1.5.5) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.5) lib/rack/handler/webrick.rb:60:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.8ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-08-08 13:49:53 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "username"=>"Hikarij"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+NameError (undefined local variable or method `cookies' for #<UsersController:0x007f84e08b6e08>):
+  angular_rails_csrf (1.0.4) lib/angular_rails_csrf/concern.rb:10:in `set_xsrf_token_cookie'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:429:in `block in make_lambda'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:161:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:161:in `block in halting'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:501:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:501:in `block in call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:501:in `each'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:501:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.12) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.12) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.1.12) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.12) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.12) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  activerecord (4.1.12) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.12) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.12) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.12) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.12) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.12) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/mapper.rb:45:in `call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  rack (1.5.5) lib/rack/etag.rb:23:in `call'
+  rack (1.5.5) lib/rack/conditionalget.rb:35:in `call'
+  rack (1.5.5) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.12) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.12) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.12) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.12) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.12) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.1.12) lib/rails/engine.rb:514:in `call'
+  railties (4.1.12) lib/rails/application.rb:144:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  rack (1.5.5) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.5) lib/rack/handler/webrick.rb:60:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (27.7ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (45.7ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-08-08 13:56:08 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#create as HTML
+  Parameters: {"first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "username"=>"Hikarij"}
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms)
+
+ArgumentError (wrong number of arguments (0 for 1)):
+  app/controllers/users_controller.rb:42:in `email_exists?'
+  app/controllers/users_controller.rb:8:in `create'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-08-08 13:58:43 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "username"=>"Hikarij"}
+  [1m[35mUser Load (1.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@{domain}' LIMIT 1
+Completed 500 Internal Server Error in 150ms (ActiveRecord: 30.1ms)
+
+ActiveRecord::UnknownAttributeError (unknown attribute: username):
+  app/controllers/users_controller.rb:14:in `create'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-08-08 13:59:24 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "username"=>"Hikarij"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@{domain}' LIMIT 1[0m
+Completed 500 Internal Server Error in 79ms (ActiveRecord: 2.3ms)
+
+ActiveRecord::UnknownAttributeError (unknown attribute: username):
+  app/controllers/users_controller.rb:14:in `create'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.3ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mDoorkeeper::Application Load (0.5ms)[0m  SELECT "oauth_applications".* FROM "oauth_applications"
+
+
+Started POST "/users" for 127.0.0.1 at 2016-08-08 14:02:26 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "username"=>"Hikarij"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@{domain}' LIMIT 1
+Unpermitted parameters: username
+Unpermitted parameters: username
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36mDoorkeeper::Application Load (0.6ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Exists (36.0ms)[0m  [1mSELECT  1 AS one FROM "oauth_applications"  WHERE "oauth_applications"."uid" = '15ac8f45fbeb47b528768dd885b6554ab47fd343296402c86a87f03536a4a358' LIMIT 1[0m
+  [1m[35mSQL (119.0ms)[0m  INSERT INTO "oauth_applications" ("created_at", "name", "redirect_uri", "secret", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2016-08-08 11:02:26.782987"], ["name", "MailOnRails"], ["redirect_uri", "http://mailonrails.com:9000/mail"], ["secret", "8f846c25fbd1103b2143845414fbb13f9f6c5852cbc2851d3731735350dec82f"], ["uid", "15ac8f45fbeb47b528768dd885b6554ab47fd343296402c86a87f03536a4a358"], ["updated_at", "2016-08-08 11:02:26.782987"]]
+  [1m[36m (13.7ms)[0m  [1mCOMMIT[0m
+Completed 500 Internal Server Error in 646ms (ActiveRecord: 174.0ms)
+
+NoMethodError (undefined method `token' for nil:NilClass):
+  app/controllers/users_controller.rb:21:in `create'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.2ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.3ms)
+  [1m[36mDoorkeeper::Application Load (0.4ms)[0m  [1mSELECT "oauth_applications".* FROM "oauth_applications"[0m
+  [1m[35mSQL (1.9ms)[0m  DELETE FROM "oauth_applications"
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "users"[0m
+
+
+Started POST "/users" for 127.0.0.1 at 2016-08-08 14:04:02 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "username"=>"Hikarij"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@{domain}' LIMIT 1
+Unpermitted parameters: username
+Unpermitted parameters: username
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36mDoorkeeper::Application Load (0.3ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "oauth_applications"  WHERE "oauth_applications"."uid" = 'f88d2870c410635374fd0cd03c625c17f59c6753997742886a53cd3bbea6166d' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "oauth_applications" ("created_at", "name", "redirect_uri", "secret", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2016-08-08 11:04:02.885177"], ["name", "MailOnRails"], ["redirect_uri", "http://mailonrails.com:9000/mail"], ["secret", "fc6b9dab0f64d3cc1054cfd5687b72fa7fc8abe0c41b3b5bc4f29a1969ab5176"], ["uid", "f88d2870c410635374fd0cd03c625c17f59c6753997742886a53cd3bbea6166d"], ["updated_at", "2016-08-08 11:04:02.885177"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Load (0.4ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1[0m  [["id", 375]]
+  [1m[35mDoorkeeper::AccessToken Exists (49.3ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = 'd9cdaf272ec6a69a93ebc6af15776a64d2c1292bb3f8e3d25cdb34298dc7794d' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = 'e98725ba278a59943c79dad9eb021780318108b9bfa467a2ed35c11939fe7afe' LIMIT 1[0m
+  [1m[35mSQL (53.5ms)[0m  INSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["application_id", 375], ["created_at", "2016-08-08 11:04:03.037964"], ["expires_in", 7200], ["refresh_token", "e98725ba278a59943c79dad9eb021780318108b9bfa467a2ed35c11939fe7afe"], ["scopes", "public write preferences"], ["token", "d9cdaf272ec6a69a93ebc6af15776a64d2c1292bb3f8e3d25cdb34298dc7794d"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+Completed 500 Internal Server Error in 13860ms (ActiveRecord: 143.1ms)
+
+SystemExit (exit):
+  app/controllers/users_controller.rb:21:in `create'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.6ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (17.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (50.2ms)
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "users"
+  [1m[36mSQL (2.1ms)[0m  [1mDELETE FROM "oauth_applications"[0m
+
+
+Started POST "/users" for 127.0.0.1 at 2016-08-08 14:04:55 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "username"=>"Hikarij"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@{domain}' LIMIT 1
+Unpermitted parameters: username
+Unpermitted parameters: username
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.5ms)[0m  ROLLBACK
+  [1m[36mDoorkeeper::Application Load (0.8ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "oauth_applications"  WHERE "oauth_applications"."uid" = '9860aab0fb25b2e5d59ac9f75bb082654cd82faf1fff2c727d8c3d15c3516d3a' LIMIT 1[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "oauth_applications" ("created_at", "name", "redirect_uri", "secret", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2016-08-08 11:04:56.532729"], ["name", "MailOnRails"], ["redirect_uri", "http://mailonrails.com:9000/mail"], ["secret", "e47b9c4faa6d57a229341d703e1a961d303a13d1b48b14731024df0dff8790fa"], ["uid", "9860aab0fb25b2e5d59ac9f75bb082654cd82faf1fff2c727d8c3d15c3516d3a"], ["updated_at", "2016-08-08 11:04:56.532729"]]
+  [1m[36m (13.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (7.1ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Load (0.9ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1[0m  [["id", 375]]
+  [1m[35mDoorkeeper::AccessToken Exists (0.8ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = 'cded31c644218342b6a58565f86822c4a8d43db0c08f5be9707cf6244e8db6f7' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = '316027986cbf1a9acb2ca0de475a79b458a9d902474f2b812dbbe3d8e537e967' LIMIT 1[0m
+  [1m[35mSQL (17.2ms)[0m  INSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["application_id", 375], ["created_at", "2016-08-08 11:04:56.617158"], ["expires_in", 7200], ["refresh_token", "316027986cbf1a9acb2ca0de475a79b458a9d902474f2b812dbbe3d8e537e967"], ["scopes", "public write preferences"], ["token", "cded31c644218342b6a58565f86822c4a8d43db0c08f5be9707cf6244e8db6f7"]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.42ms)
+Completed 201 Created in 388ms (Views: 55.8ms | ActiveRecord: 53.6ms)
+  [1m[35mSQL (2.3ms)[0m  DELETE FROM "oauth_applications"
+  [1m[36mSQL (0.5ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "users"
+  [1m[36mSQL (0.5ms)[0m  [1mDELETE FROM "oauth_applications"[0m
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-08 14:13:15 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"username"=>"123"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = '123@mainonrails.com' LIMIT 1
+Unpermitted parameters: username
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.59ms)
+Completed 200 OK in 56ms (Views: 32.8ms | ActiveRecord: 3.9ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-08-08 14:13:22 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "username"=>"123"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = '123@{domain}' LIMIT 1[0m
+Unpermitted parameters: username
+Unpermitted parameters: username
+Completed 500 Internal Server Error in 571282ms (ActiveRecord: 0.7ms)
+
+SystemExit (exit):
+  app/controllers/users_controller.rb:16:in `create'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (19.8ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.2ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (52.3ms)
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "oauth_applications"
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "users"[0m
+
+
+Started POST "/users" for 127.0.0.1 at 2016-08-08 14:32:31 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "username"=>"123"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = '123@{domain}' LIMIT 1
+Unpermitted parameters: username
+Completed 500 Internal Server Error in 18822ms (ActiveRecord: 7.9ms)
+
+SystemExit (exit):
+  app/controllers/users_controller.rb:16:in `create'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (13.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (41.9ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-08-08 14:33:19 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "username"=>"123"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = '123@{domain}' LIMIT 1[0m
+Unpermitted parameters: username
+Completed 500 Internal Server Error in 104148ms (ActiveRecord: 0.5ms)
+
+SystemExit (exit):
+  app/controllers/users_controller.rb:16:in `create'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (13.7ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (40.1ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-08 14:36:15 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#email_exists as HTML
+  Parameters: {"username"=>"Hikarij"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@mainonrails.com' LIMIT 1
+Unpermitted parameters: username
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.19ms)
+Completed 200 OK in 92ms (Views: 34.2ms | ActiveRecord: 4.1ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-08-08 14:36:29 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "username"=>"Hikarij"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@mainonrails.com' LIMIT 1[0m
+Unpermitted parameters: username
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'hikarij@mainonrails.com' LIMIT 1[0m
+  [1m[35mSQL (44.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "first_name", "last_name") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "hikarij@mainonrails.com"], ["encrypted_password", "$2a$10$R13fyumNytGZhaN28ip0v.iI4GtgDqYsiidLr.ik/.OzPX.Ii0ogW"], ["first_name", "Hikari"], ["last_name", "Perlman"]]
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mDoorkeeper::Application Load (0.5ms)[0m  SELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mDoorkeeper::Application Exists (0.4ms)[0m  SELECT  1 AS one FROM "oauth_applications"  WHERE "oauth_applications"."uid" = '12c4f826a6c7f4aeaa3c5c38d578f1c9f995877bef0ae5305e5765261209a8f4' LIMIT 1
+  [1m[36mSQL (5.2ms)[0m  [1mINSERT INTO "oauth_applications" ("created_at", "name", "redirect_uri", "secret", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2016-08-08 11:36:30.284156"], ["name", "MailOnRails"], ["redirect_uri", "http://mailonrails.com:9000/mail"], ["secret", "1496d16992c85a8179b4b232b4075da99cde20250dd1a748023841b5ac6da1ad"], ["uid", "12c4f826a6c7f4aeaa3c5c38d578f1c9f995877bef0ae5305e5765261209a8f4"], ["updated_at", "2016-08-08 11:36:30.284156"]]
+  [1m[35m (1.1ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mDoorkeeper::Application Load (0.2ms)[0m  SELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1  [["id", 375]]
+  [1m[36mDoorkeeper::AccessToken Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = '1be598c6afe174a3e9fd823bc3739878c270d71339669990c1901248fb710b82' LIMIT 1[0m
+  [1m[35mDoorkeeper::AccessToken Exists (0.5ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = 'd128050e78209f2db72d132dfd8beb4808c6fe9ad1a985054b07025c95701bef' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "resource_owner_id", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["application_id", 375], ["created_at", "2016-08-08 11:36:30.347937"], ["expires_in", 7200], ["refresh_token", "d128050e78209f2db72d132dfd8beb4808c6fe9ad1a985054b07025c95701bef"], ["resource_owner_id", 24], ["scopes", "public write preferences"], ["token", "1be598c6afe174a3e9fd823bc3739878c270d71339669990c1901248fb710b82"]]
+  [1m[35m (1.2ms)[0m  COMMIT
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.38ms)
+Completed 201 Created in 741ms (Views: 1.3ms | ActiveRecord: 62.3ms)
+  [1m[35mUser Load (23.9ms)[0m  SELECT "users".* FROM "users"
+  [1m[36mSQL (109.6ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mSQL (19.7ms)[0m  DELETE FROM "oauth_applications"
+  [1m[36mSQL (151.6ms)[0m  [1mDELETE FROM "oauth_applications"[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "users"
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-08 14:55:42 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"username"=>"Hikarij"}
+Unpermitted parameters: username
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@mainonrails.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Completed 200 OK in 109ms (Views: 10.5ms | ActiveRecord: 93.9ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-08-08 14:55:50 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "username"=>"Hikarij"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@mainonrails.com' LIMIT 1
+Unpermitted parameters: username
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (38.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'hikarij@mainonrails.com' LIMIT 1
+  [1m[36mSQL (29.8ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "first_name", "last_name") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "hikarij@mainonrails.com"], ["encrypted_password", "$2a$10$tnBw1B15HX6DIPUDB/GrROr9U8OFbgeBaaNt0yPmgYdLAnjdBAz5W"], ["first_name", "Hikari"], ["last_name", "Perlman"]]
+  [1m[35m (62.1ms)[0m  COMMIT
+  [1m[36mDoorkeeper::Application Load (0.4ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "oauth_applications"  WHERE "oauth_applications"."uid" = 'e68a9096a116339db28a284e63e4eaa57d19ab5dc1de68147eb8b8275d98ac55' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "oauth_applications" ("created_at", "name", "redirect_uri", "secret", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2016-08-08 11:55:50.325774"], ["name", "MailOnRails"], ["redirect_uri", "http://mailonrails.com:9000/mail"], ["secret", "0572feba1b00079a031ad667f7afd3a1f55ae5a26d2b82136a5dac0759c800a0"], ["uid", "e68a9096a116339db28a284e63e4eaa57d19ab5dc1de68147eb8b8275d98ac55"], ["updated_at", "2016-08-08 11:55:50.325774"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Load (0.2ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1[0m  [["id", 375]]
+  [1m[35mDoorkeeper::AccessToken Exists (0.5ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = 'f2c38cae6e78d5685fae33038fbe9972b68c020f27e6a1ebbfc0f17abe899a87' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = 'ee4902807909ed8012f4d5b17d2495466f1d1f797b1d2a4172773e67612a877f' LIMIT 1[0m
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "resource_owner_id", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["application_id", 375], ["created_at", "2016-08-08 11:55:50.334942"], ["expires_in", 7200], ["refresh_token", "ee4902807909ed8012f4d5b17d2495466f1d1f797b1d2a4172773e67612a877f"], ["resource_owner_id", 25], ["scopes", "public write preferences"], ["token", "f2c38cae6e78d5685fae33038fbe9972b68c020f27e6a1ebbfc0f17abe899a87"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.44ms)
+Completed 201 Created in 262ms (Views: 1.2ms | ActiveRecord: 138.7ms)
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mDoorkeeper::Application Load (0.4ms)[0m  SELECT "oauth_applications".* FROM "oauth_applications"
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-08 22:46:43 +0300
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password", "username"=>"user@example.com", "password"=>"[FILTERED]"}
+Completed 401 Unauthorized in 199ms
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-08 22:47:27 +0300
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password", "username"=>"hikarij@mailonrails.com", "password"=>"[FILTERED]"}
+Completed 401 Unauthorized in 1ms
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-08 22:52:42 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (4.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password", "username"=>"hikarij@mailonrails.com", "password"=>"[FILTERED]"}
+Completed 500 Internal Server Error in 69272ms
+
+SystemExit (exit):
+  config/initializers/doorkeeper.rb:15:in `block (2 levels) in <top (required)>'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.7ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (9.7ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (22.8ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (103.4ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-08 22:53:52 +0300
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password", "username"=>"hikarij@mailonrails.com", "password"=>"[FILTERED]"}
+Completed 500 Internal Server Error in 1761ms
+
+SystemExit (exit):
+  config/initializers/doorkeeper.rb:15:in `block (2 levels) in <top (required)>'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (33.3ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-08 22:53:58 +0300
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password", "username"=>"hikarij@mailonrails.com", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (4.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@mailonrails.com'  ORDER BY "users"."id" ASC LIMIT 1
+Completed 401 Unauthorized in 11825ms
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-08 22:56:10 +0300
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password", "username"=>"hikarij@mailonrails.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@mailonrails.com'  ORDER BY "users"."id" ASC LIMIT 1[0m
+Completed 401 Unauthorized in 4125ms
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-08 22:56:32 +0300
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password", "username"=>"hikarij@mailonrails.com", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@mailonrails.com' LIMIT 1
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Completed 500 Internal Server Error in 102575ms
+
+SystemExit (exit):
+  config/initializers/doorkeeper.rb:15:in `block (2 levels) in <top (required)>'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (14.7ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (5.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (39.4ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-08 22:58:33 +0300
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password", "username"=>"hikarij@mainonrails.com", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@mainonrails.com' LIMIT 1
+Completed 500 Internal Server Error in 29591ms
+
+SystemExit (exit):
+  config/initializers/doorkeeper.rb:15:in `block (2 levels) in <top (required)>'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (5.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (40.3ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-08 22:59:08 +0300
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password", "username"=>"hikarij@mainonrails.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@mainonrails.com'  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mDoorkeeper::AccessToken Load (66.9ms)[0m  SELECT  "oauth_access_tokens".* FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."application_id" IS NULL AND "oauth_access_tokens"."resource_owner_id" = 25 AND "oauth_access_tokens"."revoked_at" IS NULL  ORDER BY created_at desc LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mDoorkeeper::AccessToken Exists (0.4ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = '8bfda5b1919e323db420c5f8399651f72a1d36ec1508a76302d8784d4470eaca' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = '6654ed65a2db4fc86061dcd6e58cf87ddcc793c18dc409518d8a365cc646e271' LIMIT 1[0m
+  [1m[35mSQL (70.2ms)[0m  INSERT INTO "oauth_access_tokens" ("created_at", "expires_in", "refresh_token", "resource_owner_id", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2016-08-08 19:59:15.885231"], ["expires_in", 7200], ["refresh_token", "6654ed65a2db4fc86061dcd6e58cf87ddcc793c18dc409518d8a365cc646e271"], ["resource_owner_id", 25], ["scopes", ""], ["token", "8bfda5b1919e323db420c5f8399651f72a1d36ec1508a76302d8784d4470eaca"]]
+  [1m[36m (29.2ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 7011ms
+  [1m[36m (142.9ms)[0m  [1mDROP DATABASE IF EXISTS "mail_on_rails_development"[0m
+  [1m[35m (116.5ms)[0m  DROP DATABASE IF EXISTS "mail_on_rails_test"
+  [1m[36m (295.3ms)[0m  [1mCREATE DATABASE "mail_on_rails_development" ENCODING = 'unicode'[0m
+  [1m[35m (323.5ms)[0m  CREATE DATABASE "mail_on_rails_test" ENCODING = 'unicode'
+  [1m[36mSQL (15.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (46.4ms)[0m  CREATE TABLE "message_types" ("id" serial primary key, "type_name" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (5.2ms)[0m  [1mCREATE TABLE "messages" ("id" serial primary key, "subject" character varying(255), "body" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (4.7ms)[0m  CREATE TABLE "oauth_access_grants" ("id" serial primary key, "resource_owner_id" integer NOT NULL, "application_id" integer NOT NULL, "token" character varying(255) NOT NULL, "expires_in" integer NOT NULL, "redirect_uri" text NOT NULL, "created_at" timestamp NOT NULL, "revoked_at" timestamp, "scopes" character varying(255)) 
+  [1m[36m (2.4ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_grants_on_token" ON "oauth_access_grants" USING btree ("token")[0m
+  [1m[35m (7.5ms)[0m  CREATE TABLE "oauth_access_tokens" ("id" serial primary key, "resource_owner_id" integer, "application_id" integer, "token" character varying(255) NOT NULL, "refresh_token" character varying(255), "expires_in" integer, "revoked_at" timestamp, "created_at" timestamp NOT NULL, "scopes" character varying(255)) 
+  [1m[36m (5.0ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_refresh_token" ON "oauth_access_tokens" USING btree ("refresh_token")[0m
+  [1m[35m (3.1ms)[0m  CREATE  INDEX  "index_oauth_access_tokens_on_resource_owner_id" ON "oauth_access_tokens" USING btree ("resource_owner_id")
+  [1m[36m (2.2ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_token" ON "oauth_access_tokens" USING btree ("token")[0m
+  [1m[35m (5.9ms)[0m  CREATE TABLE "oauth_applications" ("id" serial primary key, "name" character varying(255) NOT NULL, "uid" character varying(255) NOT NULL, "secret" character varying(255) NOT NULL, "redirect_uri" text NOT NULL, "scopes" character varying(255) DEFAULT '' NOT NULL, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (29.1ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_applications_on_uid" ON "oauth_applications" USING btree ("uid")[0m
+  [1m[35m (3.4ms)[0m  CREATE TABLE "user_messages" ("id" serial primary key, "user_id" bigint, "message_id" bigint, "message_type_id" integer, "is_read" boolean, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (35.0ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "first_name" character varying(35), "last_name" character varying(35)) [0m
+  [1m[35m (3.0ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")
+  [1m[36m (2.8ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")[0m
+  [1m[35m (2.4ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (2.5ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.8ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (1.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160727123712')[0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160629143958')
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160629165702')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160629175604')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160719134445')[0m
+  [1m[35mSQL (0.3ms)[0m  CREATE EXTENSION IF NOT EXISTS "plpgsql"
+  [1m[36m (14.1ms)[0m  [1mCREATE TABLE "message_types" ("id" serial primary key, "type_name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (10.6ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "subject" character varying(255), "body" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (25.1ms)[0m  [1mCREATE TABLE "oauth_access_grants" ("id" serial primary key, "resource_owner_id" integer NOT NULL, "application_id" integer NOT NULL, "token" character varying(255) NOT NULL, "expires_in" integer NOT NULL, "redirect_uri" text NOT NULL, "created_at" timestamp NOT NULL, "revoked_at" timestamp, "scopes" character varying(255)) [0m
+  [1m[35m (2.5ms)[0m  CREATE UNIQUE INDEX  "index_oauth_access_grants_on_token" ON "oauth_access_grants" USING btree ("token")
+  [1m[36m (5.8ms)[0m  [1mCREATE TABLE "oauth_access_tokens" ("id" serial primary key, "resource_owner_id" integer, "application_id" integer, "token" character varying(255) NOT NULL, "refresh_token" character varying(255), "expires_in" integer, "revoked_at" timestamp, "created_at" timestamp NOT NULL, "scopes" character varying(255)) [0m
+  [1m[35m (9.0ms)[0m  CREATE UNIQUE INDEX  "index_oauth_access_tokens_on_refresh_token" ON "oauth_access_tokens" USING btree ("refresh_token")
+  [1m[36m (2.4ms)[0m  [1mCREATE  INDEX  "index_oauth_access_tokens_on_resource_owner_id" ON "oauth_access_tokens" USING btree ("resource_owner_id")[0m
+  [1m[35m (3.0ms)[0m  CREATE UNIQUE INDEX  "index_oauth_access_tokens_on_token" ON "oauth_access_tokens" USING btree ("token")
+  [1m[36m (6.4ms)[0m  [1mCREATE TABLE "oauth_applications" ("id" serial primary key, "name" character varying(255) NOT NULL, "uid" character varying(255) NOT NULL, "secret" character varying(255) NOT NULL, "redirect_uri" text NOT NULL, "scopes" character varying(255) DEFAULT '' NOT NULL, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (3.1ms)[0m  CREATE UNIQUE INDEX  "index_oauth_applications_on_uid" ON "oauth_applications" USING btree ("uid")
+  [1m[36m (4.8ms)[0m  [1mCREATE TABLE "user_messages" ("id" serial primary key, "user_id" bigint, "message_id" bigint, "message_type_id" integer, "is_read" boolean, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (5.8ms)[0m  CREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "first_name" character varying(35), "last_name" character varying(35)) 
+  [1m[36m (2.4ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")[0m
+  [1m[35m (3.2ms)[0m  CREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")
+  [1m[36m (1.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (3.3ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.9ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160727123712')
+  [1m[36m (1.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160629143958')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160629165702')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160629175604')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160719134445')
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-08-08 20:16:56.820799"], ["type_name", "inbox"], ["updated_at", "2016-08-08 20:16:56.820799"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-08-08 20:16:56.824858"], ["type_name", "sent"], ["updated_at", "2016-08-08 20:16:56.824858"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-08-08 20:16:56.827523"], ["type_name", "drafts"], ["updated_at", "2016-08-08 20:16:56.827523"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-08-08 20:16:56.829641"], ["type_name", "trash"], ["updated_at", "2016-08-08 20:16:56.829641"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-08-08 20:16:56.831876"], ["type_name", "spam"], ["updated_at", "2016-08-08 20:16:56.831876"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (105.9ms)[0m  [1mDROP DATABASE IF EXISTS "mail_on_rails_development"[0m
+  [1m[35m (135.3ms)[0m  DROP DATABASE IF EXISTS "mail_on_rails_test"
+  [1m[36m (312.2ms)[0m  [1mCREATE DATABASE "mail_on_rails_development" ENCODING = 'unicode'[0m
+  [1m[35m (280.3ms)[0m  CREATE DATABASE "mail_on_rails_test" ENCODING = 'unicode'
+  [1m[36mSQL (0.9ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (8.2ms)[0m  CREATE TABLE "message_types" ("id" serial primary key, "type_name" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (5.5ms)[0m  [1mCREATE TABLE "messages" ("id" serial primary key, "subject" character varying(255), "body" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (5.4ms)[0m  CREATE TABLE "oauth_access_grants" ("id" serial primary key, "resource_owner_id" integer NOT NULL, "application_id" integer NOT NULL, "token" character varying(255) NOT NULL, "expires_in" integer NOT NULL, "redirect_uri" text NOT NULL, "created_at" timestamp NOT NULL, "revoked_at" timestamp, "scopes" character varying(255)) 
+  [1m[36m (2.4ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_grants_on_token" ON "oauth_access_grants" USING btree ("token")[0m
+  [1m[35m (6.7ms)[0m  CREATE TABLE "oauth_access_tokens" ("id" serial primary key, "resource_owner_id" integer, "application_id" integer, "token" character varying(255) NOT NULL, "refresh_token" character varying(255), "expires_in" integer, "revoked_at" timestamp, "created_at" timestamp NOT NULL, "scopes" character varying(255)) 
+  [1m[36m (3.9ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_refresh_token" ON "oauth_access_tokens" USING btree ("refresh_token")[0m
+  [1m[35m (3.4ms)[0m  CREATE  INDEX  "index_oauth_access_tokens_on_resource_owner_id" ON "oauth_access_tokens" USING btree ("resource_owner_id")
+  [1m[36m (2.6ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_token" ON "oauth_access_tokens" USING btree ("token")[0m
+  [1m[35m (5.8ms)[0m  CREATE TABLE "oauth_applications" ("id" serial primary key, "name" character varying(255) NOT NULL, "uid" character varying(255) NOT NULL, "secret" character varying(255) NOT NULL, "redirect_uri" text NOT NULL, "scopes" character varying(255) DEFAULT '' NOT NULL, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (2.7ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_applications_on_uid" ON "oauth_applications" USING btree ("uid")[0m
+  [1m[35m (3.0ms)[0m  CREATE TABLE "user_messages" ("id" serial primary key, "user_id" bigint, "message_id" bigint, "message_type_id" integer, "is_read" boolean, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (6.8ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "first_name" character varying(35), "last_name" character varying(35)) [0m
+  [1m[35m (2.5ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")
+  [1m[36m (2.1ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")[0m
+  [1m[35m (2.2ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (4.6ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.5ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160727123712')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160629143958')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160629165702')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160629175604')
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160719134445')[0m
+  [1m[35mSQL (0.6ms)[0m  CREATE EXTENSION IF NOT EXISTS "plpgsql"
+  [1m[36m (9.6ms)[0m  [1mCREATE TABLE "message_types" ("id" serial primary key, "type_name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (9.0ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "subject" character varying(255), "body" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (7.0ms)[0m  [1mCREATE TABLE "oauth_access_grants" ("id" serial primary key, "resource_owner_id" integer NOT NULL, "application_id" integer NOT NULL, "token" character varying(255) NOT NULL, "expires_in" integer NOT NULL, "redirect_uri" text NOT NULL, "created_at" timestamp NOT NULL, "revoked_at" timestamp, "scopes" character varying(255)) [0m
+  [1m[35m (2.3ms)[0m  CREATE UNIQUE INDEX  "index_oauth_access_grants_on_token" ON "oauth_access_grants" USING btree ("token")
+  [1m[36m (5.2ms)[0m  [1mCREATE TABLE "oauth_access_tokens" ("id" serial primary key, "resource_owner_id" integer, "application_id" integer, "token" character varying(255) NOT NULL, "refresh_token" character varying(255), "expires_in" integer, "revoked_at" timestamp, "created_at" timestamp NOT NULL, "scopes" character varying(255)) [0m
+  [1m[35m (2.4ms)[0m  CREATE UNIQUE INDEX  "index_oauth_access_tokens_on_refresh_token" ON "oauth_access_tokens" USING btree ("refresh_token")
+  [1m[36m (1.9ms)[0m  [1mCREATE  INDEX  "index_oauth_access_tokens_on_resource_owner_id" ON "oauth_access_tokens" USING btree ("resource_owner_id")[0m
+  [1m[35m (2.7ms)[0m  CREATE UNIQUE INDEX  "index_oauth_access_tokens_on_token" ON "oauth_access_tokens" USING btree ("token")
+  [1m[36m (5.1ms)[0m  [1mCREATE TABLE "oauth_applications" ("id" serial primary key, "name" character varying(255) NOT NULL, "uid" character varying(255) NOT NULL, "secret" character varying(255) NOT NULL, "redirect_uri" text NOT NULL, "scopes" character varying(255) DEFAULT '' NOT NULL, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (2.2ms)[0m  CREATE UNIQUE INDEX  "index_oauth_applications_on_uid" ON "oauth_applications" USING btree ("uid")
+  [1m[36m (3.2ms)[0m  [1mCREATE TABLE "user_messages" ("id" serial primary key, "user_id" bigint, "message_id" bigint, "message_type_id" integer, "is_read" boolean, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (6.0ms)[0m  CREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "first_name" character varying(35), "last_name" character varying(35)) 
+  [1m[36m (3.1ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")[0m
+  [1m[35m (2.0ms)[0m  CREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (2.0ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.7ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160727123712')
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160629143958')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160629165702')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160629175604')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160719134445')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-08-08 20:17:10.927248"], ["type_name", "inbox"], ["updated_at", "2016-08-08 20:17:10.927248"]]
+  [1m[35m (0.8ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-08-08 20:17:10.931021"], ["type_name", "sent"], ["updated_at", "2016-08-08 20:17:10.931021"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-08-08 20:17:10.934252"], ["type_name", "drafts"], ["updated_at", "2016-08-08 20:17:10.934252"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-08-08 20:17:10.936764"], ["type_name", "trash"], ["updated_at", "2016-08-08 20:17:10.936764"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-08-08 20:17:10.938673"], ["type_name", "spam"], ["updated_at", "2016-08-08 20:17:10.938673"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-08 23:17:40 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#email_exists as HTML
+  Parameters: {"username"=>"Hikarij"}
+Unpermitted parameters: username
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@mainonrails.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.31ms)
+Completed 200 OK in 160ms (Views: 105.7ms | ActiveRecord: 3.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-08-08 23:17:47 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "username"=>"Hikarij"}
+Unpermitted parameters: username
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@mainonrails.com' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'hikarij@mainonrails.com' LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "first_name", "last_name") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "hikarij@mainonrails.com"], ["encrypted_password", "$2a$10$i80zLVWsTEhT4AKlXGNOWu9IsrraXDmEGFgbFdBAGBr41..OGHJHm"], ["first_name", "Hikari"], ["last_name", "Perlman"]]
+  [1m[36m (1.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mDoorkeeper::Application Load (1.0ms)[0m  SELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mDoorkeeper::Application Exists (1.1ms)[0m  SELECT  1 AS one FROM "oauth_applications"  WHERE "oauth_applications"."uid" = '40fd4ff55172092698cc7d83430efd610c3034dfd6ef63d57e9a05e1db7f7a02' LIMIT 1
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "oauth_applications" ("created_at", "name", "redirect_uri", "secret", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2016-08-08 20:17:47.520199"], ["name", "MailOnRails"], ["redirect_uri", "http://mailonrails.com:9000/mail"], ["secret", "9ed305936007c20d7b6769334a82e931fc044efdac5fbef2e1cd03087fff90b4"], ["uid", "40fd4ff55172092698cc7d83430efd610c3034dfd6ef63d57e9a05e1db7f7a02"], ["updated_at", "2016-08-08 20:17:47.520199"]]
+  [1m[35m (1.9ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mDoorkeeper::Application Load (0.4ms)[0m  SELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1  [["id", 375]]
+  [1m[36mDoorkeeper::AccessToken Exists (1.9ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = 'f6957521e929753da3199ac7a23d87c3f03a0f3e351f611dd78b953b54ce1d06' LIMIT 1[0m
+  [1m[35mDoorkeeper::AccessToken Exists (0.8ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = 'd5ebafb96a0de27bccef26101d8a600e24ce4b1057fd2f7fdd0934b6ba96d517' LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "resource_owner_id", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["application_id", 375], ["created_at", "2016-08-08 20:17:47.589246"], ["expires_in", 7200], ["refresh_token", "d5ebafb96a0de27bccef26101d8a600e24ce4b1057fd2f7fdd0934b6ba96d517"], ["resource_owner_id", 1], ["scopes", "public write preferences"], ["token", "f6957521e929753da3199ac7a23d87c3f03a0f3e351f611dd78b953b54ce1d06"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.4ms)
+Completed 201 Created in 206ms (Views: 3.3ms | ActiveRecord: 19.8ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-09 00:16:10 +0300
+Processing by Doorkeeper::TokensController#create as HTML
+  Parameters: {"password"=>"[FILTERED]", "username"=>"Hikarij"}
+Completed 401 Unauthorized in 501ms
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-09 00:20:39 +0300
+Processing by Doorkeeper::TokensController#create as HTML
+  Parameters: {"grant_type"=>"password", "username"=>"Hikarij", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (96.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hikarij' LIMIT 1[0m
+PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hikarij' LIMIT 1
+Completed 500 Internal Server Error in 194ms
+
+ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hikarij' LIMIT 1):
+  config/initializers/doorkeeper.rb:15:in `block (2 levels) in <top (required)>'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.8ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (38.6ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-09 00:27:25 +0300
+Processing by Doorkeeper::TokensController#create as HTML
+  Parameters: {"grant_type"=>"password", "username"=>"Hikarij", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hikarij' LIMIT 1
+PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hikarij' LIMIT 1
+Completed 500 Internal Server Error in 3ms
+
+ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hikarij' LIMIT 1):
+  config/initializers/doorkeeper.rb:15:in `block (2 levels) in <top (required)>'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.9ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-09 00:31:12 +0300
+Processing by Doorkeeper::TokensController#create as HTML
+  Parameters: {"grant_type"=>"password", "username"=>"Hikarij", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hikarij' LIMIT 1[0m
+PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hikarij' LIMIT 1
+Completed 500 Internal Server Error in 3ms
+
+ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hikarij' LIMIT 1):
+  config/initializers/doorkeeper.rb:15:in `block (2 levels) in <top (required)>'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.4ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-09 00:31:44 +0300
+Processing by Doorkeeper::TokensController#create as HTML
+  Parameters: {"grant_type"=>"password", "username"=>"Hikarij", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hikarij' LIMIT 1
+PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hikarij' LIMIT 1
+Completed 500 Internal Server Error in 2ms
+
+ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hikarij' LIMIT 1):
+  config/initializers/doorkeeper.rb:15:in `block (2 levels) in <top (required)>'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.3ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-09 00:32:13 +0300
+Processing by Doorkeeper::TokensController#create as HTML
+  Parameters: {"grant_type"=>"password", "username"=>"Hikarij", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hikarij' LIMIT 1[0m
+PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hikarij' LIMIT 1
+Completed 500 Internal Server Error in 2ms
+
+ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hikarij' LIMIT 1):
+  config/initializers/doorkeeper.rb:15:in `block (2 levels) in <top (required)>'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.2ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.1ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-09 00:34:42 +0300
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password", "username"=>"hikarij@mainonrails.com", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hikarij@mainonrails.com' LIMIT 1
+PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hikarij@mainonrails.com' LIMIT 1
+Completed 500 Internal Server Error in 2ms
+
+ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hikarij@mainonrails.com' LIMIT 1):
+  config/initializers/doorkeeper.rb:15:in `block (2 levels) in <top (required)>'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.2ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-09 00:35:17 +0300
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password", "username"=>"hikarij@mainonrails.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (1.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "email"."email" = 'hikarij@mainonrails.com' LIMIT 1[0m
+PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hikarij@mainonrails.com' LIMIT 1
+Completed 500 Internal Server Error in 5ms
+
+ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hikarij@mainonrails.com' LIMIT 1):
+  config/initializers/doorkeeper.rb:15:in `block (2 levels) in <top (required)>'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.8ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-09 00:35:39 +0300
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password", "username"=>"hikarij@mainonrails.com", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hikarij@mainonrails.com' LIMIT 1
+PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hikarij@mainonrails.com' LIMIT 1
+Completed 500 Internal Server Error in 1ms
+
+ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hikarij@mainonrails.com' LIMIT 1):
+  config/initializers/doorkeeper.rb:15:in `block (2 levels) in <top (required)>'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.5ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (29.5ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-09 00:36:32 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (24.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password", "username"=>"hikarij@mainonrails.com", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (1.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hikarij@mainonrails.com' LIMIT 1
+PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hikarij@mainonrails.com' LIMIT 1
+Completed 500 Internal Server Error in 42ms
+
+ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hikarij@mainonrails.com' LIMIT 1):
+  config/initializers/doorkeeper.rb:14:in `block (2 levels) in <top (required)>'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (14.5ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (24.6ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-09 00:37:53 +0300
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password", "username"=>"hikarij@mainonrails.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "email"."email" = 'hikarij@mainonrails.com' LIMIT 1[0m
+PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hikarij@mainonrails.com' LIMIT 1
+Completed 500 Internal Server Error in 3ms
+
+ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hikarij@mainonrails.com' LIMIT 1):
+  config/initializers/doorkeeper.rb:14:in `block (2 levels) in <top (required)>'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.8ms)
+  [1m[36mUser Load (26.8ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (28.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'hikarij@mailonrails.com' AND "users"."id" != 1) LIMIT 1
+  [1m[36mSQL (13.0ms)[0m  [1mUPDATE "users" SET "email" = $1 WHERE "users"."id" = 1[0m  [["email", "hikarij@mailonrails.com"]]
+  [1m[35m (45.7ms)[0m  COMMIT
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-09 00:39:01 +0300
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password", "username"=>"hikarij@mainonrails.com", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hikarij@mainonrails.com' LIMIT 1
+PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hikarij@mainonrails.com' LIMIT 1
+Completed 500 Internal Server Error in 4ms
+
+ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hikarij@mainonrails.com' LIMIT 1):
+  config/initializers/doorkeeper.rb:14:in `block (2 levels) in <top (required)>'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.3ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-09 00:39:22 +0300
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password", "username"=>"hikarij@mainonrails.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "email"."email" = 'hikarij@mainonrails.com' LIMIT 1[0m
+PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hikarij@mainonrails.com' LIMIT 1
+Completed 500 Internal Server Error in 1ms
+
+ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hikarij@mainonrails.com' LIMIT 1):
+  config/initializers/doorkeeper.rb:14:in `block (2 levels) in <top (required)>'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.0ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (29.2ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-09 00:42:06 +0300
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password", "username"=>"hikarij@mainonrails.com", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (1.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hikarij@mainonrails.com' LIMIT 1
+PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hikarij@mainonrails.com' LIMIT 1
+Completed 500 Internal Server Error in 5ms
+
+ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'hikarij@mainonrails.com' LIMIT 1):
+  config/initializers/doorkeeper.rb:14:in `block (2 levels) in <top (required)>'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.9ms)
+  [1m[36m (479.6ms)[0m  [1mDROP DATABASE IF EXISTS "mail_on_rails_development"[0m
+  [1m[35m (167.9ms)[0m  DROP DATABASE IF EXISTS "mail_on_rails_test"
+  [1m[36m (1661.2ms)[0m  [1mCREATE DATABASE "mail_on_rails_development" ENCODING = 'unicode'[0m
+  [1m[35m (345.6ms)[0m  CREATE DATABASE "mail_on_rails_test" ENCODING = 'unicode'
+  [1m[36mSQL (1.4ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (134.4ms)[0m  CREATE TABLE "message_types" ("id" serial primary key, "type_name" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (56.3ms)[0m  [1mCREATE TABLE "messages" ("id" serial primary key, "subject" character varying(255), "body" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (8.2ms)[0m  CREATE TABLE "oauth_access_grants" ("id" serial primary key, "resource_owner_id" integer NOT NULL, "application_id" integer NOT NULL, "token" character varying(255) NOT NULL, "expires_in" integer NOT NULL, "redirect_uri" text NOT NULL, "created_at" timestamp NOT NULL, "revoked_at" timestamp, "scopes" character varying(255)) 
+  [1m[36m (3.1ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_grants_on_token" ON "oauth_access_grants" USING btree ("token")[0m
+  [1m[35m (8.0ms)[0m  CREATE TABLE "oauth_access_tokens" ("id" serial primary key, "resource_owner_id" integer, "application_id" integer, "token" character varying(255) NOT NULL, "refresh_token" character varying(255), "expires_in" integer, "revoked_at" timestamp, "created_at" timestamp NOT NULL, "scopes" character varying(255)) 
+  [1m[36m (2.3ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_refresh_token" ON "oauth_access_tokens" USING btree ("refresh_token")[0m
+  [1m[35m (1.8ms)[0m  CREATE  INDEX  "index_oauth_access_tokens_on_resource_owner_id" ON "oauth_access_tokens" USING btree ("resource_owner_id")
+  [1m[36m (1.8ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_token" ON "oauth_access_tokens" USING btree ("token")[0m
+  [1m[35m (4.6ms)[0m  CREATE TABLE "oauth_applications" ("id" serial primary key, "name" character varying(255) NOT NULL, "uid" character varying(255) NOT NULL, "secret" character varying(255) NOT NULL, "redirect_uri" text NOT NULL, "scopes" character varying(255) DEFAULT '' NOT NULL, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (2.1ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_applications_on_uid" ON "oauth_applications" USING btree ("uid")[0m
+  [1m[35m (26.8ms)[0m  CREATE TABLE "user_messages" ("id" serial primary key, "user_id" bigint, "message_id" bigint, "message_type_id" integer, "is_read" boolean, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (37.0ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "first_name" character varying(35), "last_name" character varying(35)) [0m
+  [1m[35m (2.1ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")
+  [1m[36m (10.6ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")[0m
+  [1m[35m (2.1ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (4.0ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.9ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (1.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160727123712')[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160629143958')
+  [1m[36m (1.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160629165702')[0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160629175604')
+  [1m[36m (1.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160719134445')[0m
+  [1m[35mSQL (0.2ms)[0m  CREATE EXTENSION IF NOT EXISTS "plpgsql"
+  [1m[36m (62.1ms)[0m  [1mCREATE TABLE "message_types" ("id" serial primary key, "type_name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (8.0ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "subject" character varying(255), "body" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (6.7ms)[0m  [1mCREATE TABLE "oauth_access_grants" ("id" serial primary key, "resource_owner_id" integer NOT NULL, "application_id" integer NOT NULL, "token" character varying(255) NOT NULL, "expires_in" integer NOT NULL, "redirect_uri" text NOT NULL, "created_at" timestamp NOT NULL, "revoked_at" timestamp, "scopes" character varying(255)) [0m
+  [1m[35m (3.7ms)[0m  CREATE UNIQUE INDEX  "index_oauth_access_grants_on_token" ON "oauth_access_grants" USING btree ("token")
+  [1m[36m (6.3ms)[0m  [1mCREATE TABLE "oauth_access_tokens" ("id" serial primary key, "resource_owner_id" integer, "application_id" integer, "token" character varying(255) NOT NULL, "refresh_token" character varying(255), "expires_in" integer, "revoked_at" timestamp, "created_at" timestamp NOT NULL, "scopes" character varying(255)) [0m
+  [1m[35m (4.7ms)[0m  CREATE UNIQUE INDEX  "index_oauth_access_tokens_on_refresh_token" ON "oauth_access_tokens" USING btree ("refresh_token")
+  [1m[36m (3.3ms)[0m  [1mCREATE  INDEX  "index_oauth_access_tokens_on_resource_owner_id" ON "oauth_access_tokens" USING btree ("resource_owner_id")[0m
+  [1m[35m (2.8ms)[0m  CREATE UNIQUE INDEX  "index_oauth_access_tokens_on_token" ON "oauth_access_tokens" USING btree ("token")
+  [1m[36m (6.7ms)[0m  [1mCREATE TABLE "oauth_applications" ("id" serial primary key, "name" character varying(255) NOT NULL, "uid" character varying(255) NOT NULL, "secret" character varying(255) NOT NULL, "redirect_uri" text NOT NULL, "scopes" character varying(255) DEFAULT '' NOT NULL, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (4.5ms)[0m  CREATE UNIQUE INDEX  "index_oauth_applications_on_uid" ON "oauth_applications" USING btree ("uid")
+  [1m[36m (6.1ms)[0m  [1mCREATE TABLE "user_messages" ("id" serial primary key, "user_id" bigint, "message_id" bigint, "message_type_id" integer, "is_read" boolean, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (7.4ms)[0m  CREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "first_name" character varying(35), "last_name" character varying(35)) 
+  [1m[36m (3.2ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")[0m
+  [1m[35m (2.8ms)[0m  CREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")
+  [1m[36m (2.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (3.7ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.8ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160727123712')
+  [1m[36m (1.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160629143958')[0m
+  [1m[35m (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160629165702')
+  [1m[36m (2.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160629175604')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160719134445')
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-08-08 21:42:47.991286"], ["type_name", "inbox"], ["updated_at", "2016-08-08 21:42:47.991286"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-08-08 21:42:47.994219"], ["type_name", "sent"], ["updated_at", "2016-08-08 21:42:47.994219"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-08-08 21:42:47.996354"], ["type_name", "drafts"], ["updated_at", "2016-08-08 21:42:47.996354"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-08-08 21:42:47.998288"], ["type_name", "trash"], ["updated_at", "2016-08-08 21:42:47.998288"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-08-08 21:42:48.000029"], ["type_name", "spam"], ["updated_at", "2016-08-08 21:42:48.000029"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-09 00:43:41 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#email_exists as HTML
+  Parameters: {"username"=>"Hikarij"}
+Unpermitted parameters: username
+  [1m[35mUser Load (58.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@mailonrails.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.28ms)
+Completed 200 OK in 118ms (Views: 29.7ms | ActiveRecord: 62.7ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-08-09 00:43:47 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "username"=>"Hikarij"}
+Unpermitted parameters: username
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@mailonrails.com' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'hikarij@mailonrails.com' LIMIT 1[0m
+  [1m[35mSQL (36.9ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "first_name", "last_name") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "hikarij@mailonrails.com"], ["encrypted_password", "$2a$10$mNPjF/PlvLmU7qE0fCEkCOmRxZXuUg8E6E1WczYyaXghkDPjue/uG"], ["first_name", "Hikari"], ["last_name", "Perlman"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mDoorkeeper::Application Load (35.6ms)[0m  SELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mDoorkeeper::Application Exists (0.4ms)[0m  SELECT  1 AS one FROM "oauth_applications"  WHERE "oauth_applications"."uid" = '50e000b6b815468ca07037fa63d8428c32d73633dc908a0fbbdba977ee2867d3' LIMIT 1
+  [1m[36mSQL (5.6ms)[0m  [1mINSERT INTO "oauth_applications" ("created_at", "name", "redirect_uri", "secret", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2016-08-08 21:43:47.941473"], ["name", "MailOnRails"], ["redirect_uri", "http://mailonrails.com:9000/mail"], ["secret", "6819f6e3a5e9284f945bc4690399bd8a73d9fd98c59618ed3eb509f4a9b277ce"], ["uid", "50e000b6b815468ca07037fa63d8428c32d73633dc908a0fbbdba977ee2867d3"], ["updated_at", "2016-08-08 21:43:47.941473"]]
+  [1m[35m (0.8ms)[0m  COMMIT
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mDoorkeeper::Application Load (0.4ms)[0m  SELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1  [["id", 375]]
+  [1m[36mDoorkeeper::AccessToken Exists (3.3ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = '5bf986a2156406d908ed3738d822b073ea0338d96f99c899a66b3ad03ae5a83d' LIMIT 1[0m
+  [1m[35mDoorkeeper::AccessToken Exists (0.5ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = 'b2760f00dcbe92ba138a02e8ceeaa8f1c6a7e5e55872d5cc32e8a30a1fcf4f0a' LIMIT 1
+  [1m[36mSQL (2.5ms)[0m  [1mINSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "resource_owner_id", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["application_id", 375], ["created_at", "2016-08-08 21:43:48.016558"], ["expires_in", 7200], ["refresh_token", "b2760f00dcbe92ba138a02e8ceeaa8f1c6a7e5e55872d5cc32e8a30a1fcf4f0a"], ["resource_owner_id", 1], ["scopes", "public write preferences"], ["token", "5bf986a2156406d908ed3738d822b073ea0338d96f99c899a66b3ad03ae5a83d"]]
+  [1m[35m (1.0ms)[0m  COMMIT
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.37ms)
+Completed 201 Created in 266ms (Views: 1.3ms | ActiveRecord: 96.3ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-09 00:44:15 +0300
+Processing by Doorkeeper::TokensController#create as HTML
+  Parameters: {"grant_type"=>"password", "username"=>"Hikarij", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hikarij' LIMIT 1[0m
+PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hikarij' LIMIT 1
+Completed 500 Internal Server Error in 14853ms
+
+ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hikarij' LIMIT 1):
+  config/initializers/doorkeeper.rb:15:in `block (2 levels) in <top (required)>'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.8ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-09 00:46:05 +0300
+Processing by Doorkeeper::TokensController#create as HTML
+  Parameters: {"grant_type"=>"password", "username"=>"Hikarij", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hikarij' LIMIT 1
+PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hikarij' LIMIT 1
+Completed 500 Internal Server Error in 7017ms
+
+ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "email"
+LINE 1: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hik...
+                                              ^
+: SELECT  "users".* FROM "users"  WHERE "email"."email" = 'Hikarij' LIMIT 1):
+  config/initializers/doorkeeper.rb:15:in `block (2 levels) in <top (required)>'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.6ms)
+  [1m[36m (18.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (3.8ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateMessages (20160629143958)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (5.3ms)[0m  [1mCREATE TABLE "messages" ("id" serial primary key, "subject" character varying(255), "body" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160629143958"]]
+  [1m[36m (1.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateMessageTypes (20160629165702)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (4.2ms)[0m  [1mCREATE TABLE "message_types" ("id" serial primary key, "type_name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160629165702"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+Migrating to CreateUserMessages (20160629175604)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (3.3ms)[0m  [1mCREATE TABLE "user_messages" ("id" serial primary key, "user_id" bigint, "message_id" bigint, "message_type_id" integer, "is_read" boolean, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160629175604"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+Migrating to CreateDoorkeeperTables (20160719134445)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (5.0ms)[0m  [1mCREATE TABLE "oauth_applications" ("id" serial primary key, "name" character varying(255) NOT NULL, "uid" character varying(255) NOT NULL, "secret" character varying(255) NOT NULL, "redirect_uri" text NOT NULL, "scopes" character varying(255) DEFAULT '' NOT NULL, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (2.6ms)[0m  CREATE UNIQUE INDEX  "index_oauth_applications_on_uid" ON "oauth_applications"  ("uid")
+  [1m[36m (37.5ms)[0m  [1mCREATE TABLE "oauth_access_grants" ("id" serial primary key, "resource_owner_id" integer NOT NULL, "application_id" integer NOT NULL, "token" character varying(255) NOT NULL, "expires_in" integer NOT NULL, "redirect_uri" text NOT NULL, "created_at" timestamp NOT NULL, "revoked_at" timestamp, "scopes" character varying(255)) [0m
+  [1m[35m (2.2ms)[0m  CREATE UNIQUE INDEX  "index_oauth_access_grants_on_token" ON "oauth_access_grants"  ("token")
+  [1m[36m (7.6ms)[0m  [1mCREATE TABLE "oauth_access_tokens" ("id" serial primary key, "resource_owner_id" integer, "application_id" integer, "token" character varying(255) NOT NULL, "refresh_token" character varying(255), "expires_in" integer, "revoked_at" timestamp, "created_at" timestamp NOT NULL, "scopes" character varying(255)) [0m
+  [1m[35m (1.8ms)[0m  CREATE UNIQUE INDEX  "index_oauth_access_tokens_on_token" ON "oauth_access_tokens"  ("token")
+  [1m[36m (2.4ms)[0m  [1mCREATE  INDEX  "index_oauth_access_tokens_on_resource_owner_id" ON "oauth_access_tokens"  ("resource_owner_id")[0m
+  [1m[35m (2.0ms)[0m  CREATE UNIQUE INDEX  "index_oauth_access_tokens_on_refresh_token" ON "oauth_access_tokens"  ("refresh_token")
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20160719134445"]]
+  [1m[35m (1.3ms)[0m  COMMIT
+Migrating to AddDeviseToUsers (20160727123712)
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (6.0ms)[0m  CREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "first_name" character varying(35), "last_name" character varying(35)) 
+  [1m[36m (1.6ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (1.5ms)[0m  CREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20160727123712"]]
+  [1m[35m (0.8ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-08-08 21:50:21.934283"], ["type_name", "inbox"], ["updated_at", "2016-08-08 21:50:21.934283"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-08-08 21:50:21.936444"], ["type_name", "sent"], ["updated_at", "2016-08-08 21:50:21.936444"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-08-08 21:50:21.938094"], ["type_name", "drafts"], ["updated_at", "2016-08-08 21:50:21.938094"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-08-08 21:50:21.939352"], ["type_name", "trash"], ["updated_at", "2016-08-08 21:50:21.939352"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-08-08 21:50:21.940732"], ["type_name", "spam"], ["updated_at", "2016-08-08 21:50:21.940732"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[36mDoorkeeper::Application Load (0.7ms)[0m  [1mSELECT "oauth_applications".* FROM "oauth_applications"[0m
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-08-09 00:50:54 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#email_exists as HTML
+  Parameters: {"username"=>"Hikarij"}
+Unpermitted parameters: username
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@mailonrails.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.24ms)
+Completed 200 OK in 50ms (Views: 26.0ms | ActiveRecord: 3.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-08-09 00:51:02 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "username"=>"Hikarij"}
+Unpermitted parameters: username
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@mailonrails.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'hikarij@mailonrails.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "first_name", "last_name") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "hikarij@mailonrails.com"], ["encrypted_password", "$2a$10$qG3SeOogbabwG3skrP4TouW/VjzlRBpUKl0KAREP1H8Mn5Lv7jwJG"], ["first_name", "Hikari"], ["last_name", "Perlman"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mDoorkeeper::Application Load (0.8ms)[0m  SELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mDoorkeeper::Application Exists (0.4ms)[0m  SELECT  1 AS one FROM "oauth_applications"  WHERE "oauth_applications"."uid" = '2871345163ddec760e1938709240c04ca5ca34c54c72e4c073739d4a5fa935bb' LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "oauth_applications" ("created_at", "name", "redirect_uri", "secret", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2016-08-08 21:51:02.848807"], ["name", "MailOnRails"], ["redirect_uri", "http://mailonrails.com:9000/mail"], ["secret", "7dce50a499e1ca06653602888d814c92d2d798c2020fb3289687a5d369db11a9"], ["uid", "2871345163ddec760e1938709240c04ca5ca34c54c72e4c073739d4a5fa935bb"], ["updated_at", "2016-08-08 21:51:02.848807"]]
+  [1m[35m (0.8ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mDoorkeeper::Application Load (0.4ms)[0m  SELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1  [["id", 375]]
+  [1m[36mDoorkeeper::AccessToken Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = '5524b2a603817c7047145cc30c7e647ad6c548227fe980e854dff03a69da3dfa' LIMIT 1[0m
+  [1m[35mDoorkeeper::AccessToken Exists (0.4ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = '39c971a0f2032dd0ad972f8684b2189ee8c93e7f26128f7a6fdf95151a72a240' LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "resource_owner_id", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["application_id", 375], ["created_at", "2016-08-08 21:51:02.907461"], ["expires_in", 7200], ["refresh_token", "39c971a0f2032dd0ad972f8684b2189ee8c93e7f26128f7a6fdf95151a72a240"], ["resource_owner_id", 1], ["scopes", "public write preferences"], ["token", "5524b2a603817c7047145cc30c7e647ad6c548227fe980e854dff03a69da3dfa"]]
+  [1m[35m (3.1ms)[0m  COMMIT
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.65ms)
+Completed 201 Created in 183ms (Views: 1.8ms | ActiveRecord: 15.9ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-09 00:51:14 +0300
+Processing by Doorkeeper::TokensController#create as HTML
+  Parameters: {"grant_type"=>"password", "username"=>"Hikarij", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@mailonrails.com' LIMIT 1[0m
+  [1m[35mDoorkeeper::AccessToken Load (0.6ms)[0m  SELECT  "oauth_access_tokens".* FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."application_id" IS NULL AND "oauth_access_tokens"."resource_owner_id" = 1 AND "oauth_access_tokens"."revoked_at" IS NULL  ORDER BY created_at desc LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mDoorkeeper::AccessToken Exists (0.2ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = '3484570a0103fee60db0a962cd93a38867d86a474a50c66f2a61fe487c20d60d' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = 'b73398f280b678605a231070cc498d7a7a81eb5a46ec047ef1ae62ea229d73f2' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "oauth_access_tokens" ("created_at", "expires_in", "refresh_token", "resource_owner_id", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2016-08-08 21:51:20.388028"], ["expires_in", 7200], ["refresh_token", "b73398f280b678605a231070cc498d7a7a81eb5a46ec047ef1ae62ea229d73f2"], ["resource_owner_id", 1], ["scopes", ""], ["token", "3484570a0103fee60db0a962cd93a38867d86a474a50c66f2a61fe487c20d60d"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 6185ms
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-09 00:51:52 +0300
+Processing by Doorkeeper::TokensController#create as HTML
+  Parameters: {"grant_type"=>"password", "username"=>"Hikarij", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (26.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@mailonrails.com' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Load (67.5ms)[0m  [1mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."application_id" IS NULL AND "oauth_access_tokens"."resource_owner_id" = 1 AND "oauth_access_tokens"."revoked_at" IS NULL  ORDER BY created_at desc LIMIT 1[0m
+Completed 200 OK in 11137ms
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-09 00:53:52 +0300
+Processing by Doorkeeper::TokensController#create as HTML
+  Parameters: {"grant_type"=>"password", "username"=>"Hikarij", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (367.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@mailonrails.com' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Load (56.6ms)[0m  [1mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."application_id" IS NULL AND "oauth_access_tokens"."resource_owner_id" = 1 AND "oauth_access_tokens"."revoked_at" IS NULL  ORDER BY created_at desc LIMIT 1[0m
+Completed 200 OK in 4032ms
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-09 00:56:41 +0300
+Processing by Doorkeeper::TokensController#create as HTML
+  Parameters: {"grant_type"=>"password", "username"=>"Hikarij", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@mailonrails.com' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Load (0.4ms)[0m  [1mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."application_id" IS NULL AND "oauth_access_tokens"."resource_owner_id" = 1 AND "oauth_access_tokens"."revoked_at" IS NULL  ORDER BY created_at desc LIMIT 1[0m
+Completed 200 OK in 8593ms
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-09 00:59:28 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Doorkeeper::TokensController#create as HTML
+  Parameters: {"grant_type"=>"password", "username"=>"Hikarij", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (21.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@mailonrails.com' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Load (20.5ms)[0m  [1mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."application_id" IS NULL AND "oauth_access_tokens"."resource_owner_id" = 1 AND "oauth_access_tokens"."revoked_at" IS NULL  ORDER BY created_at desc LIMIT 1[0m
+Completed 200 OK in 148ms
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-09 01:02:31 +0300
+Processing by Doorkeeper::TokensController#create as HTML
+  Parameters: {"grant_type"=>"password", "username"=>"Hikarij", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@mailonrails.com' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Load (0.5ms)[0m  [1mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."application_id" IS NULL AND "oauth_access_tokens"."resource_owner_id" = 1 AND "oauth_access_tokens"."revoked_at" IS NULL  ORDER BY created_at desc LIMIT 1[0m
+Completed 200 OK in 81ms
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-09 01:07:27 +0300
+Processing by Doorkeeper::TokensController#create as HTML
+  Parameters: {"grant_type"=>"password", "username"=>"Hikarij", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (176.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@mailonrails.com' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Load (0.4ms)[0m  [1mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."application_id" IS NULL AND "oauth_access_tokens"."resource_owner_id" = 1 AND "oauth_access_tokens"."revoked_at" IS NULL  ORDER BY created_at desc LIMIT 1[0m
+Completed 200 OK in 319ms
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-08-09 01:09:02 +0300
+Processing by Doorkeeper::TokensController#create as HTML
+  Parameters: {"grant_type"=>"password", "username"=>"Hikarij", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@mailonrails.com' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Load (0.5ms)[0m  [1mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."application_id" IS NULL AND "oauth_access_tokens"."resource_owner_id" = 1 AND "oauth_access_tokens"."revoked_at" IS NULL  ORDER BY created_at desc LIMIT 1[0m
+Completed 200 OK in 76ms

@@ -1,9 +1,8 @@
 class ApplicationController < ActionController::API
+    include ActionController::Cookies
     include ActionController::ImplicitRender
     include ActionController::MimeResponds
     include ActionController::RequestForgeryProtection
-
-    protect_from_forgery
     
     def doorkeeper_oauth_client
         @client = Doorkeeper::Application.find_by_name(DOORKEEPER_APP_NAME)
@@ -16,7 +15,6 @@ class ApplicationController < ActionController::API
  	end
 
     def doorkeeper_access_token(user)
-        byebug
-        @token ||= Doorkeeper::AccessToken.create!(application_id: DOORKEEPER_APP_ID, resource_owner_id: user.id, scopes: "public write preferences", use_refresh_token: true, expires_in: Doorkeeper.configuration.access_token_expires_in) if current_user
+        @token ||= Doorkeeper::AccessToken.create!(application_id: DOORKEEPER_APP_ID, resource_owner_id: user.id, scopes: "public write preferences", use_refresh_token: true, expires_in: Doorkeeper.configuration.access_token_expires_in) if user
     end
 end

@@ -11,8 +11,14 @@ Doorkeeper.configure do
   end
 
   resource_owner_from_credentials do |_routes|
-    byebug
-    user = User.find_for_database_authentication(email: params[:username])
+    @username = params[:username]
+    if @username.nil?
+      @email = nil
+    else
+      @email = "#{params[:username].downcase}@mailonrails.com"
+    end
+
+    user = User.find_by_email(@email)
     user if user && user.valid_password?(params[:password])
   end
 
@@ -111,3 +117,5 @@ Doorkeeper.configure do
   # WWW-Authenticate Realm (default "Doorkeeper").
   # realm "Doorkeeper"
 end
+
+Doorkeeper.configuration.token_grant_types << "password"
