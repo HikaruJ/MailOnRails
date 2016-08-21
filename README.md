@@ -12,9 +12,20 @@ The project is currently still in early stages of development.
 The fields are missing validation.   
 - **Inbox** [20%] - The UI for the inbox page is under development. No functionality is implemented yet.
 - **Compose** [15%] - The UI for the compose page is under development. No functionality is implmeneted yet.
+- **Sent Mail** [0%] - Development haven't started yet for this page.  
+- **Important** [0%] - Development haven't started yet for this page.  
+- **Draft** [0%] - Development haven't started yet for this page.  
+- **Spam** [0%] - Development haven't started yet for this page.  
+- **Trash** [0%] - Development haven't started yet for this page.  
+- **Contact** [0%] - Development haven't started yet for this page.  
 
 ## Design
 The project utilizes the [Make template](https://themeforest.net/item/make-admin-template-builder-html-angularjs/10511387?s_rank=4) for the mailbox design and the [StartBootstrap](https://startbootstrap.com/template-overviews/landing-page/) for the landing page design.
+
+## Enviornment and Tools
+- **Environment** - [Linux Mint 17.3](https://www.linuxmint.com/edition.php?id=204).  
+- **Editor** - [VsCode](https://code.visualstudio.com/).  
+- **Console** - Bash.  
 
 ## Client Side
 For the client side I have decided to use the following technologies:  
