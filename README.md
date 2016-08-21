@@ -4,7 +4,7 @@
 Mail on Rails is an ongoing project to study Ruby on Rails.  
 The project aim is to develop a web-based email service using Ruby on Rails and AngularJS.  
 
-## Status
+## Project Status
 The project is currently still in early stages of development.
 - **Landing Page** [20%] - Currently the landing page contains details from the template, instead of details on the product.
 - **Registration** [80%] - The registration page is working, however missing some validitiy checks for the password fields.
@@ -25,7 +25,9 @@ The project utilizes the [Make template](https://themeforest.net/item/make-admin
 ## Enviornment and Tools
 - **Environment** - [Linux Mint 17.3](https://www.linuxmint.com/edition.php?id=204).  
 - **Editor** - [VsCode](https://code.visualstudio.com/).  
-- **Console** - Bash.  
+- **Console** - Bash.
+- **Markup** - HTML5.  
+- **Style Sheet** - CSS3, SASS, LESS.  
 
 ## Client Side
 For the client side I have decided to use the following technologies:  
