@@ -8,9 +8,8 @@ The project aim is to develop a web-based email service using Ruby on Rails and 
 The project is currently still in early stages of development.
 - **Landing Page** [100%].
 - **Registration** [100%].
-- **Login** [40%] - The UI for the login page is complete. Login functionlity is complete but still does not work.  
-The fields are missing validation.   
-- **Inbox** [20%] - The UI for the inbox page is under development. No functionality is implemented yet.
+- **Login** [100%].  
+- **Inbox** [40%] - The UI for the inbox page is under development. No functionality is implemented yet.
 - **Compose** [15%] - The UI for the compose page is under development. No functionality is implmeneted yet.
 - **Sent Mail** [0%] - Development haven't started yet for this page.  
 - **Important** [0%] - Development haven't started yet for this page.  
