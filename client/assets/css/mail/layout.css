@@ -270,3 +270,7 @@ body.mailbox {
 .validation-color {
     color: lightcoral;
 }
+
+.note-editor.note-frame.panel.panel-default {
+    background: none;
+}

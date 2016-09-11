@@ -219,8 +219,8 @@ gulp.task('browserify', function() {
         .pipe(streamify(sourcemaps.init({
             loadMaps: true
         })))
-        .pipe(streamify(ngmin()))
-        // .pipe(streamify(uglify()))
+        //.pipe(streamify(ngmin()))
+        //.pipe(streamify(uglify()))
         .pipe(streamify(sourcemaps.write('./maps')))
         .pipe(gulp.dest(paths.target.javascript.root));
 });
@@ -243,6 +243,14 @@ gulp.task('html', [
             .pipe(wiredep({
                 exclude: [
                     'bower_components/angular/angular.js',
+                    'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+                    'bower_components/angular-messages/angular-messages.js',
+                    'bower_components/angular-sanitize/angular-sanitize.js',
+                    'bower_components/angular-ui-router/release/angular-ui-router.js',
+                    'bower_components/angular-cookie/angular-cookie.js',
+                    'bower_components/angular-local-storage/dist/angular-local-storage.js',
+                    'bower_components/angular-loading/angular-loading.js',
+                    'bower_components/angular-summernote/dist/angular-summernote.js',
                     'bower_components/bootstrap-sass/assets/javascripts/bootstrap.js'
                 ],
                 ignorePath: /^(\.\.\/)+/

@@ -13,16 +13,22 @@
     },
     "browser": {
         "jquery": "./bower_components/jquery/dist/jquery.js",
+        "malihu-custom-scrollbar-plugin": "./bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
         "angular": "./bower_components/angular/angular.min.js",
         "angular-bootstrap": "./bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js",
         "angular-cookie": "./bower_components/angular-cookie/angular-cookie.min.js",
         "angular-loading": "./bower_components/angular-loading/angular-loading.min.js",
         "angular-local-storage": "./bower_components/angular-local-storage/dist/angular-local-storage.min.js",
         "angular-messages": "./bower_components/angular-messages/angular-messages.min.js",
+        "angular-summernote": "./bower_components/angular-summernote/dist/angular-summernote.min.js",
         "angular-ui-router": "./bower_components/angular-ui-router/release/angular-ui-router.min.js"
     },
     "browserify-shim": {
         "jquery": "$",
+        "malihu-custom-scrollbar-plugin": {
+            "depends": "jquery",
+            "exports": "malihu-custom-scrollbar-plugin"
+        },
         "angular": {
             "depends": "jquery",
             "exports": "angular"
@@ -46,6 +52,10 @@
         "angular-messages": {
             "depends": "angular",
             "exports": "angular.module('ngMessages')"
+        },
+        "angular-summernote": {
+            "depends": "angular",
+            "exports": "angular.module('summernote')"
         },
         "angular-ui-router": {
             "depends": "angular",

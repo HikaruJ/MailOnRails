@@ -28,6 +28,11 @@
             abstract: true
         })
 
+        .state('mail.compose', {
+            template: '<mail-compose></mail-compose>',
+            url: '/compose'
+        })
+
         .state('mail.inbox', {
             template: '<mail-inbox></mail-inbox>',
             url: '/inbox',

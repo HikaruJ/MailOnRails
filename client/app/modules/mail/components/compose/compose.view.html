@@ -1,0 +1,120 @@
+<div class="at-view-slide-in-left page-content page-app mailbox" style="margin-top:50px;">
+    <section class="app">
+        <aside class="aside-sm emails-list">
+            <section>
+                <div class="mailbox-page clearfix">
+                    <h1 class="pull-left">Mailbox</h1>
+                    <div class="append-icon">
+                        <input type="text" class="form-control form-white pull-right" id="email-search" placeholder="Search...">
+                        <i class="icon-magnifier"></i>
+                    </div>
+                </div>
+                <ul class="nav nav-tabs text-right">
+                    <li class="emails-action">
+                        <i class="icon-rounded-arrow-curve-left"></i>
+                        <i class=" icon-rounded-heart"></i>
+                        <div class="pos-rel dis-inline">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" data-delay="300">
+                                <i class=" icon-rounded-arrow-down-thin"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" class="reorder-menu">Select All</a></li>
+                                <li><a href="#" class="remove-menu">Not Read</a></li>
+                                <li><a href="#" class="hide-top-sidebar">Read</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="active f-right"><a href="#recent" data-toggle="tab">Recent</a></li>
+                    <li class="f-right"><a href="#alphabetically" data-toggle="tab">Alphabetically</a></li>
+                </ul>
+                <div class="tab-content" style="height:776px;">
+                    <div class="tab-pane fade" id="alphabetically">
+                        <div class="messages-list withScroll show-scroll mCustomScrollbar _mCS_139" data-padding="200" data-height="window">
+                            <div class="mCustomScrollBox mCS-light" id="mCSB_139" style="position:relative; height:100%; overflow:hidden; max-width:100%;">
+                                <div class="mCSB_container mCS_no_scrollbar" style="position:relative; top:0;">
+                                    <div class="message-item media">
+                                        <div class="media">
+                                            <img src="img/avatars/avatar4_big.png" alt="avatar 3" width="40" class="sender-img">
+                                            <div class="media-body">
+                                                <div class="sender">John Snow</div>
+                                                <div class="email">jsnow@msn.com</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="message-item media">
+                                        <div class="media">
+                                            <img src="img/avatars/avatar6_big.png" alt="avatar 3" width="40" class="sender-img">
+                                            <div class="media-body">
+                                                <div class="sender">James Miller</div>
+                                                <div class="email">james-miller@aol.com</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mCSB_scrollTools" style="position: absolute; display: none;">
+                        <div class="mCSB_draggerContainer">
+                            <div class="mCSB_dragger" style="position: absolute; top: 0px;" oncontextmenu="return false;">
+                                <div class="mCSB_dragger_bar" style="position:relative;"></div>
+                            </div>
+                            <div class="mCSB_draggerRail"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </aside>
+        <div class="email-details" style="display: table-cell;">
+            <section>
+                <div class="email-subject">
+                    <h1><strong>Write</strong> an email</h1>
+                    <div class="clearfix">
+                        <p>from <strong><span class="sender">{{$ctrl.viewModel.user.email}}</span></strong> • <span class="date-send">15 August, 21:41</span></p>
+                        <div class="pos-rel pull-left">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" data-delay="300">
+                                <i class=" icon-rounded-arrow-down-thin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="email-details-inner withScroll mCustomScrollbar _mCS_21" data-height="window" data-padding="200">
+                    <form novalidate id="composeForm" name="composeForm" data-ng-submit="$ctrl.submit()">
+                        <div class="mCustomScrollBox mCS-light" id="mCSB_21" style="position:relative; height:100%; overflow:hidden; max-width:100%;">
+                            <div class="mCSB_container" style="position:relative; top:0;">
+                                <div class="answers">
+                                    <div class="answer-subject">
+                                        <h2 class="answer-title"></h2>
+                                        <p>from <strong>{{$ctrl.viewModel.user.email}}</strong> • <span class="answer-date"></span></p>
+                                    </div>
+                                    <div class="answer-content"></div>
+                                </div>
+                                <div class="send-to m-t-10">
+                                    <input class="form-control form-white" data-ng-model="$ctrl.viewModel.recipient" id="recipient"
+                                           name="recipient" placeholder="Recipient" type="text">
+                                </div>
+                                <div class="subject m-t-10">
+                                    <input class="form-control form-white" data-ng-model="$ctrl.viewModel.subject" id="subject"
+                                           name="subject" placeholder="Subject" type="text">
+                                </div>
+                                <div class="write-answer">
+                                    <div class="answer-textarea" style="display: none;"></div>
+                                    <summernote config="$ctrl.viewModel.summernoteOptions" data-ng-model="$ctrl.viewModel.body" id="body" name="body"></summernote>
+                                    <button id="save" class="btn btn-primary" type="submit">Send</button>
+                                </div>
+                            </div>
+                            <div class="mCSB_scrollTools" style="position: absolute; display: block; opacity: 0;">
+                                <div class="mCSB_draggerContainer">
+                                    <div class="mCSB_dragger" style="position: absolute; height: 338px; top: 0px;" oncontextmenu="return false;">
+                                        <div class="mCSB_dragger_bar" style="position: relative; line-height: 338px;"></div>
+                                    </div>
+                                    <div class="mCSB_draggerRail"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </section>
+</div>
