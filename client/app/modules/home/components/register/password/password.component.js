@@ -5,6 +5,7 @@
         controller: PasswordInputController,
         bindings: {
             isValid: '=',
+            keyUp: '&',
             password: '=',
         },
         templateUrl: '/partials/home/components/register/password/password.view.html',
@@ -18,6 +19,10 @@
             text: '',
             type: '',
             value: 0
+        };
+
+        ctrl.checkConfirmPassword = function(password) {
+            ctrl.keyUp();
         };
 
         ctrl.checkPassword = function(password) {
@@ -66,7 +71,6 @@
                     }
                 }
             }
-
         };
     }
 

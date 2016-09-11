@@ -58,7 +58,9 @@
                           <div class="col-sm-5">
                             <div class="form-group">
                                 <label for="password">Create a password</label>
-                                <password-input is-valid="$ctrl.viewModel.passwordValid" password="$ctrl.viewModel.password"></password-input>
+                                <password-input data-is-valid="$ctrl.viewModel.passwordValid" 
+                                    data-key-up="$ctrl.comparePasswords($ctrl.viewModel.password, $ctrl.viewModel.passwordConfirm)"
+                                    data-password="$ctrl.viewModel.password"></password-input>
                             </div>
                           </div>
                           <div class="col-sm-5">
