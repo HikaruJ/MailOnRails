@@ -2,7 +2,9 @@
     "use strict";
 
     var messageComponent = {
-        bindings: {},
+        bindings: {
+            user: "="
+        },
         controller: MessageController,
         templateUrl: '/partials/mail/components/inbox/message/message.view.html'
     };

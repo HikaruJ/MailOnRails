@@ -7,16 +7,14 @@
         templateUrl: '/partials/mail/components/compose/compose.view.html'
     };
 
-    function ComposeController($scope, mailService) {
+    function ComposeController($scope, localStorageService, mailService) {
         var ctrl = this;
 
         ctrl.viewModel = {
             body: '',
             recipient: '',
             subject: '',
-            user: {
-                email: 'test@mailonrails.com'
-            }
+            user: localStorageService.get('user')
         };
 
         ctrl.viewModel.summernoteOptions = {
