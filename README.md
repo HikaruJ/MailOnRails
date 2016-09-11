@@ -6,7 +6,7 @@ The project aim is to develop a web-based email service using Ruby on Rails and 
 
 ## Project Status
 The project is currently still in early stages of development.
-- **Landing Page** [1000%] - Landing page is ready for display in production.
+- **Landing Page** [100%] - Landing page is ready for display in production.
 - **Registration** [80%] - The registration page is working, however missing some validitiy checks for the password fields.
 - **Login** [40%] - The UI for the login page is complete. Login functionlity is complete but still does not work.  
 The fields are missing validation.   
