@@ -22,8 +22,6 @@
                 to: to
             };
 
-            debugger
-
             $http.post(urls.send, request)
                 .then(sendSuccess)
                 .catch(sendFailed);

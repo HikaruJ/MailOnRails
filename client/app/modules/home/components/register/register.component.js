@@ -65,7 +65,9 @@
             registerService.registerUser(request)
                 .then(function(data) {
                     if (data.status == 201) {
-                        $state.go('mail.inbox')
+                        $state.go('mail.inbox', {
+                            user: data.response
+                        });
                     } else {
                         modalService.alert(data.response, 'md');
                     }

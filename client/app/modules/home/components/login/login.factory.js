@@ -5,14 +5,59 @@
         var baseUrl = angularConfig.baseUrl;
 
         var urls = {
+            getUser: baseUrl + '/users/get_user_by_email',
             login: baseUrl + '/oauth/token'
         };
 
         var service = {
+            getUser: getUser,
             loginUser: loginUser
         };
 
         return service;
+
+        function getUser(username) {
+            return $http({
+                    url: urls.getUser,
+                    method: "post",
+                    data: {
+                        username: username
+                    }
+                })
+                .then(getUserSuccess)
+                .catch(getUserFailed);
+
+            function getUserSuccess(respond) {
+                var result = {
+                    response: null,
+                    status: null
+                };
+
+                if (respond === null || respond.data === null) {
+                    return result;
+                }
+
+                var data = respond.data.response;
+                result.response = data.user;
+                result.status = respond.status;
+                return result;
+            }
+
+            function getUserFailed(error) {
+                var result = {
+                    response: null,
+                    status: null
+                };
+
+                if (error === null || error.data === null) {
+                    return result;
+                }
+
+                var data = error.data;
+                result.status = error.status;
+                return result;
+            }
+        }
 
         function loginUser(password, username) {
             return $http({

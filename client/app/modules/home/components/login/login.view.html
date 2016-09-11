@@ -9,8 +9,8 @@
                         <hr class="intro-divider">
                         <form novalidate id="loginForm" name="registerForm" data-ng-submit="$ctrl.submit()" role="form">
                             <div class="row">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <div class="col-sm-8">
+                                <div class="col-md-7 col-md-offset-3">
+                                    <div class="col-sm-10">
                                         <div class="input-group input-group-margin" style="margin-bottom:0px;">
                                             <input class="form-control form-white" data-ng-disabled="$ctrl.viewModel.disableInput"
                                                 data-ng-model="$ctrl.viewModel.username" data-ng-maxlength="35" data-ng-minlength="2"
@@ -27,8 +27,8 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <div class="col-sm-8">
+                                <div class="col-md-7 col-md-offset-3">
+                                    <div class="col-sm-10">
                                         <div class="form-group">
                                             <input class="form-control" data-ng-disabled="$ctrl.viewModel.disableInput" 
                                                 data-ng-model="$ctrl.viewModel.password"  name="password" id="password" 
@@ -37,10 +37,18 @@
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-primary btn-lg" data-ng-disabled="$ctrl.viewModel.disableInput" type="submit">
+                            <button class="btn btn-primary btn-lg" data-ng-disabled="!registerForm.$valid || $ctrl.viewModel.disableInput" type="submit">
                                 <i class="fa fa-sign-in"></i>
                                 <span class="network-name">Login</span>
                             </button>
+                            <div class="row">
+                                <div class="col-sm-12 col-sm-offset-5">
+                                    <a class="btn btn-default btn-sm" href="" data-ui-sref="home.register">
+                                        <i class="fa fa-pencil"></i>
+                                        <span class="network-name">Register</span>
+                                    </a>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>

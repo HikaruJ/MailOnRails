@@ -23,7 +23,19 @@
             loginService.loginUser(ctrl.viewModel.password, ctrl.viewModel.username)
                 .then(function(data) {
                     if (data.status == 200) {
-                        $state.go('mail.inbox');
+                        loginService.getUser(ctrl.viewModel.username)
+                            .then(function(data) {
+                                if (data.status == 200) {
+                                    $state.go('mail.inbox', {
+                                        user: data.response
+                                    });
+                                } else {
+                                    modalService.alert(data, 'md');
+                                }
+
+                                $loading.finish('progress');
+                                ctrl.viewModel.disableInput = false;
+                            });
                     } else {
                         modalService.alert(data, 'md');
                     }

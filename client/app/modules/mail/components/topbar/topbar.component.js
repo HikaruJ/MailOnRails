@@ -9,10 +9,12 @@
         templateUrl: '/partials/mail/components/topbar/topbar.view.html'
     };
 
-    function TopbarController($scope, $state) {
+    function TopbarController($scope, $state, localStorageService) {
         var ctrl = this;
 
         ctrl.logout = function() {
+            localStorageService.remove('user');
+            localStorageService.remove('oauthData');
             $state.go('home.login');
         };
     }

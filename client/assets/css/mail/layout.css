@@ -274,3 +274,7 @@ body.mailbox {
 .note-editor.note-frame.panel.panel-default {
     background: none;
 }
+
+.icon-logout {
+    font-size: 21px;
+}

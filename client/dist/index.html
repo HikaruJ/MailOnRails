@@ -11,13 +11,11 @@
     <title>Mail on Rails</title>
 
     <link rel="stylesheet" href="bower_components/angular-loading/angular-loading.css">
-    <link rel="stylesheet" href="bower_components/summernote/dist/summernote.css">
-    <link rel="stylesheet" href="plugins/mcustom-scrollbar/mcustom_scrollbar.min.css">
-    <link rel="stylesheet" href="plugins/prettify/prettify.css">
-
+    <!-- inject:css -->
     <link rel="stylesheet" href="css/vendor.min.css">
     <link rel="stylesheet" href="css/home.min.css">
     <link rel="stylesheet" href="css/mail.min.css">
+    <!-- endinject -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,12 +27,15 @@
 
 <body>
     <data-ui-view></data-ui-view>
-    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <!-- inject:js -->
     <script src="js/main.min.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="js/templates.min.js"></script>
+    <!-- endinject -->
 
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/spin.js/spin.js"></script>
     <script src="bower_components/bootstrap-loading/dist/ladda.js"></script>
     <script src="bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.js"></script>
@@ -44,8 +45,7 @@
     <script src="bower_components/zxcvbn/dist/zxcvbn.js"></script>
     <script src="bower_components/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
     <script src="bower_components/summernote/dist/summernote.js"></script>
-
-    <script src="plugins/summernote-ext-rtl.js"></script>
+    <!-- endbower -->
 </body>
 
 </html>
