@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users' }
 
   devise_scope :user do
+    post 'users/get_user_by_email', :to => 'users#get_user_by_email'
     post 'users/email_exists', :to => 'users#email_exists'
   end
 

@@ -24,6 +24,18 @@ class UsersController < Devise::RegistrationsController
         end
     end
 
+    def get_user_by_email
+        if email_exists?
+            render status: 200,
+                json: { response: {user: @user} }
+            return
+        else
+            render status: 200,
+                json: { response: "Email #{user_params[:email]} is not registered in the system." }
+            return
+        end
+    end
+
     def email_exists
         if email_exists?
             render status: 409,
@@ -34,17 +46,6 @@ class UsersController < Devise::RegistrationsController
         render status: 200,
             json: { response: "Email #{user_params[:email]} is not registered in the system." }
         return
-    end
-
-    def login
-        if doorkeeper_oauth_client and email_exists?
-            @access_token = doorkeeper_access_token(@user)
-            render status: 201,
-                json: { response: Doorkeeper::OAuth::TokenResponse.new(@access_token).body.merge(user: @user) }
-            return
-        else 
-            render json: { response: @user.errors, success: false }, status: 422
-        end
     end
 
 private
