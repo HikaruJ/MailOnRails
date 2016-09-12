@@ -4,6 +4,9 @@
 Mail on Rails is an ongoing project to study Ruby on Rails.  
 The project aim is to develop a web-based email service using Ruby on Rails and AngularJS.  
 
+## Demo
+http://52.88.52.83:5000/#/
+
 ## Project Status
 The project is currently still in early stages of development.
 - **Landing Page** [100%].
@@ -17,9 +20,6 @@ The project is currently still in early stages of development.
 - **Spam** [0%] - Development haven't started yet for this page.  
 - **Trash** [0%] - Development haven't started yet for this page.  
 - **Contact** [0%] - Development haven't started yet for this page.  
-
-## Demo
-http://52.88.52.83:5000/#/
 
 ## Design
 The project utilizes the [Make template](https://themeforest.net/item/make-admin-template-builder-html-angularjs/10511387?s_rank=4) for the mailbox design and the [StartBootstrap](https://startbootstrap.com/template-overviews/landing-page/) for the landing page design.
