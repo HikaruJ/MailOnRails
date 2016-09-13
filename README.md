@@ -13,7 +13,7 @@ The project is currently still in early stages of development.
 - **Registration** [100%].
 - **Login** [100%].  
 - **Inbox** [40%] - The UI for the inbox page is under development. No functionality is implemented yet.
-- **Compose** [15%] - The UI for the compose page is under development. No functionality is implmeneted yet.
+- **Compose** [50%] - Compose page supports sending an email, but without formatting. Contacts haven't developed yet.
 - **Sent Mail** [0%] - Development haven't started yet for this page.  
 - **Important** [0%] - Development haven't started yet for this page.  
 - **Draft** [0%] - Development haven't started yet for this page.  
