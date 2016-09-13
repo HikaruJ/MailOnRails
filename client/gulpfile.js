@@ -266,13 +266,13 @@ gulp.task('html', [
 gulp.task('webserver', function() {
     connect.server({
         fallback: './dist/index.html',
-        host: '127.0.0.1',
+        host: 'mailonrails.com',
         https: false,
         livereload: true,
         middleware: function(connect) {
             return [connect().use('/bower_components', connect.static('bower_components'))];
         },
-        port: 5000,
+        port: 8080,
         root: 'dist'
     });
 });

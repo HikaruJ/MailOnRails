@@ -58,7 +58,7 @@ Rails.application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = false
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
@@ -76,3 +76,8 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end
+
+DOORKEEPER_APP_ID = "375c2e3fdef2acba33ceefaa14be2b251d5174b9defc2a3b8e27fee8103a5aeb"
+DOORKEEPER_APP_NAME = "MailOnRails"
+DOORKEEPER_APP_SECRET = "6a2fa82ab6f7b565c8f8f57f677e408ebcda208709bde6eae0a784b48b49205c"
+DOORKEEPER_APP_URL = "http://mailonrails.com:5000/mail"

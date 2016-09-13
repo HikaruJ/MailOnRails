@@ -7,11 +7,12 @@
         templateUrl: '/partials/mail/components/compose/compose.view.html'
     };
 
-    function ComposeController($scope, localStorageService, mailService) {
+    function ComposeController($scope, $state, localStorageService, mailService, modalService) {
         var ctrl = this;
 
         ctrl.viewModel = {
             body: '',
+            disableInput: false,
             recipient: '',
             subject: '',
             user: localStorageService.get('user')
@@ -39,13 +40,27 @@
         };
 
         ctrl.submit = function() {
+            ctrl.viewModel.disableInput = true;
+
             var body = ctrl.viewModel.body;
-            var from = ctrl.viewModel.from;
+            var from = ctrl.viewModel.user.email;
             var subject = ctrl.viewModel.subject;
             var to = ctrl.viewModel.recipient;
 
             mailService.send(body, from, subject, to)
-                .then(function(response) {});
+                .then(function(response) {
+                    if (response.status == 200) {
+                        modalService.info(response.data.response, 'md');
+                        ctrl.viewModel.disableInput = false;
+
+                        $state.go('mail.inbox', {
+                            user: ctrl.viewModel.user
+                        });
+                    }
+                })
+                .catch(function(error) {
+                    ctrl.viewModel.disableInput = false;
+                });
         };
     }
 

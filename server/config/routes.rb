@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   end
 
   namespace :api, defaults: {format: "json"} do
-    scope module: :v1 do
-      
+    namespace :v1 do
+      resources :emails
     end
   end
   

@@ -8063,3 +8063,1333 @@ Processing by Doorkeeper::TokensController#create as HTML
   [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@mailonrails.com' LIMIT 1
   [1m[36mDoorkeeper::AccessToken Load (0.5ms)[0m  [1mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."application_id" IS NULL AND "oauth_access_tokens"."resource_owner_id" = 1 AND "oauth_access_tokens"."revoked_at" IS NULL  ORDER BY created_at desc LIMIT 1[0m
 Completed 200 OK in 76ms
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-09-13 06:27:16 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (26.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Doorkeeper::TokensController#create as HTML
+  Parameters: {"grant_type"=>"password", "username"=>"orperl", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (42.1ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Load (27.4ms)[0m  [1mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."application_id" IS NULL AND "oauth_access_tokens"."resource_owner_id" = 6 AND "oauth_access_tokens"."revoked_at" IS NULL  ORDER BY created_at desc LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mDoorkeeper::AccessToken Exists (37.8ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = '364869cb2e34776cbea39b2dc2c04ff51217d8ba1cd8beab11857270e1439f51' LIMIT 1[0m
+  [1m[35mDoorkeeper::AccessToken Exists (1.1ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = '155ec7907f0f918a6a8a880bef15f98ef80e2f14b6acf7bcf80ebb253e6355f8' LIMIT 1
+  [1m[36mSQL (40.5ms)[0m  [1mINSERT INTO "oauth_access_tokens" ("created_at", "expires_in", "refresh_token", "resource_owner_id", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2016-09-13 03:27:21.059484"], ["expires_in", 7200], ["refresh_token", "155ec7907f0f918a6a8a880bef15f98ef80e2f14b6acf7bcf80ebb253e6355f8"], ["resource_owner_id", 6], ["scopes", ""], ["token", "364869cb2e34776cbea39b2dc2c04ff51217d8ba1cd8beab11857270e1439f51"]]
+  [1m[35m (1.4ms)[0m  COMMIT
+Completed 200 OK in 632ms
+
+
+Started POST "/users/get_user_by_email" for 127.0.0.1 at 2016-09-13 06:27:21 +0300
+Processing by UsersController#get_user_by_email as HTML
+  Parameters: {"username"=>"orperl"}
+Unpermitted parameters: username
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.52ms)
+Completed 200 OK in 147ms (Views: 110.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 07:32:04 +0300
+
+ActionController::RoutingError (No route matches [POST] "/api/v1/emails"):
+  actionpack (4.1.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.12) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.12) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.1.12) lib/rails/engine.rb:514:in `call'
+  railties (4.1.12) lib/rails/application.rb:144:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  rack (1.5.5) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.5) lib/rack/handler/webrick.rb:60:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.0ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/routes/_table.html.erb (105.5ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (250.5ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 07:34:26 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (uninitialized constant Api::V1):
+  activesupport (4.1.12) lib/active_support/inflector/methods.rb:240:in `const_get'
+  activesupport (4.1.12) lib/active_support/inflector/methods.rb:240:in `block in constantize'
+  activesupport (4.1.12) lib/active_support/inflector/methods.rb:236:in `each'
+  activesupport (4.1.12) lib/active_support/inflector/methods.rb:236:in `inject'
+  activesupport (4.1.12) lib/active_support/inflector/methods.rb:236:in `constantize'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:78:in `controller_reference'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:68:in `controller'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:46:in `call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  rack (1.5.5) lib/rack/etag.rb:23:in `call'
+  rack (1.5.5) lib/rack/conditionalget.rb:35:in `call'
+  rack (1.5.5) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.12) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.12) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.12) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.12) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.12) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.1.12) lib/rails/engine.rb:514:in `call'
+  railties (4.1.12) lib/rails/application.rb:144:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  rack (1.5.5) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.5) lib/rack/handler/webrick.rb:60:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/routes/_table.html.erb (10.5ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (42.8ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 07:38:30 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (uninitialized constant Api::V1):
+  activesupport (4.1.12) lib/active_support/inflector/methods.rb:240:in `const_get'
+  activesupport (4.1.12) lib/active_support/inflector/methods.rb:240:in `block in constantize'
+  activesupport (4.1.12) lib/active_support/inflector/methods.rb:236:in `each'
+  activesupport (4.1.12) lib/active_support/inflector/methods.rb:236:in `inject'
+  activesupport (4.1.12) lib/active_support/inflector/methods.rb:236:in `constantize'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:78:in `controller_reference'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:68:in `controller'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:46:in `call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  rack (1.5.5) lib/rack/etag.rb:23:in `call'
+  rack (1.5.5) lib/rack/conditionalget.rb:35:in `call'
+  rack (1.5.5) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.12) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.12) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.12) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.12) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.12) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.1.12) lib/rails/engine.rb:514:in `call'
+  railties (4.1.12) lib/rails/application.rb:144:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  rack (1.5.5) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.5) lib/rack/handler/webrick.rb:60:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/routes/_table.html.erb (4.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (36.8ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 07:39:09 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (uninitialized constant Api::V1):
+  activesupport (4.1.12) lib/active_support/inflector/methods.rb:240:in `const_get'
+  activesupport (4.1.12) lib/active_support/inflector/methods.rb:240:in `block in constantize'
+  activesupport (4.1.12) lib/active_support/inflector/methods.rb:236:in `each'
+  activesupport (4.1.12) lib/active_support/inflector/methods.rb:236:in `inject'
+  activesupport (4.1.12) lib/active_support/inflector/methods.rb:236:in `constantize'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:78:in `controller_reference'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:68:in `controller'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:46:in `call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  rack (1.5.5) lib/rack/etag.rb:23:in `call'
+  rack (1.5.5) lib/rack/conditionalget.rb:35:in `call'
+  rack (1.5.5) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.12) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.12) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.12) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.12) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.12) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.1.12) lib/rails/engine.rb:514:in `call'
+  railties (4.1.12) lib/rails/application.rb:144:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  rack (1.5.5) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.5) lib/rack/handler/webrick.rb:60:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.7ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/routes/_table.html.erb (37.6ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (74.9ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 07:40:43 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (uninitialized constant Api::V1):
+  activesupport (4.1.12) lib/active_support/inflector/methods.rb:240:in `const_get'
+  activesupport (4.1.12) lib/active_support/inflector/methods.rb:240:in `block in constantize'
+  activesupport (4.1.12) lib/active_support/inflector/methods.rb:236:in `each'
+  activesupport (4.1.12) lib/active_support/inflector/methods.rb:236:in `inject'
+  activesupport (4.1.12) lib/active_support/inflector/methods.rb:236:in `constantize'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:78:in `controller_reference'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:68:in `controller'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:46:in `call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  rack (1.5.5) lib/rack/etag.rb:23:in `call'
+  rack (1.5.5) lib/rack/conditionalget.rb:35:in `call'
+  rack (1.5.5) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.12) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.12) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.12) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.12) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.12) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.1.12) lib/rails/engine.rb:514:in `call'
+  railties (4.1.12) lib/rails/application.rb:144:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  rack (1.5.5) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.5) lib/rack/handler/webrick.rb:60:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.8ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/routes/_table.html.erb (7.5ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (43.8ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 07:41:55 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (uninitialized constant Api::V1::EmailsController):
+  activesupport (4.1.12) lib/active_support/inflector/methods.rb:240:in `const_get'
+  activesupport (4.1.12) lib/active_support/inflector/methods.rb:240:in `block in constantize'
+  activesupport (4.1.12) lib/active_support/inflector/methods.rb:236:in `each'
+  activesupport (4.1.12) lib/active_support/inflector/methods.rb:236:in `inject'
+  activesupport (4.1.12) lib/active_support/inflector/methods.rb:236:in `constantize'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:78:in `controller_reference'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:68:in `controller'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:46:in `call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  rack (1.5.5) lib/rack/etag.rb:23:in `call'
+  rack (1.5.5) lib/rack/conditionalget.rb:35:in `call'
+  rack (1.5.5) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.12) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.12) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.12) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.12) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.12) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.1.12) lib/rails/engine.rb:514:in `call'
+  railties (4.1.12) lib/rails/application.rb:144:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  rack (1.5.5) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.5) lib/rack/handler/webrick.rb:60:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/routes/_table.html.erb (5.7ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (33.0ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 07:43:13 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::EmailsController#create as JSON
+  [1m[35mDoorkeeper::AccessToken Load (73.4ms)[0m  SELECT  "oauth_access_tokens".* FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = '364869cb2e34776cbea39b2dc2c04ff51217d8ba1cd8beab11857270e1439f51' LIMIT 1
+Completed 401 Unauthorized in 464ms (ActiveRecord: 234.1ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 07:45:40 +0300
+Processing by Api::V1::EmailsController#create as JSON
+  [1m[36mDoorkeeper::AccessToken Load (0.4ms)[0m  [1mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = '364869cb2e34776cbea39b2dc2c04ff51217d8ba1cd8beab11857270e1439f51' LIMIT 1[0m
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.4ms)
+  [1m[36mDoorkeeper::AccessToken Load (0.5ms)[0m  [1mSELECT "oauth_access_tokens".* FROM "oauth_access_tokens"[0m
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 07:50:17 +0300
+Processing by Api::V1::EmailsController#create as JSON
+  [1m[35mDoorkeeper::AccessToken Load (1.1ms)[0m  SELECT  "oauth_access_tokens".* FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = '364869cb2e34776cbea39b2dc2c04ff51217d8ba1cd8beab11857270e1439f51' LIMIT 1
+Completed 401 Unauthorized in 3ms (ActiveRecord: 1.1ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-09-13 07:50:28 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"username"=>"Hikarij"}
+Unpermitted parameters: username
+  [1m[36mUser Load (26.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@mailonrails.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 200 OK in 121ms (Views: 89.2ms | ActiveRecord: 27.8ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-09-13 07:50:38 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"first_name"=>"Hikari", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "username"=>"Hikarij"}
+Unpermitted parameters: username
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'hikarij@mailonrails.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (30.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'hikarij@mailonrails.com' LIMIT 1
+  [1m[36mSQL (103.0ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "first_name", "last_name") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "hikarij@mailonrails.com"], ["encrypted_password", "$2a$10$i07e75.UZ4BmL0/C9/.B8eUwDAnFAPQkuUUn4u4m94Hbq/iMmPKQ2"], ["first_name", "Hikari"], ["last_name", "Perlman"]]
+  [1m[35m (2.7ms)[0m  COMMIT
+  [1m[36mDoorkeeper::Application Load (26.6ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Load (0.2ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1[0m  [["id", 375]]
+  [1m[35mDoorkeeper::AccessToken Exists (0.3ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = '1f859819630efa2c0daaa6ca15b3fc90482803c3fb7c27f39d44383222d95f24' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = 'f805d96f6f5de49a36390d43500ea7322d29c1c6853cc8911d1b214a4ec5d24d' LIMIT 1[0m
+  [1m[35mSQL (62.2ms)[0m  INSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "resource_owner_id", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["application_id", 375], ["created_at", "2016-09-13 04:50:39.382605"], ["expires_in", 7200], ["refresh_token", "f805d96f6f5de49a36390d43500ea7322d29c1c6853cc8911d1b214a4ec5d24d"], ["resource_owner_id", 7], ["scopes", "public write preferences"], ["token", "1f859819630efa2c0daaa6ca15b3fc90482803c3fb7c27f39d44383222d95f24"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.41ms)
+Completed 201 Created in 650ms (Views: 1.1ms | ActiveRecord: 289.0ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-09-13 07:51:21 +0300
+Processing by Doorkeeper::TokensController#create as HTML
+  Parameters: {"grant_type"=>"password", "username"=>"orperl", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (17.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Load (15.3ms)[0m  [1mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."application_id" IS NULL AND "oauth_access_tokens"."resource_owner_id" = 6 AND "oauth_access_tokens"."revoked_at" IS NULL  ORDER BY created_at desc LIMIT 1[0m
+Completed 200 OK in 104ms
+
+
+Started POST "/users/get_user_by_email" for 127.0.0.1 at 2016-09-13 07:51:21 +0300
+Processing by UsersController#get_user_by_email as HTML
+  Parameters: {"username"=>"orperl"}
+Unpermitted parameters: username
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.47ms)
+Completed 200 OK in 4ms (Views: 1.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-09-13 07:51:30 +0300
+Processing by Doorkeeper::TokensController#create as HTML
+  Parameters: {"grant_type"=>"password", "username"=>"orperl", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1[0m
+  [1m[35mDoorkeeper::AccessToken Load (0.4ms)[0m  SELECT  "oauth_access_tokens".* FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."application_id" IS NULL AND "oauth_access_tokens"."resource_owner_id" = 6 AND "oauth_access_tokens"."revoked_at" IS NULL  ORDER BY created_at desc LIMIT 1
+Completed 200 OK in 75ms
+
+
+Started POST "/users/get_user_by_email" for 127.0.0.1 at 2016-09-13 07:51:40 +0300
+Processing by UsersController#get_user_by_email as HTML
+  Parameters: {"username"=>"orperl"}
+Unpermitted parameters: username
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.47ms)
+Completed 200 OK in 8ms (Views: 4.4ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 07:53:23 +0300
+Processing by Api::V1::EmailsController#create as JSON
+  [1m[35mDoorkeeper::AccessToken Load (1.0ms)[0m  SELECT  "oauth_access_tokens".* FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = '364869cb2e34776cbea39b2dc2c04ff51217d8ba1cd8beab11857270e1439f51' LIMIT 1
+Completed 401 Unauthorized in 3ms (ActiveRecord: 1.0ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 07:53:55 +0300
+Processing by Api::V1::EmailsController#create as JSON
+  [1m[36mDoorkeeper::AccessToken Load (0.8ms)[0m  [1mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = '364869cb2e34776cbea39b2dc2c04ff51217d8ba1cd8beab11857270e1439f51' LIMIT 1[0m
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.8ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 18:09:58 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (3.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::EmailsController#create as JSON
+Unpermitted parameters: format
+
+UserMailer#send_email: processed outbound mail in 1.0ms
+Completed 500 Internal Server Error in 16496ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `category' for #<UserMailer:0x007f83e82369f0>):
+  app/mailers/user_mailer.rb:3:in `send_email'
+  app/controllers/api/v1/emails_controller.rb:7:in `create'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (26.2ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 18:14:44 +0300
+Processing by Api::V1::EmailsController#create as JSON
+Completed 500 Internal Server Error in 10568ms (ActiveRecord: 0.0ms)
+
+SystemExit (exit):
+  app/controllers/api/v1/emails_controller.rb:7:in `create'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.0ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (10.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (8.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (73.7ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 18:56:17 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (49.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::EmailsController#create as JSON
+  Parameters: {"body"=>"<p>Hello World</p>", "subject"=>"Twst", "to"=>"HikariJ@gmail.com"}
+Unpermitted parameters: format
+
+UserMailer#send_email: processed outbound mail in 2.2ms
+Completed 500 Internal Server Error in 17806ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `category' for #<UserMailer:0x007f65bc7039a0>):
+  app/mailers/user_mailer.rb:3:in `send_email'
+  app/controllers/api/v1/emails_controller.rb:7:in `create'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.0ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (42.3ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 19:02:10 +0300
+Processing by Api::V1::EmailsController#create as JSON
+  Parameters: {"body"=>"<p>Hello World</p>", "subject"=>"Twst", "to"=>"HikariJ@gmail.com"}
+Unpermitted parameters: format
+
+UserMailer#send_email: processed outbound mail in 63.5ms
+Completed 500 Internal Server Error in 3170ms (ActiveRecord: 0.0ms)
+
+ActionView::MissingTemplate (Missing template user_mailer/send_email with "mailer". Searched in:
+  * "user_mailer"
+):
+  app/mailers/user_mailer.rb:3:in `send_email'
+  app/controllers/api/v1/emails_controller.rb:7:in `create'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (1.4ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 19:07:03 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (22.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::EmailsController#create as JSON
+  Parameters: {"body"=>"<p>Hello World</p>", "subject"=>"Twst", "to"=>"HikariJ@gmail.com"}
+Unpermitted parameters: format
+
+UserMailer#send_email: processed outbound mail in 662.0ms
+Completed 500 Internal Server Error in 5288ms (ActiveRecord: 0.0ms)
+
+ActionView::MissingTemplate (Missing template api/v1/emails/create, application/create with {:locale=>[:en], :formats=>[:json], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby]}. Searched in:
+  * "/home/nogi/.rvm/gems/ruby-2.1.3/gems/doorkeeper-3.1.0/app/views"
+  * "/home/nogi/.rvm/gems/ruby-2.1.3/gems/devise-3.3.0/app/views"
+):
+  actionview (4.1.12) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.1.12) lib/action_view/lookup_context.rb:124:in `find'
+  actionview (4.1.12) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionview (4.1.12) lib/action_view/renderer/template_renderer.rb:41:in `determine_template'
+  actionview (4.1.12) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.1.12) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.1.12) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.1.12) lib/action_view/rendering.rb:99:in `_render_template'
+  actionview (4.1.12) lib/action_view/rendering.rb:82:in `render_to_body'
+  actionpack (4.1.12) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.1.12) lib/action_controller/metal/renderers.rb:32:in `render_to_body'
+  actionpack (4.1.12) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.1.12) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.1.12) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.1.12) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.1.12) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.1.12) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.1.12) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.1.12) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.1.12) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.1.12) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:552:in `block (2 levels) in compile'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.12) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.12) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.1.12) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.12) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.12) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  activerecord (4.1.12) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.12) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.12) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.12) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.12) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.12) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  rack (1.5.5) lib/rack/etag.rb:23:in `call'
+  rack (1.5.5) lib/rack/conditionalget.rb:35:in `call'
+  rack (1.5.5) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.12) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.12) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.12) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.12) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.12) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.1.12) lib/rails/engine.rb:514:in `call'
+  railties (4.1.12) lib/rails/application.rb:144:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  rack (1.5.5) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.5) lib/rack/handler/webrick.rb:60:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (7.4ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 19:07:47 +0300
+Processing by Api::V1::EmailsController#create as JSON
+  Parameters: {"body"=>"<p>Hello World</p>", "subject"=>"Twst", "to"=>"HikariJ@gmail.com"}
+Unpermitted parameters: format
+
+UserMailer#send_email: processed outbound mail in 181314.6ms
+Completed 500 Internal Server Error in 191935ms (ActiveRecord: 0.0ms)
+
+ActionView::MissingTemplate (Missing template api/v1/emails/create, application/create with {:locale=>[:en], :formats=>[:json], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby]}. Searched in:
+  * "/home/nogi/.rvm/gems/ruby-2.1.3/gems/doorkeeper-3.1.0/app/views"
+  * "/home/nogi/.rvm/gems/ruby-2.1.3/gems/devise-3.3.0/app/views"
+):
+  actionview (4.1.12) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.1.12) lib/action_view/lookup_context.rb:124:in `find'
+  actionview (4.1.12) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionview (4.1.12) lib/action_view/renderer/template_renderer.rb:41:in `determine_template'
+  actionview (4.1.12) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.1.12) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.1.12) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.1.12) lib/action_view/rendering.rb:99:in `_render_template'
+  actionview (4.1.12) lib/action_view/rendering.rb:82:in `render_to_body'
+  actionpack (4.1.12) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.1.12) lib/action_controller/metal/renderers.rb:32:in `render_to_body'
+  actionpack (4.1.12) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.1.12) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.1.12) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.1.12) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.1.12) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.1.12) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.1.12) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.1.12) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.1.12) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.1.12) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:552:in `block (2 levels) in compile'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.12) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.12) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.1.12) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.12) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.12) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  activerecord (4.1.12) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.12) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.12) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.12) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.12) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.12) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  rack (1.5.5) lib/rack/etag.rb:23:in `call'
+  rack (1.5.5) lib/rack/conditionalget.rb:35:in `call'
+  rack (1.5.5) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.12) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.12) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.12) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.12) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.12) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.1.12) lib/rails/engine.rb:514:in `call'
+  railties (4.1.12) lib/rails/application.rb:144:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  rack (1.5.5) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.5) lib/rack/handler/webrick.rb:60:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (1.3ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 19:13:23 +0300
+Processing by Api::V1::EmailsController#create as JSON
+  Parameters: {"body"=>"<p>Hello World</p>", "subject"=>"Twst", "to"=>"HikariJ@gmail.com"}
+Completed 500 Internal Server Error in 15613ms (ActiveRecord: 0.0ms)
+
+SystemExit (exit):
+  app/controllers/api/v1/emails_controller.rb:7:in `create'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (20.6ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (23.6ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (19.0ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (170.2ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 19:14:05 +0300
+Processing by Api::V1::EmailsController#create as JSON
+  Parameters: {"body"=>"<p>Hello World</p>", "subject"=>"Twst", "to"=>"HikariJ@gmail.com"}
+Unpermitted parameters: format
+
+UserMailer#send_email: processed outbound mail in 15539.2ms
+Completed 500 Internal Server Error in 20336ms (ActiveRecord: 0.0ms)
+
+ActionView::MissingTemplate (Missing template api/v1/emails/create, application/create with {:locale=>[:en], :formats=>[:json], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby]}. Searched in:
+  * "/home/nogi/.rvm/gems/ruby-2.1.3/gems/doorkeeper-3.1.0/app/views"
+  * "/home/nogi/.rvm/gems/ruby-2.1.3/gems/devise-3.3.0/app/views"
+):
+  actionview (4.1.12) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.1.12) lib/action_view/lookup_context.rb:124:in `find'
+  actionview (4.1.12) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionview (4.1.12) lib/action_view/renderer/template_renderer.rb:41:in `determine_template'
+  actionview (4.1.12) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.1.12) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.1.12) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.1.12) lib/action_view/rendering.rb:99:in `_render_template'
+  actionview (4.1.12) lib/action_view/rendering.rb:82:in `render_to_body'
+  actionpack (4.1.12) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.1.12) lib/action_controller/metal/renderers.rb:32:in `render_to_body'
+  actionpack (4.1.12) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.1.12) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.1.12) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.1.12) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.1.12) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.1.12) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.1.12) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.1.12) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.1.12) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.1.12) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:552:in `block (2 levels) in compile'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.12) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.12) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.1.12) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.12) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.12) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  activerecord (4.1.12) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.12) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.12) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.12) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.12) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.12) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  rack (1.5.5) lib/rack/etag.rb:23:in `call'
+  rack (1.5.5) lib/rack/conditionalget.rb:35:in `call'
+  rack (1.5.5) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.12) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.12) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.12) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.12) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.12) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.1.12) lib/rails/engine.rb:514:in `call'
+  railties (4.1.12) lib/rails/application.rb:144:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  rack (1.5.5) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.5) lib/rack/handler/webrick.rb:60:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (1.3ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 19:14:57 +0300
+Processing by Api::V1::EmailsController#create as JSON
+  Parameters: {"body"=>"<p>Hello World</p>", "subject"=>"Twst", "to"=>"HikariJ@gmail.com"}
+Unpermitted parameters: format
+
+UserMailer#send_email: processed outbound mail in 23712.6ms
+Completed 500 Internal Server Error in 197808ms (ActiveRecord: 0.0ms)
+
+SystemExit (exit):
+  app/mailers/user_mailer.rb:4:in `send_email'
+  app/controllers/api/v1/emails_controller.rb:7:in `create'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (30.7ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (22.7ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (15.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (135.9ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 19:20:10 +0300
+Processing by Api::V1::EmailsController#create as JSON
+  Parameters: {"body"=>"<p>Hello World</p>", "subject"=>"Twst", "to"=>"HikariJ@gmail.com"}
+Completed 500 Internal Server Error in 27287ms (ActiveRecord: 0.0ms)
+
+SystemExit (exit):
+  app/controllers/api/v1/emails_controller.rb:7:in `create'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (13.7ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (44.7ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (14.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (131.0ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 19:20:43 +0300
+Processing by Api::V1::EmailsController#create as JSON
+  Parameters: {"body"=>"<p>Hello World</p>", "from"=>"orperl@mailonrails.com", "subject"=>"Test Email", "to"=>"HikariJ@gmail.com"}
+Unpermitted parameters: format
+
+UserMailer#send_email: processed outbound mail in 1440.2ms
+Completed 500 Internal Server Error in 5095ms (ActiveRecord: 0.0ms)
+
+ActionView::MissingTemplate (Missing template api/v1/emails/create, application/create with {:locale=>[:en], :formats=>[:json], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby]}. Searched in:
+  * "/home/nogi/.rvm/gems/ruby-2.1.3/gems/doorkeeper-3.1.0/app/views"
+  * "/home/nogi/.rvm/gems/ruby-2.1.3/gems/devise-3.3.0/app/views"
+):
+  actionview (4.1.12) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.1.12) lib/action_view/lookup_context.rb:124:in `find'
+  actionview (4.1.12) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionview (4.1.12) lib/action_view/renderer/template_renderer.rb:41:in `determine_template'
+  actionview (4.1.12) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.1.12) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.1.12) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.1.12) lib/action_view/rendering.rb:99:in `_render_template'
+  actionview (4.1.12) lib/action_view/rendering.rb:82:in `render_to_body'
+  actionpack (4.1.12) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.1.12) lib/action_controller/metal/renderers.rb:32:in `render_to_body'
+  actionpack (4.1.12) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.1.12) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.1.12) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.1.12) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.1.12) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.1.12) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.1.12) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.1.12) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.1.12) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.1.12) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:552:in `block (2 levels) in compile'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.12) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.12) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.1.12) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.12) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.12) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  activerecord (4.1.12) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.12) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.12) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.12) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.12) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.12) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  rack (1.5.5) lib/rack/etag.rb:23:in `call'
+  rack (1.5.5) lib/rack/conditionalget.rb:35:in `call'
+  rack (1.5.5) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.12) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.12) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.12) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.12) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.12) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.1.12) lib/rails/engine.rb:514:in `call'
+  railties (4.1.12) lib/rails/application.rb:144:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  rack (1.5.5) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.5) lib/rack/handler/webrick.rb:60:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (2.4ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 19:24:45 +0300
+Processing by Api::V1::EmailsController#create as JSON
+  Parameters: {"body"=>"<p>Hello World</p>", "from"=>"orperl@mailonrails.com", "subject"=>"Test Email", "to"=>"HikariJ@gmail.com"}
+Unpermitted parameters: format
+
+ActionMailer::Base#mail: processed outbound mail in 2.9ms
+
+Sent mail to HikariJ@gmail.com (2064.8ms)
+Date: Tue, 13 Sep 2016 19:24:52 +0300
+From: orperl@mailonrails.com
+To: HikariJ@gmail.com
+Message-ID: <57d828542d5bb_174b3fa7c4315cd03063c@Nishino-PC.mail>
+Subject: Test Email
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Hello World</p>
+
+UserMailer#send_email: processed outbound mail in 4160.2ms
+Completed 500 Internal Server Error in 7967ms (ActiveRecord: 0.0ms)
+
+ActionView::MissingTemplate (Missing template api/v1/emails/create, application/create with {:locale=>[:en], :formats=>[:json], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby]}. Searched in:
+  * "/home/nogi/.rvm/gems/ruby-2.1.3/gems/doorkeeper-3.1.0/app/views"
+  * "/home/nogi/.rvm/gems/ruby-2.1.3/gems/devise-3.3.0/app/views"
+):
+  actionview (4.1.12) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.1.12) lib/action_view/lookup_context.rb:124:in `find'
+  actionview (4.1.12) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionview (4.1.12) lib/action_view/renderer/template_renderer.rb:41:in `determine_template'
+  actionview (4.1.12) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.1.12) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.1.12) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.1.12) lib/action_view/rendering.rb:99:in `_render_template'
+  actionview (4.1.12) lib/action_view/rendering.rb:82:in `render_to_body'
+  actionpack (4.1.12) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.1.12) lib/action_controller/metal/renderers.rb:32:in `render_to_body'
+  actionpack (4.1.12) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.1.12) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.1.12) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.1.12) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.1.12) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.1.12) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.1.12) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.1.12) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.1.12) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.1.12) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:552:in `block (2 levels) in compile'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:502:in `call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.12) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.12) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.1.12) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.12) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.12) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.12) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  activerecord (4.1.12) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.12) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.12) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.12) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.12) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.12) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  rack (1.5.5) lib/rack/etag.rb:23:in `call'
+  rack (1.5.5) lib/rack/conditionalget.rb:35:in `call'
+  rack (1.5.5) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.12) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.12) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.12) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.12) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.12) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.1.12) lib/rails/engine.rb:514:in `call'
+  railties (4.1.12) lib/rails/application.rb:144:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  rack (1.5.5) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.5) lib/rack/handler/webrick.rb:60:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (1.4ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-09-13 21:17:34 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (126.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Doorkeeper::TokensController#create as HTML
+  Parameters: {"grant_type"=>"password", "username"=>"orperl", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (54.1ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Load (45.4ms)[0m  [1mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."application_id" IS NULL AND "oauth_access_tokens"."resource_owner_id" = 6 AND "oauth_access_tokens"."revoked_at" IS NULL  ORDER BY created_at desc LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  BEGIN
+  [1m[36mDoorkeeper::AccessToken Exists (31.3ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = '47c9a19213e7fea2b8eae1ea86efb7ae8d1b63ce9e3df787cabb6f9ddc7bd3bd' LIMIT 1[0m
+  [1m[35mDoorkeeper::AccessToken Exists (1.3ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = 'b58bdc99a72f6e0e2d3c950dbf8cadde61456c3da5547128eb8623d55ccfe27a' LIMIT 1
+  [1m[36mSQL (47.8ms)[0m  [1mINSERT INTO "oauth_access_tokens" ("created_at", "expires_in", "refresh_token", "resource_owner_id", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2016-09-13 18:17:37.336391"], ["expires_in", 7200], ["refresh_token", "b58bdc99a72f6e0e2d3c950dbf8cadde61456c3da5547128eb8623d55ccfe27a"], ["resource_owner_id", 6], ["scopes", ""], ["token", "47c9a19213e7fea2b8eae1ea86efb7ae8d1b63ce9e3df787cabb6f9ddc7bd3bd"]]
+  [1m[35m (80.0ms)[0m  COMMIT
+Completed 200 OK in 965ms
+
+
+Started POST "/users/get_user_by_email" for 127.0.0.1 at 2016-09-13 21:17:37 +0300
+Processing by UsersController#get_user_by_email as HTML
+  Parameters: {"username"=>"orperl"}
+Unpermitted parameters: username
+  [1m[36mUser Load (1.9ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.98ms)
+Completed 200 OK in 139ms (Views: 68.4ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 21:18:03 +0300
+Processing by Api::V1::EmailsController#create as JSON
+  Parameters: {"body"=>"<p><span style=\"font-weight: normal;\">Bookie </span>Bold</p>", "from"=>"orperl@mailonrails.com", "subject"=>"Test Email2", "to"=>"HikariJ@gmail.com"}
+Unpermitted parameters: format
+
+ActionMailer::Base#mail: processed outbound mail in 712.5ms
+
+Sent mail to HikariJ@gmail.com (1874.2ms)
+Date: Tue, 13 Sep 2016 21:18:03 +0300
+From: orperl@mailonrails.com
+To: HikariJ@gmail.com
+Message-ID: <57d842dbd66f0_16b62d280f0226ba@Nishino-PC.mail>
+Subject: Test Email2
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p><span style="font-weight: normal;">Bookie </span>Bold</p>
+
+UserMailer#send_email: processed outbound mail in 2589.5ms
+Completed 500 Internal Server Error in 2784ms (ActiveRecord: 0.0ms)
+
+ActionView::MissingTemplate (Missing template api/v1/emails/create, application/create with {:locale=>[:en], :formats=>[:json], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby]}. Searched in:
+  * "/home/nogi/.rvm/gems/ruby-2.1.3/gems/doorkeeper-3.1.0/app/views"
+  * "/home/nogi/.rvm/gems/ruby-2.1.3/gems/devise-3.3.0/app/views"
+):
+  app/controllers/api/v1/emails_controller.rb:8:in `create'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (25.2ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 21:20:43 +0300
+Processing by Api::V1::EmailsController#create as JSON
+  Parameters: {"body"=>"<p><span style=\"font-weight: normal;\">Bookie </span>Bold</p>", "from"=>"orperl@mailonrails.com", "subject"=>"Test Email3", "to"=>"HikariJ@gmail.com"}
+Unpermitted parameters: format
+
+ActionMailer::Base#mail: processed outbound mail in 2.4ms
+
+Sent mail to HikariJ@gmail.com (1218.5ms)
+Date: Tue, 13 Sep 2016 21:20:43 +0300
+From: orperl@mailonrails.com
+To: HikariJ@gmail.com
+Message-ID: <57d8437baac9e_16b63fdd100084e4227fb@Nishino-PC.mail>
+Subject: Test Email3
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p><span style="font-weight: normal;">Bookie </span>Bold</p>
+
+UserMailer#send_email: processed outbound mail in 1224.1ms
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.72ms)
+Completed 200 OK in 1292ms (Views: 54.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 21:22:30 +0300
+Processing by Api::V1::EmailsController#create as JSON
+  Parameters: {"body"=>"<p>check</p>", "from"=>"orperl@mailonrails.com", "subject"=>"Test Email4", "to"=>"HikariJ@gmail.com"}
+Unpermitted parameters: format
+
+UserMailer#send_email: processed outbound mail in 0.6ms
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.66ms)
+Completed 200 OK in 71ms (Views: 42.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 21:23:26 +0300
+Processing by Api::V1::EmailsController#create as JSON
+  Parameters: {"body"=>"<p>check</p>", "from"=>"orperl@mailonrails.com", "subject"=>"Test Email4", "to"=>"HikariJ@gmail.com"}
+Unpermitted parameters: format
+
+UserMailer#send_email: processed outbound mail in 0.4ms
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.25ms)
+Completed 200 OK in 6ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 21:24:38 +0300
+Processing by Api::V1::EmailsController#create as JSON
+  Parameters: {"body"=>"<p>Check</p>", "from"=>"orperl@mailonrails.com", "subject"=>"Test Email4", "to"=>"HikariJ@gmail.com"}
+Unpermitted parameters: format
+
+UserMailer#send_email: processed outbound mail in 0.4ms
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.33ms)
+Completed 200 OK in 6ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 21:24:45 +0300
+Processing by Api::V1::EmailsController#create as JSON
+  Parameters: {"body"=>"<p>Check</p>", "from"=>"orperl@mailonrails.com", "subject"=>"Test Email4", "to"=>"HikariJ@gmail.com"}
+Unpermitted parameters: format
+
+UserMailer#send_email: processed outbound mail in 0.3ms
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.31ms)
+Completed 200 OK in 6ms (Views: 3.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 21:25:06 +0300
+Processing by Api::V1::EmailsController#create as JSON
+  Parameters: {"body"=>"<p>check</p>", "from"=>"orperl@mailonrails.com", "subject"=>"Test Email4", "to"=>"HikariJ@gmail.com"}
+Unpermitted parameters: format
+
+UserMailer#send_email: processed outbound mail in 0.3ms
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.32ms)
+Completed 200 OK in 6ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-09-13 21:33:33 +0300
+Processing by Doorkeeper::TokensController#create as HTML
+  Parameters: {"grant_type"=>"password", "username"=>"orperl", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (1.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Load (1.3ms)[0m  [1mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."application_id" IS NULL AND "oauth_access_tokens"."resource_owner_id" = 6 AND "oauth_access_tokens"."revoked_at" IS NULL  ORDER BY created_at desc LIMIT 1[0m
+Completed 200 OK in 487ms
+
+
+Started POST "/users/get_user_by_email" for 127.0.0.1 at 2016-09-13 21:33:38 +0300
+Processing by UsersController#get_user_by_email as HTML
+  Parameters: {"username"=>"orperl"}
+Unpermitted parameters: username
+  [1m[35mUser Load (1.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.4ms)
+Completed 200 OK in 14ms (Views: 4.2ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/api/v1/emails" for 127.0.0.1 at 2016-09-13 21:34:15 +0300
+Processing by Api::V1::EmailsController#create as JSON
+  Parameters: {"body"=>"<p>Check</p>", "from"=>"orperl@mailonrails.com", "subject"=>"Test Email5", "to"=>"HikariJ@gmail.com"}
+Unpermitted parameters: format
+
+UserMailer#send_email: processed outbound mail in 1.1ms
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.66ms)
+Completed 200 OK in 13ms (Views: 4.6ms | ActiveRecord: 0.0ms)

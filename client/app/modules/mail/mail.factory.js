@@ -1,7 +1,7 @@
 (function() {
     "use strict";
 
-    var mailService = function($http, $log, angularConfig) {
+    var mailService = function($http, $log, angularConfig, localStorageService) {
         var baseUrl = angularConfig.baseUrl;
 
         var urls = {
@@ -22,16 +22,28 @@
                 to: to
             };
 
-            $http.post(urls.send, request)
+            var oauthData = localStorageService.get('oauthData');
+            if (oauthData === null) {
+                return null;
+            }
+
+            return $http({
+                    data: request,
+                    header: {
+                        'Authorization': 'Bearer ' + oauthData.refreshToken
+                    },
+                    method: 'POST',
+                    url: urls.send
+                })
                 .then(sendSuccess)
                 .catch(sendFailed);
 
             function sendSuccess(respond) {
-
+                return respond;
             }
 
             function sendFailed(error) {
-
+                return error;
             }
         }
     };

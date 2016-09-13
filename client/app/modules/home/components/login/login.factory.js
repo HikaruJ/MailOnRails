@@ -86,6 +86,7 @@
                 }
 
                 var data = respond.data;
+                debugger;
                 localStorageService.set('oauthData', {
                     accessToken: data.access_token,
                     refreshToken: data.refresh_token
