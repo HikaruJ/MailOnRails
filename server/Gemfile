@@ -10,9 +10,11 @@ gem 'active_model_serializers', '~> 0.10.0'
 gem 'angular_rails_csrf'
 gem 'devise'
 gem 'doorkeeper'
+gem 'foreigner'
 gem 'auto_increment'
 gem 'omniauth'
 gem 'omniauth-oauth2'
+gem 'rails-html-sanitizer'
 
 group :test, :development do
    gem 'byebug'

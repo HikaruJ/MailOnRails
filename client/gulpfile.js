@@ -262,17 +262,17 @@ gulp.task('html', [
             .pipe(gulp.dest(paths.target.root));
     });
 
-//  Load webserver for the application on port 9000
+//  Load webserver for the application on port 5000
 gulp.task('webserver', function() {
     connect.server({
         fallback: './dist/index.html',
-        host: 'mailonrails.com',
+        host: 'localhost',
         https: false,
         livereload: true,
         middleware: function(connect) {
             return [connect().use('/bower_components', connect.static('bower_components'))];
         },
-        port: 8080,
+        port: 5000,
         root: 'dist'
     });
 });

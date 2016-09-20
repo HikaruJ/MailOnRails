@@ -90,7 +90,7 @@
                                     <div class="answer-content"></div>
                                 </div>
                                 <div class="send-to m-t-10">
-                                    <input class="form-control form-white" data-ng-model="$ctrl.viewModel.recipient" data-ng-maxlength="35" data-ng-minlength="2" data-ng-pattern="/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i"
+                                    <input class="form-control form-white" data-ng-model="$ctrl.viewModel.recipient" data-ng-maxlength="254" data-ng-minlength="2" data-ng-pattern="/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i"
                                         id="recipient" name="recipient" placeholder="Recipient" type="text" required>
                                 </div>
                                 <div class="validation-color" data-ng-messages="composeForm.recipient.$error" style="margin-bottom:15px;">
@@ -99,7 +99,7 @@
                                     <div ng-message="pattern">Please enter a valid Email</div>
                                 </div>
                                 <div class="subject m-t-10">
-                                    <input class="form-control form-white" data-ng-model="$ctrl.viewModel.subject" data-ng-maxlength="100" data-ng-minlength="2" data-ng-pattern="/^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*$/" id="subject" name="subject" placeholder="Subject" type="text" required>
+                                    <input class="form-control form-white" data-ng-model="$ctrl.viewModel.subject" data-ng-maxlength="78" data-ng-minlength="2" data-ng-pattern="/^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*$/" id="subject" name="subject" placeholder="Subject" type="text" required>
                                 </div>
                                 <div class="validation-color" data-ng-messages="composeForm.subject.$error" style="margin-bottom:15px;">
                                     <div ng-message="maxlength">Subject is longer then allowed</div>
@@ -108,7 +108,7 @@
                                 </div>
                                 <div class="write-answer">
                                     <div class="answer-textarea" style="display: none;"></div>
-                                    <summernote config="$ctrl.viewModel.summernoteOptions" data-ng-model="$ctrl.viewModel.body" id="body" name="body"></summernote>
+                                    <summernote config="$ctrl.viewModel.summernoteOptions" data-ng-maxlength="1000" data-ng-minlength="2" data-ng-model="$ctrl.viewModel.body" id="body" name="body"></summernote>
                                     <button id="save" class="btn btn-primary" data-ng-disabled="!composeForm.$valid || $ctrl.viewModel.body === undefined || $ctrl.viewModel.body === null ||
                                         $ctrl.viewModel.body.length == 0 || $ctrl.viewModel.disableInput" type="submit">
                                         Send

@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160727123712) do
+ActiveRecord::Schema.define(version: 20160919024651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "message_categories", force: true do |t|
+    t.integer  "message_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "message_id"
+  end
 
   create_table "message_types", force: true do |t|
     t.string   "type_name"
@@ -23,11 +30,20 @@ ActiveRecord::Schema.define(version: 20160727123712) do
   end
 
   create_table "messages", force: true do |t|
-    t.string   "subject"
+    t.string   "from",              limit: 254
+    t.string   "to",                limit: 254
+    t.string   "bcc",               limit: 254
+    t.string   "cc",                limit: 254
+    t.string   "subject",           limit: 78
     t.text     "body"
+    t.boolean  "is_read",                       default: false
+    t.integer  "parent_message_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "oauth_access_grants", force: true do |t|
     t.integer  "resource_owner_id", null: false
@@ -69,15 +85,6 @@ ActiveRecord::Schema.define(version: 20160727123712) do
 
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
 
-  create_table "user_messages", force: true do |t|
-    t.integer  "user_id",         limit: 8
-    t.integer  "message_id",      limit: 8
-    t.integer  "message_type_id"
-    t.boolean  "is_read"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: true do |t|
     t.string   "email",                             default: "", null: false
     t.string   "encrypted_password",                default: "", null: false
@@ -95,5 +102,8 @@ ActiveRecord::Schema.define(version: 20160727123712) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  Foreigner.load
+  add_foreign_key "messages", "users", name: "messages_user_id_fk"
 
 end
