@@ -15,6 +15,7 @@
     var topbarComponent = require('./components/topbar/topbar.component');
 
     //Factory
+    var inboxService = require('./components/inbox/inbox.factory');
     var mailService = require('./mail.factory');
 
     module.exports = angular.module('inbox', [
@@ -27,5 +28,6 @@
         .component('mailMessage', messageComponent)
         .component('mailSidebar', sidebarComponent)
         .component('mailTopbar', topbarComponent)
+        .factory('inboxService', inboxService)
         .factory('mailService', mailService);
 }());

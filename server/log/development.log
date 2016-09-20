@@ -15163,3 +15163,1608 @@ LINE 1: SELECT "messages".* FROM "messages"  WHERE "messages"."paren...
   [1m[35m (62.1ms)[0m  COMMIT
   [1m[36mMessage Load (0.2ms)[0m  [1mSELECT "messages".* FROM "messages"  WHERE "messages"."user_id" = $1[0m  [["user_id", 1]]
   [1m[35mMessage Load (0.4ms)[0m  SELECT "messages".* FROM "messages"
+  [1m[36mMessageType Load (81.2ms)[0m  [1mSELECT "message_types".* FROM "message_types"  WHERE "message_types"."message_type" = 0[0m
+PG::UndefinedColumn: ERROR:  column message_types.message_type does not exist
+LINE 1: ...ECT "message_types".* FROM "message_types"  WHERE "message_t...
+                                                             ^
+: SELECT "message_types".* FROM "message_types"  WHERE "message_types"."message_type" = 0
+  [1m[36mMessageType Load (35.5ms)[0m  [1mSELECT "message_types".* FROM "message_types"  WHERE "message_types"."type_name" = 0[0m
+PG::UndefinedFunction: ERROR:  operator does not exist: character varying = integer
+LINE 1: ... FROM "message_types"  WHERE "message_types"."type_name" = 0
+                                                                    ^
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+: SELECT "message_types".* FROM "message_types"  WHERE "message_types"."type_name" = 0
+  [1m[35mMessageType Load (0.4ms)[0m  SELECT "message_types".* FROM "message_types"  WHERE "message_types"."type_name" = 1
+PG::UndefinedFunction: ERROR:  operator does not exist: character varying = integer
+LINE 1: ... FROM "message_types"  WHERE "message_types"."type_name" = 1
+                                                                    ^
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+: SELECT "message_types".* FROM "message_types"  WHERE "message_types"."type_name" = 1
+  [1m[36mMessageType Load (1.0ms)[0m  [1mSELECT  "message_types".* FROM "message_types"  WHERE "message_types"."type_name" = '1'  ORDER BY "message_types"."id" ASC LIMIT 1[0m
+  [1m[35mMessageType Load (0.4ms)[0m  SELECT "message_types".* FROM "message_types"
+  [1m[36mMessageType Load (1.1ms)[0m  [1mSELECT "message_types".* FROM "message_types"  WHERE "message_types"."type" = 1[0m
+PG::UndefinedColumn: ERROR:  column message_types.type does not exist
+LINE 1: ...ECT "message_types".* FROM "message_types"  WHERE "message_t...
+                                                             ^
+: SELECT "message_types".* FROM "message_types"  WHERE "message_types"."type" = 1
+  [1m[36mMessageType Load (0.7ms)[0m  [1mSELECT "message_types".* FROM "message_types"  WHERE "message_types"."type_name" = 1[0m
+PG::UndefinedFunction: ERROR:  operator does not exist: character varying = integer
+LINE 1: ... FROM "message_types"  WHERE "message_types"."type_name" = 1
+                                                                    ^
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+: SELECT "message_types".* FROM "message_types"  WHERE "message_types"."type_name" = 1
+  [1m[36mMessageType Load (0.9ms)[0m  [1mSELECT "message_types".* FROM "message_types"  WHERE "message_types"."type" = 1[0m
+PG::UndefinedColumn: ERROR:  column message_types.type does not exist
+LINE 1: ...ECT "message_types".* FROM "message_types"  WHERE "message_t...
+                                                             ^
+: SELECT "message_types".* FROM "message_types"  WHERE "message_types"."type" = 1
+  [1m[35mMessageType Load (0.4ms)[0m  SELECT  "message_types".* FROM "message_types"  WHERE "message_types"."id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type" = 1) LIMIT 1
+PG::UndefinedColumn: ERROR:  column message_types.type does not exist
+LINE 1: ... "message_types"."id" FROM "message_types"  WHERE "message_t...
+                                                             ^
+: SELECT  "message_types".* FROM "message_types"  WHERE "message_types"."id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type" = 1) LIMIT 1
+  [1m[36mMessageType Load (0.5ms)[0m  [1mSELECT  "message_types".* FROM "message_types"  WHERE "message_types"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mMessageType Load (0.4ms)[0m  SELECT "message_types".* FROM "message_types"
+  [1m[36mMessageType Load (0.6ms)[0m  [1mSELECT "message_types".* FROM "message_types"  WHERE "message_types"."type_name" = 'inbox'[0m
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1[0m
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1[0m
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (6.0ms)[0m  [1mINSERT INTO "messages" ("body", "created_at", "from", "subject", "to", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["body", "Hi or perlman,\n\n        Thank you for signing up to use the MailOnRails email service.\n\n        We founded MailOnRails because we wanted to create a trustworthy and inspiring email client \n        from which you could do everything that is needed for your daily work.\n\n        We hope you will enjoy the service and recommend it to your friends."], ["created_at", "2016-09-20 06:53:34.491964"], ["from", "admin@mailonrails.com"], ["subject", "Welcome to MailOnRails"], ["to", "orperl@mailonrails.com"], ["updated_at", "2016-09-20 06:53:34.491964"], ["user_id", 1]]
+  [1m[35m (36.6ms)[0m  COMMIT
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com@mailonrails.com' LIMIT 1[0m
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1[0m
+  [1m[35mMessage Load (0.4ms)[0m  SELECT "messages".* FROM "messages"  WHERE "messages"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "messages" ("body", "created_at", "from", "subject", "to", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["body", "Hi Or Perlman,\n\n        Thank you for signing up to use the MailOnRails email service.\n\n        We founded MailOnRails because we wanted to create a trustworthy and inspiring email client \n        from which you could do everything that is needed for your daily work.\n\n        We hope you will enjoy the service and recommend it to your friends."], ["created_at", "2016-09-20 06:55:23.474230"], ["from", "admin@mailonrails.com"], ["subject", "Welcome to MailOnRails"], ["to", "orperl@mailonrails.com"], ["updated_at", "2016-09-20 06:55:23.474230"], ["user_id", 1]]
+  [1m[36m (2.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mMessageType Load (0.9ms)[0m  SELECT  "message_types".* FROM "message_types"  WHERE "message_types"."type_name" = 'inbox'  ORDER BY "message_types"."id" ASC LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "message_categories" ("created_at", "message_id", "message_type_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2016-09-20 06:55:23.501627"], ["message_id", 5], ["message_type_id", 1], ["updated_at", "2016-09-20 06:55:23.501627"]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mMessage Load (0.4ms)[0m  SELECT "messages".* FROM "messages"
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users"  WHERE "users"."id" = 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users"  WHERE "users"."email" = '{username}#@{domain})'
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com'[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com'
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com'  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com'  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mMessage Load (0.4ms)[0m  [1mSELECT "messages".* FROM "messages"  WHERE "messages"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com'  ORDER BY "users"."id" ASC LIMIT 1
+PG::UndefinedTable: ERROR:  missing FROM-clause entry for table "message_categories"
+LINE 1: ... "messages"  WHERE "messages"."user_id" = $1 AND (message_ca...
+                                                             ^
+: SELECT "messages".* FROM "messages"  WHERE "messages"."user_id" = $1 AND (message_categories.inbox)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com'  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mMessage Load (0.2ms)[0m  SELECT "messages".* FROM "messages"  WHERE "messages"."user_id" = $1  [["user_id", 1]]
+  [1m[36mMessageCategory Load (0.3ms)[0m  [1mSELECT "message_categories".* FROM "message_categories"  WHERE "message_categories"."message_id" IN (5, 4)[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com'  ORDER BY "users"."id" ASC LIMIT 1
+PG::UndefinedColumn: ERROR:  column messages.message_type_id does not exist
+LINE 1: ...M "messages"  WHERE "messages"."user_id" = $1 AND "messages"...
+                                                             ^
+: SELECT "messages".* FROM "messages"  WHERE "messages"."user_id" = $1 AND "messages"."message_type_id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type_name" = 'inbox')
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com'  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT "messages"."id" AS t0_r0, "messages"."from" AS t0_r1, "messages"."to" AS t0_r2, "messages"."bcc" AS t0_r3, "messages"."cc" AS t0_r4, "messages"."subject" AS t0_r5, "messages"."body" AS t0_r6, "messages"."is_read" AS t0_r7, "messages"."parent_message_id" AS t0_r8, "messages"."created_at" AS t0_r9, "messages"."updated_at" AS t0_r10, "messages"."user_id" AS t0_r11, "message_categories"."id" AS t1_r0, "message_categories"."message_type_id" AS t1_r1, "message_categories"."created_at" AS t1_r2, "message_categories"."updated_at" AS t1_r3, "message_categories"."message_id" AS t1_r4 FROM "messages" LEFT OUTER JOIN "message_categories" ON "message_categories"."message_id" = "messages"."id" WHERE "messages"."user_id" = $1 AND "message_categories"."message_type_id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type_name" = 'inbox')  [["user_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com'  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT "messages"."id" AS t0_r0, "messages"."from" AS t0_r1, "messages"."to" AS t0_r2, "messages"."bcc" AS t0_r3, "messages"."cc" AS t0_r4, "messages"."subject" AS t0_r5, "messages"."body" AS t0_r6, "messages"."is_read" AS t0_r7, "messages"."parent_message_id" AS t0_r8, "messages"."created_at" AS t0_r9, "messages"."updated_at" AS t0_r10, "messages"."user_id" AS t0_r11, "message_categories"."id" AS t1_r0, "message_categories"."message_type_id" AS t1_r1, "message_categories"."created_at" AS t1_r2, "message_categories"."updated_at" AS t1_r3, "message_categories"."message_id" AS t1_r4 FROM "messages" LEFT OUTER JOIN "message_categories" ON "message_categories"."message_id" = "messages"."id" WHERE "messages"."user_id" = $1 AND "message_categories"."message_type_id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type_name" = 'inbox')  [["user_id", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com'  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT "messages"."id" AS t0_r0, "messages"."from" AS t0_r1, "messages"."to" AS t0_r2, "messages"."bcc" AS t0_r3, "messages"."cc" AS t0_r4, "messages"."subject" AS t0_r5, "messages"."body" AS t0_r6, "messages"."is_read" AS t0_r7, "messages"."parent_message_id" AS t0_r8, "messages"."created_at" AS t0_r9, "messages"."updated_at" AS t0_r10, "messages"."user_id" AS t0_r11, "message_categories"."id" AS t1_r0, "message_categories"."message_type_id" AS t1_r1, "message_categories"."created_at" AS t1_r2, "message_categories"."updated_at" AS t1_r3, "message_categories"."message_id" AS t1_r4 FROM "messages" LEFT OUTER JOIN "message_categories" ON "message_categories"."message_id" = "messages"."id" WHERE "messages"."user_id" = $1 AND "message_categories"."message_type_id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type_name" = 'inbox')  [["user_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT "messages"."id" AS t0_r0, "messages"."from" AS t0_r1, "messages"."to" AS t0_r2, "messages"."bcc" AS t0_r3, "messages"."cc" AS t0_r4, "messages"."subject" AS t0_r5, "messages"."body" AS t0_r6, "messages"."is_read" AS t0_r7, "messages"."parent_message_id" AS t0_r8, "messages"."created_at" AS t0_r9, "messages"."updated_at" AS t0_r10, "messages"."user_id" AS t0_r11, "message_categories"."id" AS t1_r0, "message_categories"."message_type_id" AS t1_r1, "message_categories"."created_at" AS t1_r2, "message_categories"."updated_at" AS t1_r3, "message_categories"."message_id" AS t1_r4 FROM "messages" LEFT OUTER JOIN "message_categories" ON "message_categories"."message_id" = "messages"."id" WHERE "messages"."user_id" = $1 AND "message_categories"."message_type_id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type_name" = 'inbox')  [["user_id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT "messages"."id" AS t0_r0, "messages"."from" AS t0_r1, "messages"."to" AS t0_r2, "messages"."bcc" AS t0_r3, "messages"."cc" AS t0_r4, "messages"."subject" AS t0_r5, "messages"."body" AS t0_r6, "messages"."is_read" AS t0_r7, "messages"."parent_message_id" AS t0_r8, "messages"."created_at" AS t0_r9, "messages"."updated_at" AS t0_r10, "messages"."user_id" AS t0_r11, "message_categories"."id" AS t1_r0, "message_categories"."message_type_id" AS t1_r1, "message_categories"."created_at" AS t1_r2, "message_categories"."updated_at" AS t1_r3, "message_categories"."message_id" AS t1_r4 FROM "messages" LEFT OUTER JOIN "message_categories" ON "message_categories"."message_id" = "messages"."id" WHERE "messages"."user_id" = $1 AND "message_categories"."message_type_id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type_name" = 'inbox')  [["user_id", 1]]
+  [1m[36mMessage Load (43.4ms)[0m  [1mSELECT "messages".* FROM "messages"[0m
+  [1m[36m (624.0ms)[0m  [1mDROP DATABASE IF EXISTS "mail_on_rails_development"[0m
+  [1m[35m (500.6ms)[0m  DROP DATABASE IF EXISTS "mail_on_rails_test"
+  [1m[36m (2090.1ms)[0m  [1mCREATE DATABASE "mail_on_rails_development" ENCODING = 'unicode'[0m
+  [1m[35m (338.3ms)[0m  CREATE DATABASE "mail_on_rails_test" ENCODING = 'unicode'
+  [1m[36mSQL (8.5ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (211.0ms)[0m  CREATE TABLE "message_categories" ("id" serial primary key, "message_type_id" integer, "created_at" timestamp, "updated_at" timestamp, "message_id" integer) 
+  [1m[36m (23.8ms)[0m  [1mCREATE TABLE "message_types" ("id" serial primary key, "type_name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (149.0ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "from" character varying(254), "to" character varying(254), "bcc" character varying(254), "cc" character varying(254), "subject" character varying(78), "body" text, "is_read" boolean DEFAULT 'f', "parent_message_id" integer, "created_at" timestamp, "updated_at" timestamp, "user_id" integer) 
+  [1m[36m (2.2ms)[0m  [1mCREATE  INDEX  "index_messages_on_user_id" ON "messages" USING btree ("user_id")[0m
+  [1m[35m (44.4ms)[0m  CREATE TABLE "oauth_access_grants" ("id" serial primary key, "resource_owner_id" integer NOT NULL, "application_id" integer NOT NULL, "token" character varying(255) NOT NULL, "expires_in" integer NOT NULL, "redirect_uri" text NOT NULL, "created_at" timestamp NOT NULL, "revoked_at" timestamp, "scopes" character varying(255)) 
+  [1m[36m (2.1ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_grants_on_token" ON "oauth_access_grants" USING btree ("token")[0m
+  [1m[35m (36.8ms)[0m  CREATE TABLE "oauth_access_tokens" ("id" serial primary key, "resource_owner_id" integer, "application_id" integer, "token" character varying(255) NOT NULL, "refresh_token" character varying(255), "expires_in" integer, "revoked_at" timestamp, "created_at" timestamp NOT NULL, "scopes" character varying(255)) 
+  [1m[36m (2.5ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_refresh_token" ON "oauth_access_tokens" USING btree ("refresh_token")[0m
+  [1m[35m (5.8ms)[0m  CREATE  INDEX  "index_oauth_access_tokens_on_resource_owner_id" ON "oauth_access_tokens" USING btree ("resource_owner_id")
+  [1m[36m (3.0ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_token" ON "oauth_access_tokens" USING btree ("token")[0m
+  [1m[35m (45.0ms)[0m  CREATE TABLE "oauth_applications" ("id" serial primary key, "name" character varying(255) NOT NULL, "uid" character varying(255) NOT NULL, "secret" character varying(255) NOT NULL, "redirect_uri" text NOT NULL, "scopes" character varying(255) DEFAULT '' NOT NULL, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (4.4ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_applications_on_uid" ON "oauth_applications" USING btree ("uid")[0m
+  [1m[35m (76.6ms)[0m  CREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "first_name" character varying(35), "last_name" character varying(35)) 
+  [1m[36m (1.9ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")[0m
+  [1m[35m (1.9ms)[0m  CREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")
+  [1m[36m (132.8ms)[0m  [1mALTER TABLE "messages" ADD CONSTRAINT "messages_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "users"(id)[0m
+  [1m[35m (2.2ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (5.2ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (34.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (24.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160919024651')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160629143958')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160629165702')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160727123712')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160917143639')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160719134445')
+  [1m[36mSQL (0.6ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (134.7ms)[0m  CREATE TABLE "message_categories" ("id" serial primary key, "message_type_id" integer, "created_at" timestamp, "updated_at" timestamp, "message_id" integer) 
+  [1m[36m (6.9ms)[0m  [1mCREATE TABLE "message_types" ("id" serial primary key, "type_name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (82.7ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "from" character varying(254), "to" character varying(254), "bcc" character varying(254), "cc" character varying(254), "subject" character varying(78), "body" text, "is_read" boolean DEFAULT 'f', "parent_message_id" integer, "created_at" timestamp, "updated_at" timestamp, "user_id" integer) 
+  [1m[36m (3.8ms)[0m  [1mCREATE  INDEX  "index_messages_on_user_id" ON "messages" USING btree ("user_id")[0m
+  [1m[35m (57.6ms)[0m  CREATE TABLE "oauth_access_grants" ("id" serial primary key, "resource_owner_id" integer NOT NULL, "application_id" integer NOT NULL, "token" character varying(255) NOT NULL, "expires_in" integer NOT NULL, "redirect_uri" text NOT NULL, "created_at" timestamp NOT NULL, "revoked_at" timestamp, "scopes" character varying(255)) 
+  [1m[36m (3.6ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_grants_on_token" ON "oauth_access_grants" USING btree ("token")[0m
+  [1m[35m (84.3ms)[0m  CREATE TABLE "oauth_access_tokens" ("id" serial primary key, "resource_owner_id" integer, "application_id" integer, "token" character varying(255) NOT NULL, "refresh_token" character varying(255), "expires_in" integer, "revoked_at" timestamp, "created_at" timestamp NOT NULL, "scopes" character varying(255)) 
+  [1m[36m (5.8ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_refresh_token" ON "oauth_access_tokens" USING btree ("refresh_token")[0m
+  [1m[35m (3.0ms)[0m  CREATE  INDEX  "index_oauth_access_tokens_on_resource_owner_id" ON "oauth_access_tokens" USING btree ("resource_owner_id")
+  [1m[36m (3.2ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_token" ON "oauth_access_tokens" USING btree ("token")[0m
+  [1m[35m (6.9ms)[0m  CREATE TABLE "oauth_applications" ("id" serial primary key, "name" character varying(255) NOT NULL, "uid" character varying(255) NOT NULL, "secret" character varying(255) NOT NULL, "redirect_uri" text NOT NULL, "scopes" character varying(255) DEFAULT '' NOT NULL, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (6.5ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_applications_on_uid" ON "oauth_applications" USING btree ("uid")[0m
+  [1m[35m (8.7ms)[0m  CREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "first_name" character varying(35), "last_name" character varying(35)) 
+  [1m[36m (2.2ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")[0m
+  [1m[35m (3.1ms)[0m  CREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")
+  [1m[36m (79.7ms)[0m  [1mALTER TABLE "messages" ADD CONSTRAINT "messages_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "users"(id)[0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (2.8ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.4ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (2.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160919024651')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160629143958')
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160629165702')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160727123712')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160917143639')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160719134445')
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (44.3ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 11:24:58.065543"], ["type_name", "inbox"], ["updated_at", "2016-09-20 11:24:58.065543"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 11:24:58.113175"], ["type_name", "sent"], ["updated_at", "2016-09-20 11:24:58.113175"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 11:24:58.115185"], ["type_name", "drafts"], ["updated_at", "2016-09-20 11:24:58.115185"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 11:24:58.116912"], ["type_name", "trash"], ["updated_at", "2016-09-20 11:24:58.116912"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 11:24:58.118442"], ["type_name", "spam"], ["updated_at", "2016-09-20 11:24:58.118442"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 11:25:05.265118"], ["type_name", "inbox"], ["updated_at", "2016-09-20 11:25:05.265118"]]
+  [1m[35m (0.8ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 11:25:05.273786"], ["type_name", "sent"], ["updated_at", "2016-09-20 11:25:05.273786"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 11:25:05.278035"], ["type_name", "drafts"], ["updated_at", "2016-09-20 11:25:05.278035"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 11:25:05.281965"], ["type_name", "trash"], ["updated_at", "2016-09-20 11:25:05.281965"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 11:25:05.284037"], ["type_name", "spam"], ["updated_at", "2016-09-20 11:25:05.284037"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-09-20 14:25:18 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#email_exists as HTML
+  Parameters: {"username"=>"orperl"}
+  [1m[35mUser Load (1.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1
+Unpermitted parameters: username
+Completed 500 Internal Server Error in 73ms (ActiveRecord: 5.3ms)
+
+NoMethodError (undefined method `email' for nil:NilClass):
+  app/helpers/user_helper.rb:4:in `email_exists?'
+  app/controllers/users_controller.rb:48:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.3ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-09-20 14:25:21 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"username"=>"orperl"}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1[0m
+Unpermitted parameters: username
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.9ms)
+
+NoMethodError (undefined method `email' for nil:NilClass):
+  app/helpers/user_helper.rb:4:in `email_exists?'
+  app/controllers/users_controller.rb:48:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.9ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-09-20 14:26:14 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#email_exists as HTML
+  Parameters: {"username"=>"orperl"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1
+Unpermitted parameters: username
+Completed 500 Internal Server Error in 8854ms (ActiveRecord: 2.9ms)
+
+NoMethodError (undefined method `email' for nil:NilClass):
+  app/helpers/user_helper.rb:4:in `email_exists?'
+  app/controllers/users_controller.rb:48:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.3ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-09-20 14:26:56 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#email_exists as HTML
+  Parameters: {"username"=>"orperl"}
+  [1m[35mUser Load (2.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1
+Completed 500 Internal Server Error in 17843ms (ActiveRecord: 5.8ms)
+
+SystemExit (exit):
+  app/helpers/user_helper.rb:5:in `email_exists?'
+  app/controllers/users_controller.rb:48:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.2ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (38.4ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-09-20 14:27:21 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (3.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#email_exists as HTML
+  Parameters: {"username"=>"orperl"}
+  [1m[35mUser Load (2.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1
+Completed 500 Internal Server Error in 42602ms (ActiveRecord: 5.2ms)
+
+SystemExit (exit):
+  app/helpers/user_helper.rb:5:in `email_exists?'
+  app/controllers/users_controller.rb:48:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.5ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (35.8ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-09-20 14:28:09 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#email_exists as HTML
+  Parameters: {"username"=>"orperl"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1
+Unpermitted parameters: username
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 200 OK in 158ms (Views: 129.5ms | ActiveRecord: 5.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-09-20 14:28:14 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"first_name"=>"Or", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "username"=>"orperl"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1[0m
+Unpermitted parameters: username
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1[0m
+  [1m[35mSQL (41.5ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "first_name", "last_name") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "orperl@mailonrails.com"], ["encrypted_password", "$2a$10$UN8HA.xwHUWUfMLqpdFx4OVu/vvasC1Psd92NEbQFYlR1l4FtT2xC"], ["first_name", "Or"], ["last_name", "Perlman"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mDoorkeeper::Application Load (26.8ms)[0m  SELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mDoorkeeper::Application Exists (0.6ms)[0m  SELECT  1 AS one FROM "oauth_applications"  WHERE "oauth_applications"."uid" = 'dc029e6270b089eaa2d447d4ec39ab1bb2a940d99e2b0288aedd0c7e26038a5c' LIMIT 1
+  [1m[36mSQL (4.4ms)[0m  [1mINSERT INTO "oauth_applications" ("created_at", "name", "redirect_uri", "secret", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2016-09-20 11:28:15.250511"], ["name", "MailOnRails"], ["redirect_uri", "http://mailonrails.com:9000/mail"], ["secret", "621d8331cc109f1254dc01ea4623240382a7e7cf47d02e6bba14182e1dac4739"], ["uid", "dc029e6270b089eaa2d447d4ec39ab1bb2a940d99e2b0288aedd0c7e26038a5c"], ["updated_at", "2016-09-20 11:28:15.250511"]]
+  [1m[35m (1.1ms)[0m  COMMIT
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35mDoorkeeper::Application Load (0.3ms)[0m  SELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1  [["id", 375]]
+  [1m[36mDoorkeeper::AccessToken Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = '0db07aaec2eaf88e81114d55de60ae57143dae6d31274aeb1c68e062910b89a9' LIMIT 1[0m
+  [1m[35mDoorkeeper::AccessToken Exists (0.6ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = 'a1f4649b63600ff198bb8d87c0ceee9d42f7711cea161fd0d04bd247846e0db1' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "resource_owner_id", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["application_id", 375], ["created_at", "2016-09-20 11:28:15.299274"], ["expires_in", 7200], ["refresh_token", "a1f4649b63600ff198bb8d87c0ceee9d42f7711cea161fd0d04bd247846e0db1"], ["resource_owner_id", 1], ["scopes", "public write preferences"], ["token", "0db07aaec2eaf88e81114d55de60ae57143dae6d31274aeb1c68e062910b89a9"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Completed 500 Internal Server Error in 304ms (ActiveRecord: 85.7ms)
+
+NameError (undefined local variable or method `first_name' for #<UsersController:0x007f3f5c2b24b8>):
+  app/controllers/users_controller.rb:23:in `create'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.5ms)
+  [1m[36m (108.5ms)[0m  [1mDROP DATABASE IF EXISTS "mail_on_rails_development"[0m
+  [1m[35m (109.0ms)[0m  DROP DATABASE IF EXISTS "mail_on_rails_test"
+  [1m[36m (374.9ms)[0m  [1mCREATE DATABASE "mail_on_rails_development" ENCODING = 'unicode'[0m
+  [1m[35m (444.6ms)[0m  CREATE DATABASE "mail_on_rails_test" ENCODING = 'unicode'
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (62.5ms)[0m  CREATE TABLE "message_categories" ("id" serial primary key, "message_type_id" integer, "created_at" timestamp, "updated_at" timestamp, "message_id" integer) 
+  [1m[36m (3.2ms)[0m  [1mCREATE TABLE "message_types" ("id" serial primary key, "type_name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (39.3ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "from" character varying(254), "to" character varying(254), "bcc" character varying(254), "cc" character varying(254), "subject" character varying(78), "body" text, "is_read" boolean DEFAULT 'f', "parent_message_id" integer, "created_at" timestamp, "updated_at" timestamp, "user_id" integer) 
+  [1m[36m (2.8ms)[0m  [1mCREATE  INDEX  "index_messages_on_user_id" ON "messages" USING btree ("user_id")[0m
+  [1m[35m (55.1ms)[0m  CREATE TABLE "oauth_access_grants" ("id" serial primary key, "resource_owner_id" integer NOT NULL, "application_id" integer NOT NULL, "token" character varying(255) NOT NULL, "expires_in" integer NOT NULL, "redirect_uri" text NOT NULL, "created_at" timestamp NOT NULL, "revoked_at" timestamp, "scopes" character varying(255)) 
+  [1m[36m (2.2ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_grants_on_token" ON "oauth_access_grants" USING btree ("token")[0m
+  [1m[35m (5.2ms)[0m  CREATE TABLE "oauth_access_tokens" ("id" serial primary key, "resource_owner_id" integer, "application_id" integer, "token" character varying(255) NOT NULL, "refresh_token" character varying(255), "expires_in" integer, "revoked_at" timestamp, "created_at" timestamp NOT NULL, "scopes" character varying(255)) 
+  [1m[36m (1.7ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_refresh_token" ON "oauth_access_tokens" USING btree ("refresh_token")[0m
+  [1m[35m (2.0ms)[0m  CREATE  INDEX  "index_oauth_access_tokens_on_resource_owner_id" ON "oauth_access_tokens" USING btree ("resource_owner_id")
+  [1m[36m (2.0ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_token" ON "oauth_access_tokens" USING btree ("token")[0m
+  [1m[35m (5.9ms)[0m  CREATE TABLE "oauth_applications" ("id" serial primary key, "name" character varying(255) NOT NULL, "uid" character varying(255) NOT NULL, "secret" character varying(255) NOT NULL, "redirect_uri" text NOT NULL, "scopes" character varying(255) DEFAULT '' NOT NULL, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (2.9ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_applications_on_uid" ON "oauth_applications" USING btree ("uid")[0m
+  [1m[35m (6.5ms)[0m  CREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "first_name" character varying(35), "last_name" character varying(35)) 
+  [1m[36m (2.5ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")[0m
+  [1m[35m (2.3ms)[0m  CREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")
+  [1m[36m (3.2ms)[0m  [1mALTER TABLE "messages" ADD CONSTRAINT "messages_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "users"(id)[0m
+  [1m[35m (1.4ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (3.6ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.7ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (1.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160919024651')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160629143958')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160629165702')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160727123712')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160917143639')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160719134445')
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (95.5ms)[0m  CREATE TABLE "message_categories" ("id" serial primary key, "message_type_id" integer, "created_at" timestamp, "updated_at" timestamp, "message_id" integer) 
+  [1m[36m (9.5ms)[0m  [1mCREATE TABLE "message_types" ("id" serial primary key, "type_name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (8.6ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "from" character varying(254), "to" character varying(254), "bcc" character varying(254), "cc" character varying(254), "subject" character varying(78), "body" text, "is_read" boolean DEFAULT 'f', "parent_message_id" integer, "created_at" timestamp, "updated_at" timestamp, "user_id" integer) 
+  [1m[36m (2.9ms)[0m  [1mCREATE  INDEX  "index_messages_on_user_id" ON "messages" USING btree ("user_id")[0m
+  [1m[35m (11.3ms)[0m  CREATE TABLE "oauth_access_grants" ("id" serial primary key, "resource_owner_id" integer NOT NULL, "application_id" integer NOT NULL, "token" character varying(255) NOT NULL, "expires_in" integer NOT NULL, "redirect_uri" text NOT NULL, "created_at" timestamp NOT NULL, "revoked_at" timestamp, "scopes" character varying(255)) 
+  [1m[36m (2.9ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_grants_on_token" ON "oauth_access_grants" USING btree ("token")[0m
+  [1m[35m (25.3ms)[0m  CREATE TABLE "oauth_access_tokens" ("id" serial primary key, "resource_owner_id" integer, "application_id" integer, "token" character varying(255) NOT NULL, "refresh_token" character varying(255), "expires_in" integer, "revoked_at" timestamp, "created_at" timestamp NOT NULL, "scopes" character varying(255)) 
+  [1m[36m (43.1ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_refresh_token" ON "oauth_access_tokens" USING btree ("refresh_token")[0m
+  [1m[35m (6.0ms)[0m  CREATE  INDEX  "index_oauth_access_tokens_on_resource_owner_id" ON "oauth_access_tokens" USING btree ("resource_owner_id")
+  [1m[36m (2.4ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_token" ON "oauth_access_tokens" USING btree ("token")[0m
+  [1m[35m (27.6ms)[0m  CREATE TABLE "oauth_applications" ("id" serial primary key, "name" character varying(255) NOT NULL, "uid" character varying(255) NOT NULL, "secret" character varying(255) NOT NULL, "redirect_uri" text NOT NULL, "scopes" character varying(255) DEFAULT '' NOT NULL, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (2.3ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_applications_on_uid" ON "oauth_applications" USING btree ("uid")[0m
+  [1m[35m (37.2ms)[0m  CREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "first_name" character varying(35), "last_name" character varying(35)) 
+  [1m[36m (3.3ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")[0m
+  [1m[35m (2.6ms)[0m  CREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")
+  [1m[36m (7.2ms)[0m  [1mALTER TABLE "messages" ADD CONSTRAINT "messages_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "users"(id)[0m
+  [1m[35m (2.7ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (4.1ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.6ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (1.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160919024651')[0m
+  [1m[35m (1.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160629143958')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160629165702')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160727123712')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160917143639')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160719134445')
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.6ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 11:28:35.360705"], ["type_name", "inbox"], ["updated_at", "2016-09-20 11:28:35.360705"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 11:28:35.364084"], ["type_name", "sent"], ["updated_at", "2016-09-20 11:28:35.364084"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 11:28:35.366210"], ["type_name", "drafts"], ["updated_at", "2016-09-20 11:28:35.366210"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 11:28:35.368866"], ["type_name", "trash"], ["updated_at", "2016-09-20 11:28:35.368866"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 11:28:35.370880"], ["type_name", "spam"], ["updated_at", "2016-09-20 11:28:35.370880"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 11:28:38.211147"], ["type_name", "inbox"], ["updated_at", "2016-09-20 11:28:38.211147"]]
+  [1m[35m (26.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 11:28:38.241303"], ["type_name", "sent"], ["updated_at", "2016-09-20 11:28:38.241303"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 11:28:38.243308"], ["type_name", "drafts"], ["updated_at", "2016-09-20 11:28:38.243308"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 11:28:38.245090"], ["type_name", "trash"], ["updated_at", "2016-09-20 11:28:38.245090"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 11:28:38.246924"], ["type_name", "spam"], ["updated_at", "2016-09-20 11:28:38.246924"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (173.6ms)[0m  [1mDROP DATABASE IF EXISTS "mail_on_rails_development"[0m
+  [1m[35m (162.5ms)[0m  DROP DATABASE IF EXISTS "mail_on_rails_test"
+  [1m[36m (392.2ms)[0m  [1mCREATE DATABASE "mail_on_rails_development" ENCODING = 'unicode'[0m
+  [1m[35m (375.5ms)[0m  CREATE DATABASE "mail_on_rails_test" ENCODING = 'unicode'
+  [1m[36mSQL (2.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (108.2ms)[0m  CREATE TABLE "message_categories" ("id" serial primary key, "message_type_id" integer, "created_at" timestamp, "updated_at" timestamp, "message_id" integer) 
+  [1m[36m (9.0ms)[0m  [1mCREATE TABLE "message_types" ("id" serial primary key, "type_name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (38.9ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "from" character varying(254), "to" character varying(254), "bcc" character varying(254), "cc" character varying(254), "subject" character varying(78), "body" text, "is_read" boolean DEFAULT 'f', "parent_message_id" integer, "created_at" timestamp, "updated_at" timestamp, "user_id" integer) 
+  [1m[36m (4.4ms)[0m  [1mCREATE  INDEX  "index_messages_on_user_id" ON "messages" USING btree ("user_id")[0m
+  [1m[35m (7.3ms)[0m  CREATE TABLE "oauth_access_grants" ("id" serial primary key, "resource_owner_id" integer NOT NULL, "application_id" integer NOT NULL, "token" character varying(255) NOT NULL, "expires_in" integer NOT NULL, "redirect_uri" text NOT NULL, "created_at" timestamp NOT NULL, "revoked_at" timestamp, "scopes" character varying(255)) 
+  [1m[36m (2.8ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_grants_on_token" ON "oauth_access_grants" USING btree ("token")[0m
+  [1m[35m (39.3ms)[0m  CREATE TABLE "oauth_access_tokens" ("id" serial primary key, "resource_owner_id" integer, "application_id" integer, "token" character varying(255) NOT NULL, "refresh_token" character varying(255), "expires_in" integer, "revoked_at" timestamp, "created_at" timestamp NOT NULL, "scopes" character varying(255)) 
+  [1m[36m (2.8ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_refresh_token" ON "oauth_access_tokens" USING btree ("refresh_token")[0m
+  [1m[35m (3.0ms)[0m  CREATE  INDEX  "index_oauth_access_tokens_on_resource_owner_id" ON "oauth_access_tokens" USING btree ("resource_owner_id")
+  [1m[36m (6.5ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_token" ON "oauth_access_tokens" USING btree ("token")[0m
+  [1m[35m (6.7ms)[0m  CREATE TABLE "oauth_applications" ("id" serial primary key, "name" character varying(255) NOT NULL, "uid" character varying(255) NOT NULL, "secret" character varying(255) NOT NULL, "redirect_uri" text NOT NULL, "scopes" character varying(255) DEFAULT '' NOT NULL, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (2.5ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_applications_on_uid" ON "oauth_applications" USING btree ("uid")[0m
+  [1m[35m (65.7ms)[0m  CREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "first_name" character varying(35), "last_name" character varying(35)) 
+  [1m[36m (2.5ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")[0m
+  [1m[35m (2.0ms)[0m  CREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")
+  [1m[36m (31.5ms)[0m  [1mALTER TABLE "messages" ADD CONSTRAINT "messages_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "users"(id)[0m
+  [1m[35m (1.4ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (3.3ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.7ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160919024651')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160629143958')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160629165702')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160727123712')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160917143639')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160719134445')
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (74.5ms)[0m  CREATE TABLE "message_categories" ("id" serial primary key, "message_type_id" integer, "created_at" timestamp, "updated_at" timestamp, "message_id" integer) 
+  [1m[36m (8.2ms)[0m  [1mCREATE TABLE "message_types" ("id" serial primary key, "type_name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (41.3ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "from" character varying(254), "to" character varying(254), "bcc" character varying(254), "cc" character varying(254), "subject" character varying(78), "body" text, "is_read" boolean DEFAULT 'f', "parent_message_id" integer, "created_at" timestamp, "updated_at" timestamp, "user_id" integer) 
+  [1m[36m (5.2ms)[0m  [1mCREATE  INDEX  "index_messages_on_user_id" ON "messages" USING btree ("user_id")[0m
+  [1m[35m (8.3ms)[0m  CREATE TABLE "oauth_access_grants" ("id" serial primary key, "resource_owner_id" integer NOT NULL, "application_id" integer NOT NULL, "token" character varying(255) NOT NULL, "expires_in" integer NOT NULL, "redirect_uri" text NOT NULL, "created_at" timestamp NOT NULL, "revoked_at" timestamp, "scopes" character varying(255)) 
+  [1m[36m (3.5ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_grants_on_token" ON "oauth_access_grants" USING btree ("token")[0m
+  [1m[35m (6.6ms)[0m  CREATE TABLE "oauth_access_tokens" ("id" serial primary key, "resource_owner_id" integer, "application_id" integer, "token" character varying(255) NOT NULL, "refresh_token" character varying(255), "expires_in" integer, "revoked_at" timestamp, "created_at" timestamp NOT NULL, "scopes" character varying(255)) 
+  [1m[36m (2.9ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_refresh_token" ON "oauth_access_tokens" USING btree ("refresh_token")[0m
+  [1m[35m (2.0ms)[0m  CREATE  INDEX  "index_oauth_access_tokens_on_resource_owner_id" ON "oauth_access_tokens" USING btree ("resource_owner_id")
+  [1m[36m (2.5ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_token" ON "oauth_access_tokens" USING btree ("token")[0m
+  [1m[35m (75.4ms)[0m  CREATE TABLE "oauth_applications" ("id" serial primary key, "name" character varying(255) NOT NULL, "uid" character varying(255) NOT NULL, "secret" character varying(255) NOT NULL, "redirect_uri" text NOT NULL, "scopes" character varying(255) DEFAULT '' NOT NULL, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (2.7ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_applications_on_uid" ON "oauth_applications" USING btree ("uid")[0m
+  [1m[35m (54.7ms)[0m  CREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "first_name" character varying(35), "last_name" character varying(35)) 
+  [1m[36m (2.5ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")[0m
+  [1m[35m (2.5ms)[0m  CREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")
+  [1m[36m (25.2ms)[0m  [1mALTER TABLE "messages" ADD CONSTRAINT "messages_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "users"(id)[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (19.2ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.5ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160919024651')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160629143958')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160629165702')[0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160727123712')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160917143639')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160719134445')
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:27:46.161201"], ["type_name", "inbox"], ["updated_at", "2016-09-20 14:27:46.161201"]]
+  [1m[35m (1.2ms)[0m  COMMIT
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 14:27:46.167426"], ["type_name", "sent"], ["updated_at", "2016-09-20 14:27:46.167426"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:27:46.169896"], ["type_name", "drafts"], ["updated_at", "2016-09-20 14:27:46.169896"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 14:27:46.172828"], ["type_name", "trash"], ["updated_at", "2016-09-20 14:27:46.172828"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (5.3ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:27:46.180162"], ["type_name", "spam"], ["updated_at", "2016-09-20 14:27:46.180162"]]
+  [1m[35m (0.9ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:27:50.305851"], ["type_name", "inbox"], ["updated_at", "2016-09-20 14:27:50.305851"]]
+  [1m[35m (41.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 14:27:50.350343"], ["type_name", "sent"], ["updated_at", "2016-09-20 14:27:50.350343"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:27:50.352274"], ["type_name", "drafts"], ["updated_at", "2016-09-20 14:27:50.352274"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 14:27:50.353659"], ["type_name", "trash"], ["updated_at", "2016-09-20 14:27:50.353659"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:27:50.355054"], ["type_name", "spam"], ["updated_at", "2016-09-20 14:27:50.355054"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-09-20 17:28:03 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#email_exists as HTML
+  Parameters: {"username"=>"orperl"}
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 3.4ms)
+
+NoMethodError (undefined method `find_by_username' for #<Class:0x00000006d67bc0>):
+  app/helpers/user_helper.rb:3:in `email_exists?'
+  app/controllers/users_controller.rb:48:in `email_exists'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.2ms)
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1[0m
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-09-20 17:30:40 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#email_exists as HTML
+  Parameters: {"username"=>"orperl"}
+  [1m[35mUser Load (1.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1
+Unpermitted parameters: username
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 200 OK in 72ms (Views: 39.0ms | ActiveRecord: 4.1ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-09-20 17:32:13 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"username"=>"orperl"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1[0m
+Unpermitted parameters: username
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Completed 200 OK in 16ms (Views: 7.3ms | ActiveRecord: 3.3ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-09-20 17:32:26 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#email_exists as HTML
+  Parameters: {"username"=>"orperl"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1
+Unpermitted parameters: username
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.25ms)
+Completed 200 OK in 62ms (Views: 36.5ms | ActiveRecord: 4.6ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-09-20 17:32:42 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"username"=>"orperl"}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1
+Unpermitted parameters: username
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 200 OK in 40447ms (Views: 5.7ms | ActiveRecord: 4.1ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-09-20 17:33:56 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"first_name"=>"Or", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "username"=>"orperl"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1[0m
+Unpermitted parameters: username
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35mDoorkeeper::Application Load (0.4ms)[0m  SELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mDoorkeeper::Application Exists (0.4ms)[0m  SELECT  1 AS one FROM "oauth_applications"  WHERE "oauth_applications"."uid" = '245e88412461ef5cfbbe7d1248067b3b10b8276c617b40d714adbbf02590bd0b' LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "oauth_applications" ("created_at", "name", "redirect_uri", "secret", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2016-09-20 14:33:57.299583"], ["name", "MailOnRails"], ["redirect_uri", "http://mailonrails.com:9000/mail"], ["secret", "1217c26277cb6d8445d72a38fc808e324be81bd821710f7abb73c8759e12a488"], ["uid", "245e88412461ef5cfbbe7d1248067b3b10b8276c617b40d714adbbf02590bd0b"], ["updated_at", "2016-09-20 14:33:57.299583"]]
+  [1m[35m (12.3ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mDoorkeeper::Application Load (0.2ms)[0m  SELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1  [["id", 375]]
+  [1m[36mDoorkeeper::AccessToken Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = '2c933e1d1b775fa404cdbd88f2e7ec733fa6909d675a33b9c7adceda6f263a14' LIMIT 1[0m
+  [1m[35mDoorkeeper::AccessToken Exists (0.4ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = '7e2bea8a85d9718c3b8ecd0aea846cbcb1ef61532f27017c6443a1d638f6f9e2' LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["application_id", 375], ["created_at", "2016-09-20 14:33:57.343010"], ["expires_in", 7200], ["refresh_token", "7e2bea8a85d9718c3b8ecd0aea846cbcb1ef61532f27017c6443a1d638f6f9e2"], ["scopes", "public write preferences"], ["token", "2c933e1d1b775fa404cdbd88f2e7ec733fa6909d675a33b9c7adceda6f263a14"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+Completed 500 Internal Server Error in 383ms (ActiveRecord: 24.8ms)
+
+NameError (undefined local variable or method `first_name' for #<UsersController:0x007f2b0410b6a8>):
+  app/controllers/users_controller.rb:23:in `create'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.1ms)
+  [1m[36m (128.0ms)[0m  [1mDROP DATABASE IF EXISTS "mail_on_rails_development"[0m
+  [1m[35m (130.9ms)[0m  DROP DATABASE IF EXISTS "mail_on_rails_test"
+  [1m[36m (423.1ms)[0m  [1mCREATE DATABASE "mail_on_rails_development" ENCODING = 'unicode'[0m
+  [1m[35m (339.7ms)[0m  CREATE DATABASE "mail_on_rails_test" ENCODING = 'unicode'
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (34.4ms)[0m  CREATE TABLE "message_categories" ("id" serial primary key, "message_type_id" integer, "created_at" timestamp, "updated_at" timestamp, "message_id" integer) 
+  [1m[36m (4.7ms)[0m  [1mCREATE TABLE "message_types" ("id" serial primary key, "type_name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (8.2ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "from" character varying(254), "to" character varying(254), "bcc" character varying(254), "cc" character varying(254), "subject" character varying(78), "body" text, "is_read" boolean DEFAULT 'f', "parent_message_id" integer, "created_at" timestamp, "updated_at" timestamp, "user_id" integer) 
+  [1m[36m (2.3ms)[0m  [1mCREATE  INDEX  "index_messages_on_user_id" ON "messages" USING btree ("user_id")[0m
+  [1m[35m (5.2ms)[0m  CREATE TABLE "oauth_access_grants" ("id" serial primary key, "resource_owner_id" integer NOT NULL, "application_id" integer NOT NULL, "token" character varying(255) NOT NULL, "expires_in" integer NOT NULL, "redirect_uri" text NOT NULL, "created_at" timestamp NOT NULL, "revoked_at" timestamp, "scopes" character varying(255)) 
+  [1m[36m (1.8ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_grants_on_token" ON "oauth_access_grants" USING btree ("token")[0m
+  [1m[35m (35.9ms)[0m  CREATE TABLE "oauth_access_tokens" ("id" serial primary key, "resource_owner_id" integer, "application_id" integer, "token" character varying(255) NOT NULL, "refresh_token" character varying(255), "expires_in" integer, "revoked_at" timestamp, "created_at" timestamp NOT NULL, "scopes" character varying(255)) 
+  [1m[36m (3.4ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_refresh_token" ON "oauth_access_tokens" USING btree ("refresh_token")[0m
+  [1m[35m (2.3ms)[0m  CREATE  INDEX  "index_oauth_access_tokens_on_resource_owner_id" ON "oauth_access_tokens" USING btree ("resource_owner_id")
+  [1m[36m (2.2ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_token" ON "oauth_access_tokens" USING btree ("token")[0m
+  [1m[35m (5.6ms)[0m  CREATE TABLE "oauth_applications" ("id" serial primary key, "name" character varying(255) NOT NULL, "uid" character varying(255) NOT NULL, "secret" character varying(255) NOT NULL, "redirect_uri" text NOT NULL, "scopes" character varying(255) DEFAULT '' NOT NULL, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (2.6ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_applications_on_uid" ON "oauth_applications" USING btree ("uid")[0m
+  [1m[35m (8.8ms)[0m  CREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "first_name" character varying(35), "last_name" character varying(35)) 
+  [1m[36m (2.0ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")[0m
+  [1m[35m (2.5ms)[0m  CREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")
+  [1m[36m (52.4ms)[0m  [1mALTER TABLE "messages" ADD CONSTRAINT "messages_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "users"(id)[0m
+  [1m[35m (11.4ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (3.4ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.8ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (1.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160919024651')[0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160629143958')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160629165702')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160727123712')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160917143639')[0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160719134445')
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (49.7ms)[0m  CREATE TABLE "message_categories" ("id" serial primary key, "message_type_id" integer, "created_at" timestamp, "updated_at" timestamp, "message_id" integer) 
+  [1m[36m (5.2ms)[0m  [1mCREATE TABLE "message_types" ("id" serial primary key, "type_name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (30.0ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "from" character varying(254), "to" character varying(254), "bcc" character varying(254), "cc" character varying(254), "subject" character varying(78), "body" text, "is_read" boolean DEFAULT 'f', "parent_message_id" integer, "created_at" timestamp, "updated_at" timestamp, "user_id" integer) 
+  [1m[36m (5.1ms)[0m  [1mCREATE  INDEX  "index_messages_on_user_id" ON "messages" USING btree ("user_id")[0m
+  [1m[35m (7.0ms)[0m  CREATE TABLE "oauth_access_grants" ("id" serial primary key, "resource_owner_id" integer NOT NULL, "application_id" integer NOT NULL, "token" character varying(255) NOT NULL, "expires_in" integer NOT NULL, "redirect_uri" text NOT NULL, "created_at" timestamp NOT NULL, "revoked_at" timestamp, "scopes" character varying(255)) 
+  [1m[36m (2.9ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_grants_on_token" ON "oauth_access_grants" USING btree ("token")[0m
+  [1m[35m (29.0ms)[0m  CREATE TABLE "oauth_access_tokens" ("id" serial primary key, "resource_owner_id" integer, "application_id" integer, "token" character varying(255) NOT NULL, "refresh_token" character varying(255), "expires_in" integer, "revoked_at" timestamp, "created_at" timestamp NOT NULL, "scopes" character varying(255)) 
+  [1m[36m (3.7ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_refresh_token" ON "oauth_access_tokens" USING btree ("refresh_token")[0m
+  [1m[35m (2.7ms)[0m  CREATE  INDEX  "index_oauth_access_tokens_on_resource_owner_id" ON "oauth_access_tokens" USING btree ("resource_owner_id")
+  [1m[36m (2.2ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_token" ON "oauth_access_tokens" USING btree ("token")[0m
+  [1m[35m (6.9ms)[0m  CREATE TABLE "oauth_applications" ("id" serial primary key, "name" character varying(255) NOT NULL, "uid" character varying(255) NOT NULL, "secret" character varying(255) NOT NULL, "redirect_uri" text NOT NULL, "scopes" character varying(255) DEFAULT '' NOT NULL, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (3.3ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_applications_on_uid" ON "oauth_applications" USING btree ("uid")[0m
+  [1m[35m (9.4ms)[0m  CREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "first_name" character varying(35), "last_name" character varying(35)) 
+  [1m[36m (2.5ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")[0m
+  [1m[35m (2.3ms)[0m  CREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")
+  [1m[36m (32.8ms)[0m  [1mALTER TABLE "messages" ADD CONSTRAINT "messages_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "users"(id)[0m
+  [1m[35m (1.5ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (3.5ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.6ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (1.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160919024651')[0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160629143958')
+  [1m[36m (1.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160629165702')[0m
+  [1m[35m (1.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160727123712')
+  [1m[36m (2.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160917143639')[0m
+  [1m[35m (1.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160719134445')
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:34:25.504264"], ["type_name", "inbox"], ["updated_at", "2016-09-20 14:34:25.504264"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 14:34:25.507331"], ["type_name", "sent"], ["updated_at", "2016-09-20 14:34:25.507331"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:34:25.509210"], ["type_name", "drafts"], ["updated_at", "2016-09-20 14:34:25.509210"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 14:34:25.511192"], ["type_name", "trash"], ["updated_at", "2016-09-20 14:34:25.511192"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:34:25.512979"], ["type_name", "spam"], ["updated_at", "2016-09-20 14:34:25.512979"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:34:31.725902"], ["type_name", "inbox"], ["updated_at", "2016-09-20 14:34:31.725902"]]
+  [1m[35m (22.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 14:34:31.751904"], ["type_name", "sent"], ["updated_at", "2016-09-20 14:34:31.751904"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:34:31.753774"], ["type_name", "drafts"], ["updated_at", "2016-09-20 14:34:31.753774"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 14:34:31.755223"], ["type_name", "trash"], ["updated_at", "2016-09-20 14:34:31.755223"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:34:31.756672"], ["type_name", "spam"], ["updated_at", "2016-09-20 14:34:31.756672"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+
+
+Started POST "/users" for 127.0.0.1 at 2016-09-20 17:34:39 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#create as HTML
+  Parameters: {"first_name"=>"Or", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "username"=>"orperl"}
+  [1m[35mUser Load (2.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1
+Unpermitted parameters: username
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36mDoorkeeper::Application Load (0.6ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "oauth_applications"  WHERE "oauth_applications"."uid" = 'e6e920e256a287acbd2625a88d99488607432627f77f0401f7badf2f249dadfc' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "oauth_applications" ("created_at", "name", "redirect_uri", "secret", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2016-09-20 14:34:39.798273"], ["name", "MailOnRails"], ["redirect_uri", "http://mailonrails.com:9000/mail"], ["secret", "58081fccca15baa11d9d7a9268f287271d38c1233771baa4945f33d97aecfc35"], ["uid", "e6e920e256a287acbd2625a88d99488607432627f77f0401f7badf2f249dadfc"], ["updated_at", "2016-09-20 14:34:39.798273"]]
+  [1m[36m (49.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Load (0.5ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1[0m  [["id", 375]]
+  [1m[35mDoorkeeper::AccessToken Exists (1.3ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = 'da42a09d520ca6868035b2f5351bdf7a0ca31a754616148b670af7a87c02ef8a' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = 'e9cb7fdcb3a7eeb1753f3985fa2da0cf1264be5141ba46acc852bc9fef450f1c' LIMIT 1[0m
+  [1m[35mSQL (15.4ms)[0m  INSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["application_id", 375], ["created_at", "2016-09-20 14:34:39.885824"], ["expires_in", 7200], ["refresh_token", "e9cb7fdcb3a7eeb1753f3985fa2da0cf1264be5141ba46acc852bc9fef450f1c"], ["scopes", "public write preferences"], ["token", "da42a09d520ca6868035b2f5351bdf7a0ca31a754616148b670af7a87c02ef8a"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+Completed 500 Internal Server Error in 36127ms (ActiveRecord: 83.1ms)
+
+NameError (undefined local variable or method `first_name' for #<UsersController:0x007f3d582bc8d8>):
+  app/controllers/users_controller.rb:24:in `create'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.9ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (15.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (31.5ms)
+  [1m[36m (144.1ms)[0m  [1mDROP DATABASE IF EXISTS "mail_on_rails_development"[0m
+  [1m[35m (111.6ms)[0m  DROP DATABASE IF EXISTS "mail_on_rails_test"
+  [1m[36m (445.8ms)[0m  [1mCREATE DATABASE "mail_on_rails_development" ENCODING = 'unicode'[0m
+  [1m[35m (307.0ms)[0m  CREATE DATABASE "mail_on_rails_test" ENCODING = 'unicode'
+  [1m[36mSQL (0.6ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (55.6ms)[0m  CREATE TABLE "message_categories" ("id" serial primary key, "message_type_id" integer, "created_at" timestamp, "updated_at" timestamp, "message_id" integer) 
+  [1m[36m (21.8ms)[0m  [1mCREATE TABLE "message_types" ("id" serial primary key, "type_name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (37.6ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "from" character varying(254), "to" character varying(254), "bcc" character varying(254), "cc" character varying(254), "subject" character varying(78), "body" text, "is_read" boolean DEFAULT 'f', "parent_message_id" integer, "created_at" timestamp, "updated_at" timestamp, "user_id" integer) 
+  [1m[36m (5.6ms)[0m  [1mCREATE  INDEX  "index_messages_on_user_id" ON "messages" USING btree ("user_id")[0m
+  [1m[35m (8.1ms)[0m  CREATE TABLE "oauth_access_grants" ("id" serial primary key, "resource_owner_id" integer NOT NULL, "application_id" integer NOT NULL, "token" character varying(255) NOT NULL, "expires_in" integer NOT NULL, "redirect_uri" text NOT NULL, "created_at" timestamp NOT NULL, "revoked_at" timestamp, "scopes" character varying(255)) 
+  [1m[36m (2.3ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_grants_on_token" ON "oauth_access_grants" USING btree ("token")[0m
+  [1m[35m (6.4ms)[0m  CREATE TABLE "oauth_access_tokens" ("id" serial primary key, "resource_owner_id" integer, "application_id" integer, "token" character varying(255) NOT NULL, "refresh_token" character varying(255), "expires_in" integer, "revoked_at" timestamp, "created_at" timestamp NOT NULL, "scopes" character varying(255)) 
+  [1m[36m (6.8ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_refresh_token" ON "oauth_access_tokens" USING btree ("refresh_token")[0m
+  [1m[35m (2.7ms)[0m  CREATE  INDEX  "index_oauth_access_tokens_on_resource_owner_id" ON "oauth_access_tokens" USING btree ("resource_owner_id")
+  [1m[36m (3.1ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_token" ON "oauth_access_tokens" USING btree ("token")[0m
+  [1m[35m (5.9ms)[0m  CREATE TABLE "oauth_applications" ("id" serial primary key, "name" character varying(255) NOT NULL, "uid" character varying(255) NOT NULL, "secret" character varying(255) NOT NULL, "redirect_uri" text NOT NULL, "scopes" character varying(255) DEFAULT '' NOT NULL, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (4.2ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_applications_on_uid" ON "oauth_applications" USING btree ("uid")[0m
+  [1m[35m (7.7ms)[0m  CREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "first_name" character varying(35), "last_name" character varying(35)) 
+  [1m[36m (2.1ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")[0m
+  [1m[35m (2.9ms)[0m  CREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")
+  [1m[36m (45.2ms)[0m  [1mALTER TABLE "messages" ADD CONSTRAINT "messages_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "users"(id)[0m
+  [1m[35m (1.6ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (2.2ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.4ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160919024651')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160629143958')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160629165702')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160727123712')
+  [1m[36m (1.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160917143639')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160719134445')
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (6.0ms)[0m  CREATE TABLE "message_categories" ("id" serial primary key, "message_type_id" integer, "created_at" timestamp, "updated_at" timestamp, "message_id" integer) 
+  [1m[36m (6.4ms)[0m  [1mCREATE TABLE "message_types" ("id" serial primary key, "type_name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (6.9ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "from" character varying(254), "to" character varying(254), "bcc" character varying(254), "cc" character varying(254), "subject" character varying(78), "body" text, "is_read" boolean DEFAULT 'f', "parent_message_id" integer, "created_at" timestamp, "updated_at" timestamp, "user_id" integer) 
+  [1m[36m (3.3ms)[0m  [1mCREATE  INDEX  "index_messages_on_user_id" ON "messages" USING btree ("user_id")[0m
+  [1m[35m (5.9ms)[0m  CREATE TABLE "oauth_access_grants" ("id" serial primary key, "resource_owner_id" integer NOT NULL, "application_id" integer NOT NULL, "token" character varying(255) NOT NULL, "expires_in" integer NOT NULL, "redirect_uri" text NOT NULL, "created_at" timestamp NOT NULL, "revoked_at" timestamp, "scopes" character varying(255)) 
+  [1m[36m (5.0ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_grants_on_token" ON "oauth_access_grants" USING btree ("token")[0m
+  [1m[35m (8.4ms)[0m  CREATE TABLE "oauth_access_tokens" ("id" serial primary key, "resource_owner_id" integer, "application_id" integer, "token" character varying(255) NOT NULL, "refresh_token" character varying(255), "expires_in" integer, "revoked_at" timestamp, "created_at" timestamp NOT NULL, "scopes" character varying(255)) 
+  [1m[36m (2.0ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_refresh_token" ON "oauth_access_tokens" USING btree ("refresh_token")[0m
+  [1m[35m (6.3ms)[0m  CREATE  INDEX  "index_oauth_access_tokens_on_resource_owner_id" ON "oauth_access_tokens" USING btree ("resource_owner_id")
+  [1m[36m (3.7ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_token" ON "oauth_access_tokens" USING btree ("token")[0m
+  [1m[35m (6.5ms)[0m  CREATE TABLE "oauth_applications" ("id" serial primary key, "name" character varying(255) NOT NULL, "uid" character varying(255) NOT NULL, "secret" character varying(255) NOT NULL, "redirect_uri" text NOT NULL, "scopes" character varying(255) DEFAULT '' NOT NULL, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (2.4ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_applications_on_uid" ON "oauth_applications" USING btree ("uid")[0m
+  [1m[35m (5.9ms)[0m  CREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "first_name" character varying(35), "last_name" character varying(35)) 
+  [1m[36m (2.3ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")[0m
+  [1m[35m (2.9ms)[0m  CREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")
+  [1m[36m (4.4ms)[0m  [1mALTER TABLE "messages" ADD CONSTRAINT "messages_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "users"(id)[0m
+  [1m[35m (1.1ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (2.0ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (1.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160919024651')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160629143958')
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160629165702')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160727123712')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160917143639')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160719134445')
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:35:38.756322"], ["type_name", "inbox"], ["updated_at", "2016-09-20 14:35:38.756322"]]
+  [1m[35m (6.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 14:35:38.768031"], ["type_name", "sent"], ["updated_at", "2016-09-20 14:35:38.768031"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:35:38.770454"], ["type_name", "drafts"], ["updated_at", "2016-09-20 14:35:38.770454"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 14:35:38.773737"], ["type_name", "trash"], ["updated_at", "2016-09-20 14:35:38.773737"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:35:38.775957"], ["type_name", "spam"], ["updated_at", "2016-09-20 14:35:38.775957"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:35:43.483396"], ["type_name", "inbox"], ["updated_at", "2016-09-20 14:35:43.483396"]]
+  [1m[35m (24.0ms)[0m  COMMIT
+  [1m[36m (1.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 14:35:43.513350"], ["type_name", "sent"], ["updated_at", "2016-09-20 14:35:43.513350"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:35:43.516478"], ["type_name", "drafts"], ["updated_at", "2016-09-20 14:35:43.516478"]]
+  [1m[35m (1.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 14:35:43.520476"], ["type_name", "trash"], ["updated_at", "2016-09-20 14:35:43.520476"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:35:43.523080"], ["type_name", "spam"], ["updated_at", "2016-09-20 14:35:43.523080"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+
+
+Started POST "/users" for 127.0.0.1 at 2016-09-20 17:35:50 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#create as HTML
+  Parameters: {"first_name"=>"Or", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "username"=>"orperl"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1
+Unpermitted parameters: username
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36mDoorkeeper::Application Load (0.8ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Exists (1.2ms)[0m  [1mSELECT  1 AS one FROM "oauth_applications"  WHERE "oauth_applications"."uid" = '66cb2324e737e8d6bcc9fa7acc1ca542c834f7569e692e9cf44b9eabefff911b' LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "oauth_applications" ("created_at", "name", "redirect_uri", "secret", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2016-09-20 14:35:50.386798"], ["name", "MailOnRails"], ["redirect_uri", "http://mailonrails.com:9000/mail"], ["secret", "1951f9ba20da51375371576065f23d80620e8750688020f8fd494c6b1dd3ded5"], ["uid", "66cb2324e737e8d6bcc9fa7acc1ca542c834f7569e692e9cf44b9eabefff911b"], ["updated_at", "2016-09-20 14:35:50.386798"]]
+  [1m[36m (10.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Load (0.2ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1[0m  [["id", 375]]
+  [1m[35mDoorkeeper::AccessToken Exists (1.0ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = '672ea24e53766db732c6b3b0b821a9879c36ab737d3ee219da8bd5ff7b6e1e61' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Exists (1.3ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = '18d55d848cea487dbda9bf0c323d2c97873894ba6b73676626a23f9569af5a24' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["application_id", 375], ["created_at", "2016-09-20 14:35:50.442380"], ["expires_in", 7200], ["refresh_token", "18d55d848cea487dbda9bf0c323d2c97873894ba6b73676626a23f9569af5a24"], ["scopes", "public write preferences"], ["token", "672ea24e53766db732c6b3b0b821a9879c36ab737d3ee219da8bd5ff7b6e1e61"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Completed 500 Internal Server Error in 240ms (ActiveRecord: 28.8ms)
+
+NameError (undefined local variable or method `first_name' for #<UsersController:0x007fc6f02bc7d0>):
+  app/controllers/users_controller.rb:23:in `create'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.2ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.8ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (24.8ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-09-20 17:36:22 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#create as HTML
+  Parameters: {"first_name"=>"Or", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "username"=>"orperl"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1
+Unpermitted parameters: username
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mDoorkeeper::Application Load (0.7ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Load (1.2ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1[0m  [["id", 375]]
+  [1m[35mDoorkeeper::AccessToken Exists (1.0ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = 'ffcea3fbae390cfb0395b0de72a4664514a0cb2e01672287d0a82952ad322093' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Exists (2.1ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = '18a3b9cfc5b2e2c18d407cf1dcecfe8f7c6db049cfb6ad85829968bb5f127963' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["application_id", 375], ["created_at", "2016-09-20 14:36:23.022747"], ["expires_in", 7200], ["refresh_token", "18a3b9cfc5b2e2c18d407cf1dcecfe8f7c6db049cfb6ad85829968bb5f127963"], ["scopes", "public write preferences"], ["token", "ffcea3fbae390cfb0395b0de72a4664514a0cb2e01672287d0a82952ad322093"]]
+  [1m[36m (1.7ms)[0m  [1mCOMMIT[0m
+Completed 500 Internal Server Error in 236ms (ActiveRecord: 19.5ms)
+
+NameError (undefined local variable or method `first_name' for #<UsersController:0x007f81842c1fe8>):
+  app/controllers/users_controller.rb:23:in `create'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.9ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-09-20 17:36:54 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"first_name"=>"Or", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "username"=>"orperl"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1
+Unpermitted parameters: username
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mDoorkeeper::Application Load (0.3ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Load (0.4ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1[0m  [["id", 375]]
+  [1m[35mDoorkeeper::AccessToken Exists (0.4ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = 'b4b2ae7acab7f354ce9b88a27ea3070db802a606dbcbdefc3a1e71f5a57e9c4c' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = '1e06d7b066c705893dbb8d7d7524a6291580639e6193ab08b5c6945a1255a570' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["application_id", 375], ["created_at", "2016-09-20 14:36:54.736990"], ["expires_in", 7200], ["refresh_token", "1e06d7b066c705893dbb8d7d7524a6291580639e6193ab08b5c6945a1255a570"], ["scopes", "public write preferences"], ["token", "b4b2ae7acab7f354ce9b88a27ea3070db802a606dbcbdefc3a1e71f5a57e9c4c"]]
+  [1m[36m (2.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.49ms)
+Completed 201 Created in 120ms (Views: 11.0ms | ActiveRecord: 11.4ms)
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users"[0m
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-09-20 17:38:06 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"username"=>"orperl"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1[0m
+Unpermitted parameters: username
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.25ms)
+Completed 200 OK in 21ms (Views: 12.5ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-09-20 17:38:11 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"first_name"=>"Or", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "username"=>"orperl"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1
+Unpermitted parameters: username
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36mDoorkeeper::Application Load (0.4ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mDoorkeeper::Application Load (0.5ms)[0m  [1mSELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1[0m  [["id", 375]]
+  [1m[35mDoorkeeper::AccessToken Exists (0.2ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = '5d7a68a988e90e7e6ce909150c63a006ab6cb522684ce84c642ac9b88bfdb9a5' LIMIT 1
+  [1m[36mDoorkeeper::AccessToken Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = '0eaf9aacc323d9d4a34acd862e441e7295548445ffff51360daa0411f23484aa' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["application_id", 375], ["created_at", "2016-09-20 14:38:11.833753"], ["expires_in", 7200], ["refresh_token", "0eaf9aacc323d9d4a34acd862e441e7295548445ffff51360daa0411f23484aa"], ["scopes", "public write preferences"], ["token", "5d7a68a988e90e7e6ce909150c63a006ab6cb522684ce84c642ac9b88bfdb9a5"]]
+  [1m[36m (1.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (1.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.36ms)
+Completed 201 Created in 32724ms (Views: 2.4ms | ActiveRecord: 9.3ms)
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-09-20 17:38:51 +0300
+Processing by UsersController#email_exists as HTML
+  Parameters: {"username"=>"orperl"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1[0m
+Unpermitted parameters: username
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.23ms)
+Completed 200 OK in 21ms (Views: 6.3ms | ActiveRecord: 3.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-09-20 17:38:56 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"first_name"=>"Or", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "username"=>"orperl"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1
+Unpermitted parameters: username
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.9ms)[0m  ROLLBACK
+Completed 500 Internal Server Error in 306256ms (ActiveRecord: 2.3ms)
+
+SystemExit (exit):
+  app/controllers/users_controller.rb:20:in `create'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (10.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.7ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (32.4ms)
+  [1m[36m (112.7ms)[0m  [1mDROP DATABASE IF EXISTS "mail_on_rails_development"[0m
+  [1m[35m (106.0ms)[0m  DROP DATABASE IF EXISTS "mail_on_rails_test"
+  [1m[36m (376.0ms)[0m  [1mCREATE DATABASE "mail_on_rails_development" ENCODING = 'unicode'[0m
+  [1m[35m (294.8ms)[0m  CREATE DATABASE "mail_on_rails_test" ENCODING = 'unicode'
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (9.6ms)[0m  CREATE TABLE "message_categories" ("id" serial primary key, "message_type_id" integer, "created_at" timestamp, "updated_at" timestamp, "message_id" integer) 
+  [1m[36m (4.5ms)[0m  [1mCREATE TABLE "message_types" ("id" serial primary key, "type_name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (6.5ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "from" character varying(254), "to" character varying(254), "bcc" character varying(254), "cc" character varying(254), "subject" character varying(78), "body" text, "is_read" boolean DEFAULT 'f', "parent_message_id" integer, "created_at" timestamp, "updated_at" timestamp, "user_id" integer) 
+  [1m[36m (2.3ms)[0m  [1mCREATE  INDEX  "index_messages_on_user_id" ON "messages" USING btree ("user_id")[0m
+  [1m[35m (6.4ms)[0m  CREATE TABLE "oauth_access_grants" ("id" serial primary key, "resource_owner_id" integer NOT NULL, "application_id" integer NOT NULL, "token" character varying(255) NOT NULL, "expires_in" integer NOT NULL, "redirect_uri" text NOT NULL, "created_at" timestamp NOT NULL, "revoked_at" timestamp, "scopes" character varying(255)) 
+  [1m[36m (3.1ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_grants_on_token" ON "oauth_access_grants" USING btree ("token")[0m
+  [1m[35m (6.3ms)[0m  CREATE TABLE "oauth_access_tokens" ("id" serial primary key, "resource_owner_id" integer, "application_id" integer, "token" character varying(255) NOT NULL, "refresh_token" character varying(255), "expires_in" integer, "revoked_at" timestamp, "created_at" timestamp NOT NULL, "scopes" character varying(255)) 
+  [1m[36m (3.3ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_refresh_token" ON "oauth_access_tokens" USING btree ("refresh_token")[0m
+  [1m[35m (3.1ms)[0m  CREATE  INDEX  "index_oauth_access_tokens_on_resource_owner_id" ON "oauth_access_tokens" USING btree ("resource_owner_id")
+  [1m[36m (2.7ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_token" ON "oauth_access_tokens" USING btree ("token")[0m
+  [1m[35m (5.9ms)[0m  CREATE TABLE "oauth_applications" ("id" serial primary key, "name" character varying(255) NOT NULL, "uid" character varying(255) NOT NULL, "secret" character varying(255) NOT NULL, "redirect_uri" text NOT NULL, "scopes" character varying(255) DEFAULT '' NOT NULL, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (2.1ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_applications_on_uid" ON "oauth_applications" USING btree ("uid")[0m
+  [1m[35m (6.5ms)[0m  CREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "first_name" character varying(35), "last_name" character varying(35)) 
+  [1m[36m (2.8ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")[0m
+  [1m[35m (3.4ms)[0m  CREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")
+  [1m[36m (8.7ms)[0m  [1mALTER TABLE "messages" ADD CONSTRAINT "messages_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "users"(id)[0m
+  [1m[35m (1.1ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (2.0ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160919024651')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160629143958')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160629165702')[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160727123712')
+  [1m[36m (1.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160917143639')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160719134445')
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (9.3ms)[0m  CREATE TABLE "message_categories" ("id" serial primary key, "message_type_id" integer, "created_at" timestamp, "updated_at" timestamp, "message_id" integer) 
+  [1m[36m (5.0ms)[0m  [1mCREATE TABLE "message_types" ("id" serial primary key, "type_name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (7.3ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "from" character varying(254), "to" character varying(254), "bcc" character varying(254), "cc" character varying(254), "subject" character varying(78), "body" text, "is_read" boolean DEFAULT 'f', "parent_message_id" integer, "created_at" timestamp, "updated_at" timestamp, "user_id" integer) 
+  [1m[36m (2.3ms)[0m  [1mCREATE  INDEX  "index_messages_on_user_id" ON "messages" USING btree ("user_id")[0m
+  [1m[35m (5.8ms)[0m  CREATE TABLE "oauth_access_grants" ("id" serial primary key, "resource_owner_id" integer NOT NULL, "application_id" integer NOT NULL, "token" character varying(255) NOT NULL, "expires_in" integer NOT NULL, "redirect_uri" text NOT NULL, "created_at" timestamp NOT NULL, "revoked_at" timestamp, "scopes" character varying(255)) 
+  [1m[36m (3.4ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_grants_on_token" ON "oauth_access_grants" USING btree ("token")[0m
+  [1m[35m (9.9ms)[0m  CREATE TABLE "oauth_access_tokens" ("id" serial primary key, "resource_owner_id" integer, "application_id" integer, "token" character varying(255) NOT NULL, "refresh_token" character varying(255), "expires_in" integer, "revoked_at" timestamp, "created_at" timestamp NOT NULL, "scopes" character varying(255)) 
+  [1m[36m (1.9ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_refresh_token" ON "oauth_access_tokens" USING btree ("refresh_token")[0m
+  [1m[35m (2.5ms)[0m  CREATE  INDEX  "index_oauth_access_tokens_on_resource_owner_id" ON "oauth_access_tokens" USING btree ("resource_owner_id")
+  [1m[36m (2.6ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_token" ON "oauth_access_tokens" USING btree ("token")[0m
+  [1m[35m (9.5ms)[0m  CREATE TABLE "oauth_applications" ("id" serial primary key, "name" character varying(255) NOT NULL, "uid" character varying(255) NOT NULL, "secret" character varying(255) NOT NULL, "redirect_uri" text NOT NULL, "scopes" character varying(255) DEFAULT '' NOT NULL, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (3.0ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_applications_on_uid" ON "oauth_applications" USING btree ("uid")[0m
+  [1m[35m (5.9ms)[0m  CREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "first_name" character varying(35), "last_name" character varying(35)) 
+  [1m[36m (2.8ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")[0m
+  [1m[35m (3.6ms)[0m  CREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")
+  [1m[36m (3.1ms)[0m  [1mALTER TABLE "messages" ADD CONSTRAINT "messages_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "users"(id)[0m
+  [1m[35m (2.2ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (3.0ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.8ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160919024651')[0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160629143958')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160629165702')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160727123712')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160917143639')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160719134445')
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:44:10.503815"], ["type_name", "inbox"], ["updated_at", "2016-09-20 14:44:10.503815"]]
+  [1m[35m (1.0ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 14:44:10.510363"], ["type_name", "sent"], ["updated_at", "2016-09-20 14:44:10.510363"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (1.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:44:10.515003"], ["type_name", "drafts"], ["updated_at", "2016-09-20 14:44:10.515003"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 14:44:10.517113"], ["type_name", "trash"], ["updated_at", "2016-09-20 14:44:10.517113"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:44:10.518688"], ["type_name", "spam"], ["updated_at", "2016-09-20 14:44:10.518688"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:44:14.193048"], ["type_name", "inbox"], ["updated_at", "2016-09-20 14:44:14.193048"]]
+  [1m[35m (46.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 14:44:14.244604"], ["type_name", "sent"], ["updated_at", "2016-09-20 14:44:14.244604"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:44:14.246787"], ["type_name", "drafts"], ["updated_at", "2016-09-20 14:44:14.246787"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 14:44:14.248511"], ["type_name", "trash"], ["updated_at", "2016-09-20 14:44:14.248511"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:44:14.250460"], ["type_name", "spam"], ["updated_at", "2016-09-20 14:44:14.250460"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-09-20 17:44:21 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#email_exists as HTML
+  Parameters: {"username"=>"orperl"}
+  [1m[35mUser Load (1.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1
+Unpermitted parameters: username
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Completed 200 OK in 71ms (Views: 43.3ms | ActiveRecord: 4.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-09-20 17:44:26 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"first_name"=>"Or", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "username"=>"orperl"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl' LIMIT 1[0m
+Unpermitted parameters: username
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36mUser Exists (1.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1[0m
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "first_name", "last_name") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "orperl@mailonrails.com"], ["encrypted_password", "$2a$10$7kojjqwPHSkLjAgGToEDDuWdRpsVLZ7bJOhvuWg7mQaRkYLOUC5xq"], ["first_name", "Or"], ["last_name", "Perlman"]]
+  [1m[36m (2.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mDoorkeeper::Application Load (0.8ms)[0m  SELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mDoorkeeper::Application Exists (0.5ms)[0m  SELECT  1 AS one FROM "oauth_applications"  WHERE "oauth_applications"."uid" = '09afaae3a71b7fc40c3bcda5e269d05a98bb1a7cf1b6b7e958ebe11c5ab3efeb' LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "oauth_applications" ("created_at", "name", "redirect_uri", "secret", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2016-09-20 14:44:26.398658"], ["name", "MailOnRails"], ["redirect_uri", "http://mailonrails.com:9000/mail"], ["secret", "0e8063a4c766fd51a29680950fb92af2e13c0dd8f22225e699da5bde6aa3922e"], ["uid", "09afaae3a71b7fc40c3bcda5e269d05a98bb1a7cf1b6b7e958ebe11c5ab3efeb"], ["updated_at", "2016-09-20 14:44:26.398658"]]
+  [1m[35m (0.9ms)[0m  COMMIT
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mDoorkeeper::Application Load (1.3ms)[0m  SELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1  [["id", 375]]
+  [1m[36mDoorkeeper::AccessToken Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = '75ac80c32480b987e7767c0535aea1634a2fb85190fda57ad61aaa7fda4e5d23' LIMIT 1[0m
+  [1m[35mDoorkeeper::AccessToken Exists (0.3ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = 'ce21e4a22192d9fc2bc7908eb962db44e78fcc27d3a3a8ff2b5362b57e5f9f3e' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "resource_owner_id", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["application_id", 375], ["created_at", "2016-09-20 14:44:26.445447"], ["expires_in", 7200], ["refresh_token", "ce21e4a22192d9fc2bc7908eb962db44e78fcc27d3a3a8ff2b5362b57e5f9f3e"], ["resource_owner_id", 1], ["scopes", "public write preferences"], ["token", "75ac80c32480b987e7767c0535aea1634a2fb85190fda57ad61aaa7fda4e5d23"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "messages" ("body", "created_at", "from", "subject", "to", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["body", "Hi Or Perlman,\n\n            Thank you for signing up to use the MailOnRails email service.\n\n            We founded MailOnRails because we wanted to create a trustworthy and inspiring email client \n            from which you could do everything that is needed for your daily work.\n\n            We hope you will enjoy the service and recommend it to your friends."], ["created_at", "2016-09-20 14:44:38.786155"], ["from", "admin@mailonrails.com"], ["subject", "Welcome to MailOnRails"], ["to", "orperl@mailonrails.com"], ["updated_at", "2016-09-20 14:44:38.786155"], ["user_id", 1]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36mMessageType Load (0.8ms)[0m  [1mSELECT  "message_types".* FROM "message_types"  WHERE "message_types"."type_name" = 'inbox'  ORDER BY "message_types"."id" ASC LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "message_categories" ("created_at", "message_id", "message_type_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2016-09-20 14:44:38.821397"], ["message_id", 1], ["message_type_id", 1], ["updated_at", "2016-09-20 14:44:38.821397"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.52ms)
+Completed 201 Created in 12563ms (Views: 1.5ms | ActiveRecord: 28.5ms)
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mMessage Load (0.3ms)[0m  SELECT "messages".* FROM "messages"  WHERE "messages"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (110.0ms)[0m  [1mDROP DATABASE IF EXISTS "mail_on_rails_development"[0m
+  [1m[35m (110.9ms)[0m  DROP DATABASE IF EXISTS "mail_on_rails_test"
+  [1m[36m (300.4ms)[0m  [1mCREATE DATABASE "mail_on_rails_development" ENCODING = 'unicode'[0m
+  [1m[35m (345.6ms)[0m  CREATE DATABASE "mail_on_rails_test" ENCODING = 'unicode'
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (7.9ms)[0m  CREATE TABLE "message_categories" ("id" serial primary key, "message_type_id" integer, "created_at" timestamp, "updated_at" timestamp, "message_id" integer) 
+  [1m[36m (5.3ms)[0m  [1mCREATE TABLE "message_types" ("id" serial primary key, "type_name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (5.1ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "from" character varying(254), "to" character varying(254), "bcc" character varying(254), "cc" character varying(254), "subject" character varying(78), "body" text, "is_read" boolean DEFAULT 'f', "parent_message_id" integer, "created_at" timestamp, "updated_at" timestamp, "user_id" integer) 
+  [1m[36m (2.2ms)[0m  [1mCREATE  INDEX  "index_messages_on_user_id" ON "messages" USING btree ("user_id")[0m
+  [1m[35m (5.3ms)[0m  CREATE TABLE "oauth_access_grants" ("id" serial primary key, "resource_owner_id" integer NOT NULL, "application_id" integer NOT NULL, "token" character varying(255) NOT NULL, "expires_in" integer NOT NULL, "redirect_uri" text NOT NULL, "created_at" timestamp NOT NULL, "revoked_at" timestamp, "scopes" character varying(255)) 
+  [1m[36m (3.6ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_grants_on_token" ON "oauth_access_grants" USING btree ("token")[0m
+  [1m[35m (5.2ms)[0m  CREATE TABLE "oauth_access_tokens" ("id" serial primary key, "resource_owner_id" integer, "application_id" integer, "token" character varying(255) NOT NULL, "refresh_token" character varying(255), "expires_in" integer, "revoked_at" timestamp, "created_at" timestamp NOT NULL, "scopes" character varying(255)) 
+  [1m[36m (1.7ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_refresh_token" ON "oauth_access_tokens" USING btree ("refresh_token")[0m
+  [1m[35m (2.6ms)[0m  CREATE  INDEX  "index_oauth_access_tokens_on_resource_owner_id" ON "oauth_access_tokens" USING btree ("resource_owner_id")
+  [1m[36m (1.9ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_token" ON "oauth_access_tokens" USING btree ("token")[0m
+  [1m[35m (5.4ms)[0m  CREATE TABLE "oauth_applications" ("id" serial primary key, "name" character varying(255) NOT NULL, "uid" character varying(255) NOT NULL, "secret" character varying(255) NOT NULL, "redirect_uri" text NOT NULL, "scopes" character varying(255) DEFAULT '' NOT NULL, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (1.9ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_applications_on_uid" ON "oauth_applications" USING btree ("uid")[0m
+  [1m[35m (6.1ms)[0m  CREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "first_name" character varying(35), "last_name" character varying(35)) 
+  [1m[36m (3.1ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")[0m
+  [1m[35m (3.0ms)[0m  CREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")
+  [1m[36m (2.7ms)[0m  [1mALTER TABLE "messages" ADD CONSTRAINT "messages_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "users"(id)[0m
+  [1m[35m (1.2ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (2.4ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.5ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (1.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160919024651')[0m
+  [1m[35m (1.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160629143958')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160629165702')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160727123712')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160917143639')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160719134445')
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (5.6ms)[0m  CREATE TABLE "message_categories" ("id" serial primary key, "message_type_id" integer, "created_at" timestamp, "updated_at" timestamp, "message_id" integer) 
+  [1m[36m (4.3ms)[0m  [1mCREATE TABLE "message_types" ("id" serial primary key, "type_name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (7.2ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "from" character varying(254), "to" character varying(254), "bcc" character varying(254), "cc" character varying(254), "subject" character varying(78), "body" text, "is_read" boolean DEFAULT 'f', "parent_message_id" integer, "created_at" timestamp, "updated_at" timestamp, "user_id" integer) 
+  [1m[36m (2.7ms)[0m  [1mCREATE  INDEX  "index_messages_on_user_id" ON "messages" USING btree ("user_id")[0m
+  [1m[35m (5.4ms)[0m  CREATE TABLE "oauth_access_grants" ("id" serial primary key, "resource_owner_id" integer NOT NULL, "application_id" integer NOT NULL, "token" character varying(255) NOT NULL, "expires_in" integer NOT NULL, "redirect_uri" text NOT NULL, "created_at" timestamp NOT NULL, "revoked_at" timestamp, "scopes" character varying(255)) 
+  [1m[36m (2.7ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_grants_on_token" ON "oauth_access_grants" USING btree ("token")[0m
+  [1m[35m (6.4ms)[0m  CREATE TABLE "oauth_access_tokens" ("id" serial primary key, "resource_owner_id" integer, "application_id" integer, "token" character varying(255) NOT NULL, "refresh_token" character varying(255), "expires_in" integer, "revoked_at" timestamp, "created_at" timestamp NOT NULL, "scopes" character varying(255)) 
+  [1m[36m (4.9ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_refresh_token" ON "oauth_access_tokens" USING btree ("refresh_token")[0m
+  [1m[35m (2.7ms)[0m  CREATE  INDEX  "index_oauth_access_tokens_on_resource_owner_id" ON "oauth_access_tokens" USING btree ("resource_owner_id")
+  [1m[36m (3.6ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_access_tokens_on_token" ON "oauth_access_tokens" USING btree ("token")[0m
+  [1m[35m (45.6ms)[0m  CREATE TABLE "oauth_applications" ("id" serial primary key, "name" character varying(255) NOT NULL, "uid" character varying(255) NOT NULL, "secret" character varying(255) NOT NULL, "redirect_uri" text NOT NULL, "scopes" character varying(255) DEFAULT '' NOT NULL, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (2.5ms)[0m  [1mCREATE UNIQUE INDEX  "index_oauth_applications_on_uid" ON "oauth_applications" USING btree ("uid")[0m
+  [1m[35m (4.5ms)[0m  CREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "first_name" character varying(35), "last_name" character varying(35)) 
+  [1m[36m (2.9ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")[0m
+  [1m[35m (3.0ms)[0m  CREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")
+  [1m[36m (2.7ms)[0m  [1mALTER TABLE "messages" ADD CONSTRAINT "messages_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "users"(id)[0m
+  [1m[35m (1.5ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (3.1ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.7ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (1.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160919024651')[0m
+  [1m[35m (1.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160629143958')
+  [1m[36m (23.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160629165702')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160727123712')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160917143639')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160719134445')
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:53:28.205151"], ["type_name", "inbox"], ["updated_at", "2016-09-20 14:53:28.205151"]]
+  [1m[35m (1.2ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 14:53:28.210771"], ["type_name", "sent"], ["updated_at", "2016-09-20 14:53:28.210771"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:53:28.214116"], ["type_name", "drafts"], ["updated_at", "2016-09-20 14:53:28.214116"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 14:53:28.216327"], ["type_name", "trash"], ["updated_at", "2016-09-20 14:53:28.216327"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:53:28.218545"], ["type_name", "spam"], ["updated_at", "2016-09-20 14:53:28.218545"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:53:36.783259"], ["type_name", "inbox"], ["updated_at", "2016-09-20 14:53:36.783259"]]
+  [1m[35m (2.2ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 14:53:36.794365"], ["type_name", "sent"], ["updated_at", "2016-09-20 14:53:36.794365"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:53:36.798243"], ["type_name", "drafts"], ["updated_at", "2016-09-20 14:53:36.798243"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2016-09-20 14:53:36.800232"], ["type_name", "trash"], ["updated_at", "2016-09-20 14:53:36.800232"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "message_types" ("created_at", "type_name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2016-09-20 14:53:36.802593"], ["type_name", "spam"], ["updated_at", "2016-09-20 14:53:36.802593"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+
+
+Started POST "/users/email_exists" for 127.0.0.1 at 2016-09-20 17:53:47 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#email_exists as HTML
+  Parameters: {"username"=>"orperl"}
+  [1m[35mUser Load (1.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1
+Unpermitted parameters: username
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.28ms)
+Completed 200 OK in 70ms (Views: 43.9ms | ActiveRecord: 5.2ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-09-20 17:53:52 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"first_name"=>"Or", "last_name"=>"Perlman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "username"=>"orperl"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'orperl' LIMIT 1[0m
+Unpermitted parameters: username
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'orperl@mailonrails.com' LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "first_name", "last_name") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "orperl@mailonrails.com"], ["encrypted_password", "$2a$10$lMZ5HEgz1K.IQc.xZ4DOrOyngJX2LAN/c8c4hyHQ7Wh8RZM4NK4Pa"], ["first_name", "Or"], ["last_name", "Perlman"]]
+  [1m[36m (24.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mDoorkeeper::Application Load (0.7ms)[0m  SELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."name" = 'MailOnRails' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mDoorkeeper::Application Exists (0.6ms)[0m  SELECT  1 AS one FROM "oauth_applications"  WHERE "oauth_applications"."uid" = '95b344eee812de2c38eff7a75ccf042381cab28c229be7e2740c8e11b619b43d' LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "oauth_applications" ("created_at", "name", "redirect_uri", "secret", "uid", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2016-09-20 14:53:52.203474"], ["name", "MailOnRails"], ["redirect_uri", "http://mailonrails.com:9000/mail"], ["secret", "03111eb366a1580e619008722689059ed5c2b8f3ae62efe1815476bc42941ad7"], ["uid", "95b344eee812de2c38eff7a75ccf042381cab28c229be7e2740c8e11b619b43d"], ["updated_at", "2016-09-20 14:53:52.203474"]]
+  [1m[35m (1.1ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mDoorkeeper::Application Load (0.4ms)[0m  SELECT  "oauth_applications".* FROM "oauth_applications"  WHERE "oauth_applications"."id" = $1 LIMIT 1  [["id", 375]]
+  [1m[36mDoorkeeper::AccessToken Exists (2.1ms)[0m  [1mSELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."token" = 'b8e287aa4083d09b0c41f9fc0576d9cbf524bb19346729b22cab6041bdb13838' LIMIT 1[0m
+  [1m[35mDoorkeeper::AccessToken Exists (1.1ms)[0m  SELECT  1 AS one FROM "oauth_access_tokens"  WHERE "oauth_access_tokens"."refresh_token" = 'f0262b46eb53483e2b9941a837361048651f4344f2d30e90a29127e9d279f27a' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "oauth_access_tokens" ("application_id", "created_at", "expires_in", "refresh_token", "resource_owner_id", "scopes", "token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["application_id", 375], ["created_at", "2016-09-20 14:53:52.258084"], ["expires_in", 7200], ["refresh_token", "f0262b46eb53483e2b9941a837361048651f4344f2d30e90a29127e9d279f27a"], ["resource_owner_id", 1], ["scopes", "public write preferences"], ["token", "b8e287aa4083d09b0c41f9fc0576d9cbf524bb19346729b22cab6041bdb13838"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (3.3ms)[0m  INSERT INTO "messages" ("body", "created_at", "from", "subject", "to", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["body", "Hi Or Perlman,\n\n        Thank you for signing up to use the MailOnRails email service.\n\n        We founded MailOnRails because we wanted to create a trustworthy and inspiring email client \n        from which you could do everything that is needed for your daily work.\n\n        We hope you will enjoy the service and recommend it to your friends."], ["created_at", "2016-09-20 14:53:52.308652"], ["from", "admin@mailonrails.com"], ["subject", "Welcome to MailOnRails"], ["to", "orperl@mailonrails.com"], ["updated_at", "2016-09-20 14:53:52.308652"], ["user_id", 1]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mMessageType Load (1.1ms)[0m  SELECT  "message_types".* FROM "message_types"  WHERE "message_types"."type_name" = 'inbox'  ORDER BY "message_types"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.7ms)[0m  INSERT INTO "message_categories" ("created_at", "message_id", "message_type_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2016-09-20 14:53:52.354729"], ["message_id", 1], ["message_type_id", 1], ["updated_at", "2016-09-20 14:53:52.354729"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.35ms)
+Completed 201 Created in 332ms (Views: 1.2ms | ActiveRecord: 60.4ms)
+
+
+Started GET "/api/v1/emails/inbox" for 127.0.0.1 at 2016-09-20 18:02:26 +0300
+
+AbstractController::ActionNotFound (The action 'show' could not be found for Api::V1::EmailsController):
+  actionpack (4.1.12) lib/abstract_controller/base.rb:131:in `process'
+  actionview (4.1.12) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.12) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.12) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.12) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  rack (1.5.5) lib/rack/etag.rb:23:in `call'
+  rack (1.5.5) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.5) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.12) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.12) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.12) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.12) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.12) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.1.12) lib/rails/engine.rb:514:in `call'
+  railties (4.1.12) lib/rails/application.rb:144:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  rack (1.5.5) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.5) lib/rack/handler/webrick.rb:60:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout (1.3ms)
+
+
+Started GET "/api/v1/emails/inbox" for 127.0.0.1 at 2016-09-20 18:03:25 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+AbstractController::ActionNotFound (The action 'show' could not be found for Api::V1::EmailsController):
+  actionpack (4.1.12) lib/abstract_controller/base.rb:131:in `process'
+  actionview (4.1.12) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.12) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.12) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.12) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  rack (1.5.5) lib/rack/etag.rb:23:in `call'
+  rack (1.5.5) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.5) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.12) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.12) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.12) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.12) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.12) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.1.12) lib/rails/engine.rb:514:in `call'
+  railties (4.1.12) lib/rails/application.rb:144:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  rack (1.5.5) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.5) lib/rack/handler/webrick.rb:60:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout (2.4ms)
+
+
+Started GET "/api/v1/emails/inbox" for 127.0.0.1 at 2016-09-20 18:04:39 +0300
+
+AbstractController::ActionNotFound (The action 'show' could not be found for Api::V1::EmailsController):
+  actionpack (4.1.12) lib/abstract_controller/base.rb:131:in `process'
+  actionview (4.1.12) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.12) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.12) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.12) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  rack (1.5.5) lib/rack/etag.rb:23:in `call'
+  rack (1.5.5) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.5) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.12) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.12) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.12) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.12) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.12) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.1.12) lib/rails/engine.rb:514:in `call'
+  railties (4.1.12) lib/rails/application.rb:144:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  rack (1.5.5) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.5) lib/rack/handler/webrick.rb:60:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout (1.3ms)
+
+
+Started GET "/api/v1/emails/inbox" for 127.0.0.1 at 2016-09-20 18:05:25 +0300
+
+AbstractController::ActionNotFound (The action 'show' could not be found for Api::V1::EmailsController):
+  actionpack (4.1.12) lib/abstract_controller/base.rb:131:in `process'
+  actionview (4.1.12) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.12) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.12) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.12) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.12) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.12) lib/action_dispatch/routing/route_set.rb:692:in `call'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  rack (1.5.5) lib/rack/etag.rb:23:in `call'
+  rack (1.5.5) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.5) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/cookies.rb:562:in `call'
+  activerecord (4.1.12) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.12) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.12) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.12) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.12) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.12) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.12) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.12) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.12) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.12) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.1.12) lib/rails/engine.rb:514:in `call'
+  railties (4.1.12) lib/rails/application.rb:144:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  rack (1.5.5) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.5) lib/rack/handler/webrick.rb:60:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/nogi/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout (2.2ms)
+
+
+Started POST "/api/v1/emails/inbox" for 127.0.0.1 at 2016-09-20 18:07:15 +0300
+Processing by Api::V1::EmailsController#inbox as JSON
+Completed 500 Internal Server Error in 31308ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `errors' for nil:NilClass):
+  app/controllers/api/v1/emails_controller.rb:26:in `inbox'
+
+
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/nogi/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.3ms)
+
+
+Started POST "/api/v1/emails/inbox" for 127.0.0.1 at 2016-09-20 18:08:30 +0300
+Processing by Api::V1::EmailsController#inbox as JSON
+  [1m[35mUser Load (37.4ms)[0m  SELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1
+[active_model_serializers]   [1m[36mSQL (1.0ms)[0m  [1mSELECT "messages"."id" AS t0_r0, "messages"."from" AS t0_r1, "messages"."to" AS t0_r2, "messages"."bcc" AS t0_r3, "messages"."cc" AS t0_r4, "messages"."subject" AS t0_r5, "messages"."body" AS t0_r6, "messages"."is_read" AS t0_r7, "messages"."parent_message_id" AS t0_r8, "messages"."created_at" AS t0_r9, "messages"."updated_at" AS t0_r10, "messages"."user_id" AS t0_r11, "message_categories"."id" AS t1_r0, "message_categories"."message_type_id" AS t1_r1, "message_categories"."created_at" AS t1_r2, "message_categories"."updated_at" AS t1_r3, "message_categories"."message_id" AS t1_r4 FROM "messages" LEFT OUTER JOIN "message_categories" ON "message_categories"."message_id" = "messages"."id" WHERE "messages"."user_id" = $1 AND "message_categories"."message_type_id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type_name" = 'inbox')[0m  [["user_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (94.3ms)
+Completed 200 OK in 230ms (Views: 101.3ms | ActiveRecord: 52.4ms)
+
+
+Started POST "/api/v1/emails/inbox" for 127.0.0.1 at 2016-09-20 18:08:52 +0300
+Processing by Api::V1::EmailsController#inbox as JSON
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1
+[active_model_serializers]   [1m[36mSQL (0.9ms)[0m  [1mSELECT "messages"."id" AS t0_r0, "messages"."from" AS t0_r1, "messages"."to" AS t0_r2, "messages"."bcc" AS t0_r3, "messages"."cc" AS t0_r4, "messages"."subject" AS t0_r5, "messages"."body" AS t0_r6, "messages"."is_read" AS t0_r7, "messages"."parent_message_id" AS t0_r8, "messages"."created_at" AS t0_r9, "messages"."updated_at" AS t0_r10, "messages"."user_id" AS t0_r11, "message_categories"."id" AS t1_r0, "message_categories"."message_type_id" AS t1_r1, "message_categories"."created_at" AS t1_r2, "message_categories"."updated_at" AS t1_r3, "message_categories"."message_id" AS t1_r4 FROM "messages" LEFT OUTER JOIN "message_categories" ON "message_categories"."message_id" = "messages"."id" WHERE "messages"."user_id" = $1 AND "message_categories"."message_type_id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type_name" = 'inbox')[0m  [["user_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.53ms)
+Completed 200 OK in 17ms (Views: 10.0ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/api/v1/emails/inbox" for 127.0.0.1 at 2016-09-20 18:10:47 +0300
+Processing by Api::V1::EmailsController#inbox as JSON
+  [1m[35mUser Load (1.1ms)[0m  SELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1
+[active_model_serializers]   [1m[36mSQL (3.9ms)[0m  [1mSELECT "messages"."id" AS t0_r0, "messages"."from" AS t0_r1, "messages"."to" AS t0_r2, "messages"."bcc" AS t0_r3, "messages"."cc" AS t0_r4, "messages"."subject" AS t0_r5, "messages"."body" AS t0_r6, "messages"."is_read" AS t0_r7, "messages"."parent_message_id" AS t0_r8, "messages"."created_at" AS t0_r9, "messages"."updated_at" AS t0_r10, "messages"."user_id" AS t0_r11, "message_categories"."id" AS t1_r0, "message_categories"."message_type_id" AS t1_r1, "message_categories"."created_at" AS t1_r2, "message_categories"."updated_at" AS t1_r3, "message_categories"."message_id" AS t1_r4 FROM "messages" LEFT OUTER JOIN "message_categories" ON "message_categories"."message_id" = "messages"."id" WHERE "messages"."user_id" = $1 AND "message_categories"."message_type_id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type_name" = 'inbox')[0m  [["user_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.96ms)
+Completed 200 OK in 16ms (Views: 6.1ms | ActiveRecord: 5.1ms)
+
+
+Started POST "/api/v1/emails/inbox" for 127.0.0.1 at 2016-09-20 18:11:34 +0300
+Processing by Api::V1::EmailsController#inbox as JSON
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1
+[active_model_serializers]   [1m[36mSQL (0.7ms)[0m  [1mSELECT "messages"."id" AS t0_r0, "messages"."from" AS t0_r1, "messages"."to" AS t0_r2, "messages"."bcc" AS t0_r3, "messages"."cc" AS t0_r4, "messages"."subject" AS t0_r5, "messages"."body" AS t0_r6, "messages"."is_read" AS t0_r7, "messages"."parent_message_id" AS t0_r8, "messages"."created_at" AS t0_r9, "messages"."updated_at" AS t0_r10, "messages"."user_id" AS t0_r11, "message_categories"."id" AS t1_r0, "message_categories"."message_type_id" AS t1_r1, "message_categories"."created_at" AS t1_r2, "message_categories"."updated_at" AS t1_r3, "message_categories"."message_id" AS t1_r4 FROM "messages" LEFT OUTER JOIN "message_categories" ON "message_categories"."message_id" = "messages"."id" WHERE "messages"."user_id" = $1 AND "message_categories"."message_type_id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type_name" = 'inbox')[0m  [["user_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.25ms)
+Completed 200 OK in 7ms (Views: 3.1ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/api/v1/emails/inbox" for 127.0.0.1 at 2016-09-20 18:15:00 +0300
+Processing by Api::V1::EmailsController#inbox as JSON
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1
+[active_model_serializers]   [1m[36mSQL (1.0ms)[0m  [1mSELECT "messages"."id" AS t0_r0, "messages"."from" AS t0_r1, "messages"."to" AS t0_r2, "messages"."bcc" AS t0_r3, "messages"."cc" AS t0_r4, "messages"."subject" AS t0_r5, "messages"."body" AS t0_r6, "messages"."is_read" AS t0_r7, "messages"."parent_message_id" AS t0_r8, "messages"."created_at" AS t0_r9, "messages"."updated_at" AS t0_r10, "messages"."user_id" AS t0_r11, "message_categories"."id" AS t1_r0, "message_categories"."message_type_id" AS t1_r1, "message_categories"."created_at" AS t1_r2, "message_categories"."updated_at" AS t1_r3, "message_categories"."message_id" AS t1_r4 FROM "messages" LEFT OUTER JOIN "message_categories" ON "message_categories"."message_id" = "messages"."id" WHERE "messages"."user_id" = $1 AND "message_categories"."message_type_id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type_name" = 'inbox')[0m  [["user_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (5.81ms)
+Completed 200 OK in 14ms (Views: 6.7ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/api/v1/emails/inbox" for 127.0.0.1 at 2016-09-20 18:15:08 +0300
+Processing by Api::V1::EmailsController#inbox as JSON
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1
+[active_model_serializers]   [1m[36mSQL (0.5ms)[0m  [1mSELECT "messages"."id" AS t0_r0, "messages"."from" AS t0_r1, "messages"."to" AS t0_r2, "messages"."bcc" AS t0_r3, "messages"."cc" AS t0_r4, "messages"."subject" AS t0_r5, "messages"."body" AS t0_r6, "messages"."is_read" AS t0_r7, "messages"."parent_message_id" AS t0_r8, "messages"."created_at" AS t0_r9, "messages"."updated_at" AS t0_r10, "messages"."user_id" AS t0_r11, "message_categories"."id" AS t1_r0, "message_categories"."message_type_id" AS t1_r1, "message_categories"."created_at" AS t1_r2, "message_categories"."updated_at" AS t1_r3, "message_categories"."message_id" AS t1_r4 FROM "messages" LEFT OUTER JOIN "message_categories" ON "message_categories"."message_id" = "messages"."id" WHERE "messages"."user_id" = $1 AND "message_categories"."message_type_id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type_name" = 'inbox')[0m  [["user_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.55ms)
+Completed 200 OK in 6ms (Views: 2.6ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/api/v1/emails/inbox" for 127.0.0.1 at 2016-09-20 18:18:48 +0300
+Processing by Api::V1::EmailsController#inbox as JSON
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1
+[active_model_serializers]   [1m[36mSQL (1.4ms)[0m  [1mSELECT "messages"."id" AS t0_r0, "messages"."from" AS t0_r1, "messages"."to" AS t0_r2, "messages"."bcc" AS t0_r3, "messages"."cc" AS t0_r4, "messages"."subject" AS t0_r5, "messages"."body" AS t0_r6, "messages"."is_read" AS t0_r7, "messages"."parent_message_id" AS t0_r8, "messages"."created_at" AS t0_r9, "messages"."updated_at" AS t0_r10, "messages"."user_id" AS t0_r11, "message_categories"."id" AS t1_r0, "message_categories"."message_type_id" AS t1_r1, "message_categories"."created_at" AS t1_r2, "message_categories"."updated_at" AS t1_r3, "message_categories"."message_id" AS t1_r4 FROM "messages" LEFT OUTER JOIN "message_categories" ON "message_categories"."message_id" = "messages"."id" WHERE "messages"."user_id" = $1 AND "message_categories"."message_type_id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type_name" = 'inbox')[0m  [["user_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.11ms)
+Completed 200 OK in 8ms (Views: 3.2ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/api/v1/emails/inbox" for 127.0.0.1 at 2016-09-20 18:18:58 +0300
+Processing by Api::V1::EmailsController#inbox as JSON
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1
+[active_model_serializers]   [1m[36mSQL (0.3ms)[0m  [1mSELECT "messages"."id" AS t0_r0, "messages"."from" AS t0_r1, "messages"."to" AS t0_r2, "messages"."bcc" AS t0_r3, "messages"."cc" AS t0_r4, "messages"."subject" AS t0_r5, "messages"."body" AS t0_r6, "messages"."is_read" AS t0_r7, "messages"."parent_message_id" AS t0_r8, "messages"."created_at" AS t0_r9, "messages"."updated_at" AS t0_r10, "messages"."user_id" AS t0_r11, "message_categories"."id" AS t1_r0, "message_categories"."message_type_id" AS t1_r1, "message_categories"."created_at" AS t1_r2, "message_categories"."updated_at" AS t1_r3, "message_categories"."message_id" AS t1_r4 FROM "messages" LEFT OUTER JOIN "message_categories" ON "message_categories"."message_id" = "messages"."id" WHERE "messages"."user_id" = $1 AND "message_categories"."message_type_id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type_name" = 'inbox')[0m  [["user_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.84ms)
+Completed 200 OK in 7ms (Views: 3.5ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/v1/emails/inbox" for 127.0.0.1 at 2016-09-20 18:19:19 +0300
+Processing by Api::V1::EmailsController#inbox as JSON
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1
+[active_model_serializers]   [1m[36mSQL (0.5ms)[0m  [1mSELECT "messages"."id" AS t0_r0, "messages"."from" AS t0_r1, "messages"."to" AS t0_r2, "messages"."bcc" AS t0_r3, "messages"."cc" AS t0_r4, "messages"."subject" AS t0_r5, "messages"."body" AS t0_r6, "messages"."is_read" AS t0_r7, "messages"."parent_message_id" AS t0_r8, "messages"."created_at" AS t0_r9, "messages"."updated_at" AS t0_r10, "messages"."user_id" AS t0_r11, "message_categories"."id" AS t1_r0, "message_categories"."message_type_id" AS t1_r1, "message_categories"."created_at" AS t1_r2, "message_categories"."updated_at" AS t1_r3, "message_categories"."message_id" AS t1_r4 FROM "messages" LEFT OUTER JOIN "message_categories" ON "message_categories"."message_id" = "messages"."id" WHERE "messages"."user_id" = $1 AND "message_categories"."message_type_id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type_name" = 'inbox')[0m  [["user_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.57ms)
+Completed 200 OK in 8ms (Views: 4.8ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/api/v1/emails/inbox" for 127.0.0.1 at 2016-09-20 18:20:14 +0300
+Processing by Api::V1::EmailsController#inbox as JSON
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1
+[active_model_serializers]   [1m[36mSQL (0.6ms)[0m  [1mSELECT "messages"."id" AS t0_r0, "messages"."from" AS t0_r1, "messages"."to" AS t0_r2, "messages"."bcc" AS t0_r3, "messages"."cc" AS t0_r4, "messages"."subject" AS t0_r5, "messages"."body" AS t0_r6, "messages"."is_read" AS t0_r7, "messages"."parent_message_id" AS t0_r8, "messages"."created_at" AS t0_r9, "messages"."updated_at" AS t0_r10, "messages"."user_id" AS t0_r11, "message_categories"."id" AS t1_r0, "message_categories"."message_type_id" AS t1_r1, "message_categories"."created_at" AS t1_r2, "message_categories"."updated_at" AS t1_r3, "message_categories"."message_id" AS t1_r4 FROM "messages" LEFT OUTER JOIN "message_categories" ON "message_categories"."message_id" = "messages"."id" WHERE "messages"."user_id" = $1 AND "message_categories"."message_type_id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type_name" = 'inbox')[0m  [["user_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (6.49ms)
+Completed 200 OK in 11ms (Views: 6.8ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/api/v1/emails/inbox" for 127.0.0.1 at 2016-09-20 18:20:23 +0300
+Processing by Api::V1::EmailsController#inbox as JSON
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1
+[active_model_serializers]   [1m[36mSQL (0.3ms)[0m  [1mSELECT "messages"."id" AS t0_r0, "messages"."from" AS t0_r1, "messages"."to" AS t0_r2, "messages"."bcc" AS t0_r3, "messages"."cc" AS t0_r4, "messages"."subject" AS t0_r5, "messages"."body" AS t0_r6, "messages"."is_read" AS t0_r7, "messages"."parent_message_id" AS t0_r8, "messages"."created_at" AS t0_r9, "messages"."updated_at" AS t0_r10, "messages"."user_id" AS t0_r11, "message_categories"."id" AS t1_r0, "message_categories"."message_type_id" AS t1_r1, "message_categories"."created_at" AS t1_r2, "message_categories"."updated_at" AS t1_r3, "message_categories"."message_id" AS t1_r4 FROM "messages" LEFT OUTER JOIN "message_categories" ON "message_categories"."message_id" = "messages"."id" WHERE "messages"."user_id" = $1 AND "message_categories"."message_type_id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type_name" = 'inbox')[0m  [["user_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.94ms)
+Completed 200 OK in 8ms (Views: 4.6ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/v1/emails/inbox" for 127.0.0.1 at 2016-09-20 18:21:49 +0300
+Processing by Api::V1::EmailsController#inbox as JSON
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1
+[active_model_serializers]   [1m[36mSQL (0.6ms)[0m  [1mSELECT "messages"."id" AS t0_r0, "messages"."from" AS t0_r1, "messages"."to" AS t0_r2, "messages"."bcc" AS t0_r3, "messages"."cc" AS t0_r4, "messages"."subject" AS t0_r5, "messages"."body" AS t0_r6, "messages"."is_read" AS t0_r7, "messages"."parent_message_id" AS t0_r8, "messages"."created_at" AS t0_r9, "messages"."updated_at" AS t0_r10, "messages"."user_id" AS t0_r11, "message_categories"."id" AS t1_r0, "message_categories"."message_type_id" AS t1_r1, "message_categories"."created_at" AS t1_r2, "message_categories"."updated_at" AS t1_r3, "message_categories"."message_id" AS t1_r4 FROM "messages" LEFT OUTER JOIN "message_categories" ON "message_categories"."message_id" = "messages"."id" WHERE "messages"."user_id" = $1 AND "message_categories"."message_type_id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type_name" = 'inbox')[0m  [["user_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.03ms)
+Completed 200 OK in 6ms (Views: 3.0ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/api/v1/emails/inbox" for 127.0.0.1 at 2016-09-20 18:21:58 +0300
+Processing by Api::V1::EmailsController#inbox as JSON
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1
+[active_model_serializers]   [1m[36mSQL (0.3ms)[0m  [1mSELECT "messages"."id" AS t0_r0, "messages"."from" AS t0_r1, "messages"."to" AS t0_r2, "messages"."bcc" AS t0_r3, "messages"."cc" AS t0_r4, "messages"."subject" AS t0_r5, "messages"."body" AS t0_r6, "messages"."is_read" AS t0_r7, "messages"."parent_message_id" AS t0_r8, "messages"."created_at" AS t0_r9, "messages"."updated_at" AS t0_r10, "messages"."user_id" AS t0_r11, "message_categories"."id" AS t1_r0, "message_categories"."message_type_id" AS t1_r1, "message_categories"."created_at" AS t1_r2, "message_categories"."updated_at" AS t1_r3, "message_categories"."message_id" AS t1_r4 FROM "messages" LEFT OUTER JOIN "message_categories" ON "message_categories"."message_id" = "messages"."id" WHERE "messages"."user_id" = $1 AND "message_categories"."message_type_id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type_name" = 'inbox')[0m  [["user_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.51ms)
+Completed 200 OK in 6ms (Views: 3.8ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/api/v1/emails/inbox" for 127.0.0.1 at 2016-09-20 18:23:05 +0300
+Processing by Api::V1::EmailsController#inbox as JSON
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1
+[active_model_serializers]   [1m[36mSQL (0.3ms)[0m  [1mSELECT "messages"."id" AS t0_r0, "messages"."from" AS t0_r1, "messages"."to" AS t0_r2, "messages"."bcc" AS t0_r3, "messages"."cc" AS t0_r4, "messages"."subject" AS t0_r5, "messages"."body" AS t0_r6, "messages"."is_read" AS t0_r7, "messages"."parent_message_id" AS t0_r8, "messages"."created_at" AS t0_r9, "messages"."updated_at" AS t0_r10, "messages"."user_id" AS t0_r11, "message_categories"."id" AS t1_r0, "message_categories"."message_type_id" AS t1_r1, "message_categories"."created_at" AS t1_r2, "message_categories"."updated_at" AS t1_r3, "message_categories"."message_id" AS t1_r4 FROM "messages" LEFT OUTER JOIN "message_categories" ON "message_categories"."message_id" = "messages"."id" WHERE "messages"."user_id" = $1 AND "message_categories"."message_type_id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type_name" = 'inbox')[0m  [["user_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.85ms)
+Completed 200 OK in 7ms (Views: 3.2ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/api/v1/emails/inbox" for 127.0.0.1 at 2016-09-20 18:24:56 +0300
+Processing by Api::V1::EmailsController#inbox as JSON
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1
+[active_model_serializers]   [1m[36mSQL (0.3ms)[0m  [1mSELECT "messages"."id" AS t0_r0, "messages"."from" AS t0_r1, "messages"."to" AS t0_r2, "messages"."bcc" AS t0_r3, "messages"."cc" AS t0_r4, "messages"."subject" AS t0_r5, "messages"."body" AS t0_r6, "messages"."is_read" AS t0_r7, "messages"."parent_message_id" AS t0_r8, "messages"."created_at" AS t0_r9, "messages"."updated_at" AS t0_r10, "messages"."user_id" AS t0_r11, "message_categories"."id" AS t1_r0, "message_categories"."message_type_id" AS t1_r1, "message_categories"."created_at" AS t1_r2, "message_categories"."updated_at" AS t1_r3, "message_categories"."message_id" AS t1_r4 FROM "messages" LEFT OUTER JOIN "message_categories" ON "message_categories"."message_id" = "messages"."id" WHERE "messages"."user_id" = $1 AND "message_categories"."message_type_id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type_name" = 'inbox')[0m  [["user_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.73ms)
+Completed 200 OK in 8ms (Views: 3.0ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/v1/emails/inbox" for 127.0.0.1 at 2016-09-20 18:25:36 +0300
+Processing by Api::V1::EmailsController#inbox as JSON
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1
+[active_model_serializers]   [1m[36mSQL (0.4ms)[0m  [1mSELECT "messages"."id" AS t0_r0, "messages"."from" AS t0_r1, "messages"."to" AS t0_r2, "messages"."bcc" AS t0_r3, "messages"."cc" AS t0_r4, "messages"."subject" AS t0_r5, "messages"."body" AS t0_r6, "messages"."is_read" AS t0_r7, "messages"."parent_message_id" AS t0_r8, "messages"."created_at" AS t0_r9, "messages"."updated_at" AS t0_r10, "messages"."user_id" AS t0_r11, "message_categories"."id" AS t1_r0, "message_categories"."message_type_id" AS t1_r1, "message_categories"."created_at" AS t1_r2, "message_categories"."updated_at" AS t1_r3, "message_categories"."message_id" AS t1_r4 FROM "messages" LEFT OUTER JOIN "message_categories" ON "message_categories"."message_id" = "messages"."id" WHERE "messages"."user_id" = $1 AND "message_categories"."message_type_id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type_name" = 'inbox')[0m  [["user_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.82ms)
+Completed 200 OK in 9ms (Views: 4.2ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/v1/emails/inbox" for 127.0.0.1 at 2016-09-20 18:26:31 +0300
+Processing by Api::V1::EmailsController#inbox as JSON
+  [1m[35mUser Load (1.2ms)[0m  SELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1
+[active_model_serializers]   [1m[36mSQL (0.4ms)[0m  [1mSELECT "messages"."id" AS t0_r0, "messages"."from" AS t0_r1, "messages"."to" AS t0_r2, "messages"."bcc" AS t0_r3, "messages"."cc" AS t0_r4, "messages"."subject" AS t0_r5, "messages"."body" AS t0_r6, "messages"."is_read" AS t0_r7, "messages"."parent_message_id" AS t0_r8, "messages"."created_at" AS t0_r9, "messages"."updated_at" AS t0_r10, "messages"."user_id" AS t0_r11, "message_categories"."id" AS t1_r0, "message_categories"."message_type_id" AS t1_r1, "message_categories"."created_at" AS t1_r2, "message_categories"."updated_at" AS t1_r3, "message_categories"."message_id" AS t1_r4 FROM "messages" LEFT OUTER JOIN "message_categories" ON "message_categories"."message_id" = "messages"."id" WHERE "messages"."user_id" = $1 AND "message_categories"."message_type_id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type_name" = 'inbox')[0m  [["user_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.55ms)
+Completed 200 OK in 9ms (Views: 4.0ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/api/v1/emails/inbox" for 127.0.0.1 at 2016-09-20 18:27:59 +0300
+Processing by Api::V1::EmailsController#inbox as JSON
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1
+[active_model_serializers]   [1m[36mSQL (0.3ms)[0m  [1mSELECT "messages"."id" AS t0_r0, "messages"."from" AS t0_r1, "messages"."to" AS t0_r2, "messages"."bcc" AS t0_r3, "messages"."cc" AS t0_r4, "messages"."subject" AS t0_r5, "messages"."body" AS t0_r6, "messages"."is_read" AS t0_r7, "messages"."parent_message_id" AS t0_r8, "messages"."created_at" AS t0_r9, "messages"."updated_at" AS t0_r10, "messages"."user_id" AS t0_r11, "message_categories"."id" AS t1_r0, "message_categories"."message_type_id" AS t1_r1, "message_categories"."created_at" AS t1_r2, "message_categories"."updated_at" AS t1_r3, "message_categories"."message_id" AS t1_r4 FROM "messages" LEFT OUTER JOIN "message_categories" ON "message_categories"."message_id" = "messages"."id" WHERE "messages"."user_id" = $1 AND "message_categories"."message_type_id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type_name" = 'inbox')[0m  [["user_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.84ms)
+Completed 200 OK in 7ms (Views: 4.4ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/v1/emails/inbox" for 127.0.0.1 at 2016-09-20 18:28:13 +0300
+Processing by Api::V1::EmailsController#inbox as JSON
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1
+[active_model_serializers]   [1m[36mSQL (0.5ms)[0m  [1mSELECT "messages"."id" AS t0_r0, "messages"."from" AS t0_r1, "messages"."to" AS t0_r2, "messages"."bcc" AS t0_r3, "messages"."cc" AS t0_r4, "messages"."subject" AS t0_r5, "messages"."body" AS t0_r6, "messages"."is_read" AS t0_r7, "messages"."parent_message_id" AS t0_r8, "messages"."created_at" AS t0_r9, "messages"."updated_at" AS t0_r10, "messages"."user_id" AS t0_r11, "message_categories"."id" AS t1_r0, "message_categories"."message_type_id" AS t1_r1, "message_categories"."created_at" AS t1_r2, "message_categories"."updated_at" AS t1_r3, "message_categories"."message_id" AS t1_r4 FROM "messages" LEFT OUTER JOIN "message_categories" ON "message_categories"."message_id" = "messages"."id" WHERE "messages"."user_id" = $1 AND "message_categories"."message_type_id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type_name" = 'inbox')[0m  [["user_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.85ms)
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/v1/emails/inbox" for 127.0.0.1 at 2016-09-20 18:29:02 +0300
+Processing by Api::V1::EmailsController#inbox as JSON
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1
+[active_model_serializers]   [1m[36mSQL (0.3ms)[0m  [1mSELECT "messages"."id" AS t0_r0, "messages"."from" AS t0_r1, "messages"."to" AS t0_r2, "messages"."bcc" AS t0_r3, "messages"."cc" AS t0_r4, "messages"."subject" AS t0_r5, "messages"."body" AS t0_r6, "messages"."is_read" AS t0_r7, "messages"."parent_message_id" AS t0_r8, "messages"."created_at" AS t0_r9, "messages"."updated_at" AS t0_r10, "messages"."user_id" AS t0_r11, "message_categories"."id" AS t1_r0, "message_categories"."message_type_id" AS t1_r1, "message_categories"."created_at" AS t1_r2, "message_categories"."updated_at" AS t1_r3, "message_categories"."message_id" AS t1_r4 FROM "messages" LEFT OUTER JOIN "message_categories" ON "message_categories"."message_id" = "messages"."id" WHERE "messages"."user_id" = $1 AND "message_categories"."message_type_id" IN (SELECT "message_types"."id" FROM "message_types"  WHERE "message_types"."type_name" = 'inbox')[0m  [["user_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.09ms)
+Completed 200 OK in 7ms (Views: 3.6ms | ActiveRecord: 0.8ms)

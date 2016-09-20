@@ -1,5 +1,6 @@
 class UsersController < Devise::RegistrationsController
     include UserHelper 
+    include MessageHelper
 
     respond_to :json
 
@@ -10,13 +11,15 @@ class UsersController < Devise::RegistrationsController
             return
         end
 
-        user_params[:email] = @email
+        @username = params[:username]
+        user_params[:email] = get_email(@username)
         @user = User.new(user_params)
         @user.save
 
         if doorkeeper_oauth_client and @user
             @access_token = doorkeeper_access_token(@user)
-            add_welcome_message(params[:username], user_params)
+            add_welcome_message(@user)
+
             render status: 201,
                 json: { response: Doorkeeper::OAuth::TokenResponse.new(@access_token).body.merge(user: @user) }
             return
@@ -26,7 +29,9 @@ class UsersController < Devise::RegistrationsController
     end
 
     def get_user_by_email
-        if email_exists?(params[:username])
+        @username = params[:username]
+        @email = get_email(@username)
+        if email_exists?(@email)
             render status: 200,
                 json: { response: {user: @user} }
             return
@@ -38,7 +43,9 @@ class UsersController < Devise::RegistrationsController
     end
 
     def email_exists
-        if email_exists?(params[:username])
+        @username = params[:username]
+        @email = get_email(@username)
+        if email_exists?(@email)
             render status: 409,
                 json: { response: "User already registered with email #{user_params[:email]}.\r\nPlease register with a different email." }
             return

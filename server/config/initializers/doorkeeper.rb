@@ -15,7 +15,7 @@ Doorkeeper.configure do
     if @username.nil?
       @email = nil
     else
-      @email = "#{params[:username].downcase}@mailonrails.com"
+      @email = "#{@username}@#{DOMAIN}"
     end
 
     user = User.find_by_email(@email)

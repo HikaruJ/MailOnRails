@@ -42,5 +42,7 @@ DOORKEEPER_APP_NAME = "MailOnRails"
 DOORKEEPER_APP_SECRET = "6a2fa82ab6f7b565c8f8f57f677e408ebcda208709bde6eae0a784b48b49205c"
 DOORKEEPER_APP_URL = "http://mailonrails.com:9000/mail"
 
-SEND_GRID_PASSWORD = "9961406d#"
+DOMAIN = 'mailonrails.com'
+
+SEND_GRID_PASSWORD = "Budhztev46s@#"
 SEND_GRID_USERNAME = "orperl"

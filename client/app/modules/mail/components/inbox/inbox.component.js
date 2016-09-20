@@ -7,10 +7,18 @@
         templateUrl: '/partials/mail/components/inbox/inbox.view.html'
     };
 
-    function InboxComponent($scope, localStorageService) {
+    function InboxComponent($scope, inboxService, localStorageService) {
         var ctrl = this;
 
+        ctrl.viewModel = {
+            messages: null
+        };
+
         ctrl.user = localStorageService.get('user');
+        inboxService.inboxData()
+            .then(function(respond) {
+                ctrl.viewModel.messages = respond.data.response;
+            });
     }
 
     module.exports = inboxComponent;
