@@ -18,15 +18,16 @@
                         <div class="messages-list withScroll show-scroll mCustomScrollbar _mCS_68" data-padding="180" data-height="window" style="height:735px;">
                             <div class="mCustomScrollBox mCS-light" id="mCSB_68" style="position:relative; height:100%; overflow:hidden; max-width:100%;">
                                 <div class="mCSB_container" style="position:relative; top:0;">
-                                    <div class="message-item media" data-ng-repeat="message in $ctrl.viewModel.messages">
+                                    <div class="message-item media" data-ng-click="$ctrl.openMessage(message)" data-ng-repeat="message in $ctrl.viewModel.messages">
                                         <div class="media">
                                             <img src="img/avatars/avatar3_big.png" alt="avatar 3" width="40" class="sender-img">
                                             <div class="media-body">
-                                                <div class="sender">{{message.nickname}}</div>
+                                                <div class="sender" data-ng-class="$ctrl.senderStyle(message)">{{message.nickname}}</div>
                                                 <div class="subject">
-                                                    <span class="subject-text">{{message.subject}}</span>
+                                                    <span data-ng-class="$ctrl.subjectStyle(message)">{{message.subject}}</span>
+                                                    <span class="subject-subtitle-text">{{message.body | html2string}}</span>
                                                 </div>
-                                                <div class="date">{{message.created_at | date}}</div>
+                                                <div class="date" data-ng-class="$ctrl.isRead(message)">{{message.created_at | date}}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -45,6 +46,5 @@
                 </div>
             </section>
         </aside>
-        <mail-message data-user="$ctrl.user"></mail-message>
     </section>
 </div>

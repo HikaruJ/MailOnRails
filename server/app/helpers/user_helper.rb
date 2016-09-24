@@ -12,4 +12,12 @@ module UserHelper
     def get_email(username)
         @email = "#{username}@#{DOMAIN}"
     end 
+
+    def serialize_user(user)
+        UserSerializer.new(user)
+    end
+
+    def serialize_users(users)
+        ActiveModel::Serializer::CollectionSerializer.new(users, each_serializer: UserSerializer)
+    end
 end

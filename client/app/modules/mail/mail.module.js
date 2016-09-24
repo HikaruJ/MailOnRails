@@ -4,6 +4,7 @@
     //Angular
     var angular = require('angular');
     var angularLocalStorage = require('angular-local-storage');
+    var angularSanitize = require('angular-sanitize');
     var angularSummernote = require('angular-summernote');
 
     //Components
@@ -15,11 +16,15 @@
     var topbarComponent = require('./components/topbar/topbar.component');
 
     //Factory
+    var composeService = require('./components/compose/compose.factory');
     var inboxService = require('./components/inbox/inbox.factory');
-    var mailService = require('./mail.factory');
+
+    //Filters
+    var html2StringFilter = require('./components/filters/html2string.filter');
 
     module.exports = angular.module('inbox', [
             angularLocalStorage.name,
+            angularSanitize.name,
             angularSummernote.name
         ])
         .component('mail', mailComponent)
@@ -28,6 +33,7 @@
         .component('mailMessage', messageComponent)
         .component('mailSidebar', sidebarComponent)
         .component('mailTopbar', topbarComponent)
+        .factory('composeService', composeService)
         .factory('inboxService', inboxService)
-        .factory('mailService', mailService);
+        .filter('html2string', html2StringFilter);
 }());

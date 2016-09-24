@@ -1,11 +1,11 @@
 (function() {
     "use strict";
 
-    var mailService = function($http, $log, angularConfig, localStorageService) {
+    var composeService = function($http, $log, angularConfig, localStorageService) {
         var baseUrl = angularConfig.baseUrl;
 
         var urls = {
-            send: baseUrl + '/api/v1/emails'
+            send: baseUrl + '/api/v1/compose'
         };
 
         var service = {
@@ -48,5 +48,5 @@
         }
     };
 
-    module.exports = mailService;
+    module.exports = composeService;
 }());

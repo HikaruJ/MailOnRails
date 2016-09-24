@@ -36,6 +36,8 @@
                                 $loading.finish('progress');
                                 ctrl.viewModel.disableInput = false;
                             });
+                    } else if (data.status == 401) {
+                        modalService.alert('User name or password are incorrect. Please try again', 'md');
                     } else {
                         modalService.alert(data, 'md');
                     }

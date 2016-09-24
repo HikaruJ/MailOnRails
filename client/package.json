@@ -19,6 +19,7 @@
         "angular-cookie": "./bower_components/angular-cookie/angular-cookie.min.js",
         "angular-loading": "./bower_components/angular-loading/angular-loading.min.js",
         "angular-local-storage": "./bower_components/angular-local-storage/dist/angular-local-storage.min.js",
+        "angular-sanitize": "./bower_components/angular-sanitize/angular-sanitize.min.js",
         "angular-messages": "./bower_components/angular-messages/angular-messages.min.js",
         "angular-summernote": "./bower_components/angular-summernote/dist/angular-summernote.min.js",
         "angular-ui-router": "./bower_components/angular-ui-router/release/angular-ui-router.min.js"
@@ -52,6 +53,10 @@
         "angular-messages": {
             "depends": "angular",
             "exports": "angular.module('ngMessages')"
+        },
+        "angular-sanitize": {
+            "depends": "angular",
+            "exports": "angular.module('ngSanitize')"
         },
         "angular-summernote": {
             "depends": "angular",

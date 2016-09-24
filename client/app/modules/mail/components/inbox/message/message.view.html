@@ -1,42 +1,37 @@
-<div class="email-details" style="display: table-cell;">
-    <section>
-        <div class="email-subject">
-            <h1>Welcome to <strong>MailOnRails</strong></h1>
-            <div class="clearfix">
-                <div class="go-back-list"><i data-rel="tooltip" data-placement="bottom" data-original-title="Back to email list" class="icon-arrow-left"></i></div>
-                <p>from <strong><span class="sender">Admin</span></strong> • <span class="date">12 September, 4:04pm</span></p>
-                <div class="pos-rel pull-left">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" data-delay="300">
-                        <i class=" icon-rounded-arrow-down-thin"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" class="reorder-menu">Delete email</a></li>
-                        <li><a href="#" class="remove-menu">Move</a></li>
-                        <li><a href="#" class="hide-top-sidebar">Print</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="email-details-inner withScroll mCustomScrollbar _mCS_21" data-height="window" data-padding="155" style="font-weight: normal; height: 760px;">
-            <div class="mCustomScrollBox mCS-light" id="mCSB_21" style="position:relative; height:100%; overflow:hidden; max-width:100%;">
-                <div class="mCSB_container" style="position:relative; top:0;">
-                    <div class="email-content">
-                        <p>Hi {{$ctrl.user.first_name}} {{$ctrl.user.last_name}},</p>
-                        <p>Thank you for signing up to use the MailOnRails email service.</p>
-                        <p> We founded MailOnRails because we wanted to create a trustworthy and inspiring email client <br> from which you could do everything that is needed for your daily work. </p> <br><br>
-
-                        <p> We hope you will enjoy the service and recommend it to your friends.</p>
-                    </div>
-                </div>
-                <div class="mCSB_scrollTools" style="position: absolute; display: block; opacity: 0;">
-                    <div class="mCSB_draggerContainer">
-                        <div class="mCSB_dragger" style="position: absolute; height: 43px; top: 0px;" oncontextmenu="return false;">
-                            <div class="mCSB_dragger_bar" style="position: relative; line-height: 43px;"></div>
+<div class="at-view-slide-in-left page-content page-app mailbox" style="margin-top:50px;">
+    <section class="app">
+        <div class="email-details" style="display: table-cell;">
+            <section>
+                <div class="email-subject">
+                    <h1 data-ng-class="$ctrl.subjectStyle()">{{$ctrl.viewModel.message.subject}}</h1>
+                    <div class="clearfix">
+                        <div class="go-back-list">
+                            <i data-rel="tooltip" data-placement="bottom" data-original-title="Back to email list" class="icon-arrow-left"></i>
                         </div>
-                        <div class="mCSB_draggerRail"></div>
+                        <p>from <strong><span data-ng-class="$ctrl.senderStyle(message)">{{$ctrl.viewModel.message.from}}</span></strong> • <span class="date">{{ctrl.viewModel.message.created_at | date}}</span></p>
+                        <a aria-label="Back to inbox" class="btn btn-primary btn-sm" 
+                            data-toggle="tooltip" data-ui-sref="mail.inbox" data-ui-sref-opts="{reload: true}" style="margin-bottom: 4px;" title="Back to inbox">
+                            <i class="fa fa-arrow-left fa-lg pull-left" aria-hidden="true"></i>
+                        </a>
                     </div>
                 </div>
-            </div>
+                <div class="email-details-inner withScroll mCustomScrollbar _mCS_21" data-height="window" data-padding="155" style="font-weight: normal; height: 760px;">
+                    <div class="mCustomScrollBox mCS-light" id="mCSB_21" style="position:relative; height:100%; overflow:hidden; max-width:100%;">
+                        <div class="mCSB_container" style="position:relative; top:0;">
+                            <div class="email-content" data-ng-bind-html="$ctrl.viewModel.message.body" style="margin-left: 0px">
+                            </div>
+                        </div>
+                        <div class="mCSB_scrollTools" style="position: absolute; display: block; opacity: 0;">
+                            <div class="mCSB_draggerContainer">
+                                <div class="mCSB_dragger" style="position: absolute; height: 43px; top: 0px;" oncontextmenu="return false;">
+                                    <div class="mCSB_dragger_bar" style="position: relative; line-height: 43px;"></div>
+                                </div>
+                                <div class="mCSB_draggerRail"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </section>
 </div>

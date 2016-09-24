@@ -278,3 +278,33 @@ body.mailbox {
 .icon-logout {
     font-size: 21px;
 }
+
+.read-sender {
+    color: black;
+    font-weight: normal;
+}
+
+.read-subject {
+    color: black;
+    font-weight: normal;
+}
+
+.unread-sender {
+    color: black;
+    font-weight: bold;
+}
+
+.unread-subject {
+    color: #319DB5;
+    font-weight: bold;
+}
+
+.subject-subtitle-text {
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.back-to-inbox {
+    margin-bottom: 5px;
+    padding-right: 5px;
+}

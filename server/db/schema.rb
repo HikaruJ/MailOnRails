@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20160919024651) do
     t.text     "body"
     t.boolean  "is_read",                       default: false
     t.integer  "parent_message_id"
+    t.uuid     "displayId"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"

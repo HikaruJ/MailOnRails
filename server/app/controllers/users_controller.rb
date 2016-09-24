@@ -21,10 +21,12 @@ class UsersController < Devise::RegistrationsController
             add_welcome_message(@user)
 
             render status: 201,
-                json: { response: Doorkeeper::OAuth::TokenResponse.new(@access_token).body.merge(user: @user) }
+                json: { response:  Doorkeeper::OAuth::TokenResponse.new(@access_token).body.merge(user: serialize_user(@user) ) }
             return
         else 
-            render json: { response: @user.errors, success: false }, status: 422
+            render status: 422,
+                json: { response: @user.errors, success: false }
+            return
         end
     end
 
@@ -33,7 +35,7 @@ class UsersController < Devise::RegistrationsController
         @email = get_email(@username)
         if email_exists?(@email)
             render status: 200,
-                json: { response: {user: @user} }
+                json: { response: {user: serialize_user(@user) } }
             return
         else
             render status: 200,

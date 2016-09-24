@@ -1,4 +1,4 @@
-class Api::BaseController < ActionController::API
+class Api::V1::BaseController < ApplicationController
   clear_respond_to
   respond_to :json
 
@@ -13,16 +13,16 @@ private
 
   def authenticate_user!
     if doorkeeper_token
-      Thread.current[:current_user] = User.find(doorkeeper_token.resource_owner_id)
+      existing_user = current_user
     end
 
-    return if current_user
+    return if existing_user
 
     render json: { errors: ['User is not authenticated!'] }, status: :unauthorized
   end
 
   def current_user
-    Thread.current[:current_user]
+    @current_user ||= User.find(doorkeeper_token.resource_owner_id)
   end
 
   def errors_json(messages)

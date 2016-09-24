@@ -39,6 +39,15 @@
             params: {
                 user: null
             }
+        })
+
+        .state('mail.message', {
+            template: '<mail-message></mail-message>',
+            url: '/inbox/:displayId',
+            params: {
+                message: null,
+                user: null
+            }
         });
 
         $urlRouterProvider.otherwise('/');

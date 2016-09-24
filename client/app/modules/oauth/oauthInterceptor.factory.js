@@ -1,7 +1,7 @@
 (function() {
     "use strict";
 
-    var oauthInterceptor = function($q, localStorageService) {
+    var oauthInterceptor = function($q, $window, localStorageService) {
         var interceptor = {
             request: function(config) {
                 config.headers = config.headers || {};
@@ -12,6 +12,24 @@
                 }
 
                 return config;
+            },
+
+            responseError: function(errorResponse) {
+                switch (errorResponse.status) {
+                    case 401:
+                        $window.location = '#/login';
+                        break;
+
+                    case 403:
+                        $window.location = '#/login';
+                        break;
+
+                        // case 500:
+                        //     $window.location = '/login';
+                        //     break;
+                }
+
+                return $q.reject(errorResponse);
             }
         };
 

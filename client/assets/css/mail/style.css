@@ -9215,7 +9215,7 @@ body:not(.rtl) .layout-options .img-sidebar-right {
   padding-top: 3px;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 220px;
+  width: 1100px;
 }
 .page-app.mailbox .message-item .subject .label {
   font-family: 'Lato', arial, sans-serif;
@@ -9886,7 +9886,7 @@ a.message-item:hover {
     width: 100px;
   }
   .page-app.mailbox .message-item .subject {
-    width: 150px;
+    width: 500px;
   }
   .move-attachments {
     display: none;

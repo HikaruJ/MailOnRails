@@ -7,7 +7,7 @@
         templateUrl: '/partials/mail/components/compose/compose.view.html'
     };
 
-    function ComposeController($scope, $state, localStorageService, mailService, modalService) {
+    function ComposeController($scope, $state, composeService, localStorageService, modalService) {
         var ctrl = this;
 
         ctrl.viewModel = {
@@ -47,7 +47,7 @@
             var subject = ctrl.viewModel.subject;
             var to = ctrl.viewModel.recipient;
 
-            mailService.send(body, from, subject, to)
+            composeService.send(body, from, subject, to)
                 .then(function(response) {
                     if (response.status == 200) {
                         modalService.info(response.data.response, 'md');

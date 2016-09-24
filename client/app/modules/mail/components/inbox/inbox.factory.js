@@ -5,7 +5,8 @@
         var baseUrl = angularConfig.baseUrl;
 
         var urls = {
-            inboxData: baseUrl + '/api/v1/emails/inbox'
+            inboxData: baseUrl + '/api/v1/inbox',
+            readMessage: baseUrl + '/api/v1/inbox'
         };
 
         var service = {
@@ -24,7 +25,7 @@
                     header: {
                         'Authorization': 'Bearer ' + oauthData.accessToken
                     },
-                    method: 'POST',
+                    method: 'GET',
                     url: urls.inboxData
                 })
                 .then(inboxDataSuccess)
@@ -41,6 +42,32 @@
             }
 
             function inboxDataFailed(error) {
+                return error;
+            }
+        }
+
+        function readMessage(id) {
+            var oauthData = localStorageService.get('oauthData');
+            if (oauthData === null) {
+                return null;
+            }
+
+            return $http({
+                    data: id,
+                    header: {
+                        'Authorization': 'Bearer ' + oauthData.accessToken
+                    },
+                    method: 'POST',
+                    url: urls.markRead
+                })
+                .then(readMessageSuccess)
+                .catch(readMessageFailed);
+
+            function readMessageSuccess(respond) {
+                return respond;
+            }
+
+            function readMessageFailed(error) {
                 return error;
             }
         }

@@ -1,3 +1,3 @@
-class UserSerializer < ActiveModel::Serializer
-  attributes :from, :to, :bcc, :cc, :subject, :body, :is_read
+class MessageSerializer < ActiveModel::Serializer
+  attributes :bcc, :body, :cc, :created_at, :displayId, :from, :is_read, :subject, :to   
 end
