@@ -37,8 +37,8 @@
                     return result;
                 }
 
-                var data = respond.data.response;
-                result.response = data.user;
+                var user = respond.data.user;
+                result.response = user;
                 result.status = respond.status;
                 return result;
             }

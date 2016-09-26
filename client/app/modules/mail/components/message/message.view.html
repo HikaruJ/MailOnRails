@@ -5,13 +5,18 @@
                 <div class="email-subject">
                     <h1 data-ng-class="$ctrl.subjectStyle()">{{$ctrl.viewModel.message.subject}}</h1>
                     <div class="clearfix">
-                        <div class="go-back-list">
-                            <i data-rel="tooltip" data-placement="bottom" data-original-title="Back to email list" class="icon-arrow-left"></i>
-                        </div>
-                        <p>from <strong><span data-ng-class="$ctrl.senderStyle(message)">{{$ctrl.viewModel.message.from}}</span></strong> • <span class="date">{{ctrl.viewModel.message.created_at | date}}</span></p>
-                        <a aria-label="Back to inbox" class="btn btn-primary btn-sm" 
-                            data-toggle="tooltip" data-ui-sref="mail.inbox" data-ui-sref-opts="{reload: true}" style="margin-bottom: 4px;" title="Back to inbox">
+                        <p>from <strong><span data-ng-class="$ctrl.senderStyle(message)">{{$ctrl.viewModel.message.from}}</span></strong> •
+                            to <strong><span data-ng-class="$ctrl.senderStyle(message)">{{$ctrl.viewModel.message.to}}</span></strong> •
+                            <span class="date">{{ctrl.viewModel.message.created_at | date}}</span></p>
+                        <a aria-label="Back to {{$ctrl.viewModel.message.typeName}}" class="btn btn-primary btn-sm" 
+                            data-toggle="tooltip" data-ui-sref="{{$ctrl.viewModel.returnRoute}}" data-ui-sref-opts="{reload: true}"
+                            style="margin-bottom: 4px;" title="Back to {{$ctrl.viewModel.message.typeName}}">
                             <i class="fa fa-arrow-left fa-lg pull-left" aria-hidden="true"></i>
+                        </a>
+
+                        <a aria-label="Delete" class="btn btn-primary btn-sm" data-ng-click="$ctrl.deleteMessage()" 
+                            data-toggle="tooltip" style="margin-bottom: 4px;" title="Delete">
+                            <i class="fa fa-trash-o fa-lg pull-left" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>

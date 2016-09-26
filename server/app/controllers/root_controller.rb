@@ -3,6 +3,6 @@ class RootController < ApplicationController
   respond_to :json
 
   def index
-    render json: { errors: ['Please check API documentation'] }
+    render json: 'Please check API documentation', root: 'errors'
   end
 end

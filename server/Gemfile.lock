@@ -41,6 +41,8 @@ GEM
     bcrypt (3.1.11)
     builder (3.2.2)
     byebug (9.0.5)
+    cached_counts (0.3.0)
+      rails (>= 3.2)
     concurrent-ruby (1.0.2)
     devise (3.3.0)
       bcrypt (~> 3.0)
@@ -161,6 +163,7 @@ DEPENDENCIES
   angular_rails_csrf
   auto_increment
   byebug
+  cached_counts
   devise
   doorkeeper
   factory_girl

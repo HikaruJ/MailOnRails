@@ -1,4 +1,6 @@
 class Message < ActiveRecord::Base
+    before_create :set_display_id
+
     belongs_to :user
     has_many :message_categories, dependent: :destroy
 
@@ -17,6 +19,10 @@ class Message < ActiveRecord::Base
     scope :spam, -> { includes(:message_categories).where('message_categories.message_type_id' => MessageType.spam) }
 
 private 
+
+    def set_display_id
+        self.display_id = SecureRandom.uuid
+    end
 
     def set_user_id(child)
         child.user_id = child.parent.user_id

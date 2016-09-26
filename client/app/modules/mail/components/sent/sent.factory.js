@@ -1,19 +1,19 @@
 (function() {
     "use strict";
 
-    var inboxService = function($http, $log, angularConfig, localStorageService) {
+    var sentService = function($http, $log, angularConfig, localStorageService) {
         var baseUrl = angularConfig.baseUrl;
         var unreadMessages = 0;
 
         var urls = {
-            deleteMessage: baseUrl + '/api/v1/inbox',
-            inboxData: baseUrl + '/api/v1/inbox',
-            readMessage: baseUrl + '/api/v1/inbox'
+            deleteMessage: baseUrl + '/api/v1/sent',
+            sentData: baseUrl + '/api/v1/sent',
+            readMessage: baseUrl + '/api/v1/sent'
         };
 
         var service = {
             deleteMessage: deleteMessage,
-            inboxData: inboxData,
+            sentData: sentData,
             readMessage: readMessage,
             unreadMessages: unreadMessages
         };
@@ -45,7 +45,7 @@
             }
         }
 
-        function inboxData() {
+        function sentData() {
             var oauthData = localStorageService.get('oauthData');
             if (oauthData === null) {
                 return null;
@@ -56,12 +56,12 @@
                         'Authorization': 'Bearer ' + oauthData.accessToken
                     },
                     method: 'GET',
-                    url: urls.inboxData
+                    url: urls.sentData
                 })
-                .then(inboxDataSuccess)
-                .catch(inboxDataFailed);
+                .then(sentDataSuccess)
+                .catch(sentDataFailed);
 
-            function inboxDataSuccess(respond) {
+            function sentDataSuccess(respond) {
                 var unreadMessagesCount = 0;
 
                 angular.forEach(respond.data.messages, function(message, index) {
@@ -80,7 +80,7 @@
                 return respond;
             }
 
-            function inboxDataFailed(error) {
+            function sentDataFailed(error) {
                 return error;
             }
         }
@@ -121,5 +121,5 @@
         }
     };
 
-    module.exports = inboxService;
+    module.exports = sentService;
 }());

@@ -34,6 +34,11 @@
         })
 
         .state('mail.inbox', {
+            template: '<mail-template></mail-template>',
+            abstract: true
+        })
+
+        .state('mail.inbox.index', {
             template: '<mail-inbox></mail-inbox>',
             url: '/inbox',
             params: {
@@ -41,11 +46,35 @@
             }
         })
 
-        .state('mail.message', {
+        .state('mail.inbox.message', {
             template: '<mail-message></mail-message>',
             url: '/inbox/:displayId',
             params: {
                 message: null,
+                returnRoute: null,
+                user: null
+            }
+        })
+
+        .state('mail.sent', {
+            template: '<mail-template></mail-template>',
+            abstract: true
+        })
+
+        .state('mail.sent.index', {
+            template: '<mail-sent></mail-sent>',
+            url: '/sent',
+            params: {
+                user: null
+            }
+        })
+
+        .state('mail.sent.message', {
+            template: '<mail-message></mail-message>',
+            url: '/sent/:displayId',
+            params: {
+                message: null,
+                returnRoute: null,
                 user: null
             }
         });

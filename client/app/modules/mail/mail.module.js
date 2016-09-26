@@ -11,13 +11,16 @@
     var composeComponent = require('./components/compose/compose.component');
     var mailComponent = require('./mail.component');
     var inboxComponent = require('./components/inbox/inbox.component');
-    var messageComponent = require('./components/inbox/message/message.component');
+    var messageComponent = require('./components/message/message.component');
+    var sentComponent = require('./components/sent/sent.component');
     var sidebarComponent = require('./components/sidebar/sidebar.component');
+    var templateComponent = require('./components/template/template.component');
     var topbarComponent = require('./components/topbar/topbar.component');
 
     //Factory
     var composeService = require('./components/compose/compose.factory');
     var inboxService = require('./components/inbox/inbox.factory');
+    var sentService = require('./components/sent/sent.factory');
 
     //Filters
     var html2StringFilter = require('./components/filters/html2string.filter');
@@ -31,9 +34,12 @@
         .component('mailCompose', composeComponent)
         .component('mailInbox', inboxComponent)
         .component('mailMessage', messageComponent)
+        .component('mailSent', sentComponent)
         .component('mailSidebar', sidebarComponent)
+        .component('mailTemplate', templateComponent)
         .component('mailTopbar', topbarComponent)
         .factory('composeService', composeService)
         .factory('inboxService', inboxService)
+        .factory('sentService', sentService)
         .filter('html2string', html2StringFilter);
 }());

@@ -3,14 +3,17 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users' }
 
   devise_scope :user do
-    post 'users/get_user_by_email', :to => 'users#get_user_by_email'
-    post 'users/email_exists', :to => 'users#email_exists'
+    post 'users/get_user_by_email', to: 'users#get_user_by_email'
+    post 'users/email_exists', to: 'users#email_exists'
   end
 
   namespace :api, defaults: {format: "json"} do
     namespace :v1 do
       resources :compose
       resources :inbox
+      resources :sent
+      get 'inbox/unread_messages', to: 'inbox#unread_messages'
+      get 'sent/unread_messages', to: 'sent#unread_messages' 
     end
   end
   

@@ -53,7 +53,7 @@
                         modalService.info(response.data.response, 'md');
                         ctrl.viewModel.disableInput = false;
 
-                        $state.go('mail.inbox', {
+                        $state.go('mail.sent.index', {
                             user: ctrl.viewModel.user
                         });
                     }

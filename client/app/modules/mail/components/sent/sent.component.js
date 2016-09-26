@@ -1,16 +1,17 @@
 (function() {
     "use strict";
 
-    var inboxComponent = {
+    var sentComponent = {
         bindings: {},
         controller: InboxComponent,
-        templateUrl: '/partials/mail/components/inbox/inbox.view.html'
+        templateUrl: '/partials/mail/components/sent/sent.view.html'
     };
 
-    function InboxComponent($scope, $state, inboxService, localStorageService) {
+    function InboxComponent($scope, $state, localStorageService, sentService) {
         var ctrl = this;
 
         ctrl.viewModel = {
+            message: null,
             messages: null
         };
 
@@ -39,28 +40,29 @@
                 redirectToMessage(message);
             } else {
                 var isRead = true;
-                inboxService.readMessage(displayId, isRead)
+                sentService.readMessage(displayId, isRead)
                     .then(function(respond) {
                         message.isRead = isRead;
+
                         redirectToMessage(message);
                     });
             }
         };
 
         var redirectToMessage = function(message) {
-            $state.go('mail.inbox.message', {
+            $state.go('mail.sent.message', {
                 displayId: message.displayId,
                 message: message,
-                returnRoute: 'mail.inbox.index',
+                returnRoute: 'mail.sent.index',
                 user: ctrl.user
             });
         };
 
-        inboxService.inboxData()
+        sentService.sentData()
             .then(function(respond) {
                 ctrl.viewModel.messages = respond.data.messages;
             });
     }
 
-    module.exports = inboxComponent;
+    module.exports = sentComponent;
 }());

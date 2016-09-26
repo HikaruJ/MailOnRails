@@ -31,7 +31,7 @@
                     return result;
                 }
 
-                var data = respond.data.response;
+                var data = respond.data.user;
                 result.response = data;
                 result.status = respond.status;
                 return result;
@@ -69,13 +69,14 @@
                     return result;
                 }
 
-                var data = respond.data.response;
+                var user = respond.data.user;
+                var token = user.token;
                 localStorageService.set('oauthData', {
-                    accessToken: data.access_token,
-                    refreshToken: data.refresh_token
+                    accessToken: token.token,
+                    refreshToken: token.refresh_token
                 });
 
-                result.response = data.user;
+                result.response = user;
                 result.status = respond.status;
                 return result;
             }

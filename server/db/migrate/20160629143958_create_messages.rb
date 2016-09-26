@@ -1,6 +1,4 @@
 class CreateMessages < ActiveRecord::Migration
-  require 'securerandom'
-
   def change
     create_table :messages do |t|
       ## Fields
@@ -12,7 +10,7 @@ class CreateMessages < ActiveRecord::Migration
       t.text :body, limit: 5000
       t.boolean :is_read, default: false
       t.integer :parent_message_id
-      t.uuid :displayId, default: SecureRandom.uuid
+      t.uuid :display_id
 
       t.timestamps
     end
