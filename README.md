@@ -23,7 +23,7 @@ The project is currently still in early stages of development.
 - **Contact** [0%] - Development haven't started yet for this page.  
 
 ## Design
-The project utilizes the [Make template](https://themeforest.net/item/make-admin-template-builder-html-angularjs/10511387?s_rank=4) for the mailbox design.
+The project utilizes the [Make template](https://themeforest.net/item/make-admin-template-builder-html-angularjs/10511387?s_rank=4) for the mailbox design and the [StartBootstrap](https://startbootstrap.com/template-overviews/landing-page/) for the landing page design.
 
 ## Enviornment and Tools
 - **Environment** - [Linux Mint 17.3](https://www.linuxmint.com/edition.php?id=204).  
