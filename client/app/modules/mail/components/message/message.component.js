@@ -7,7 +7,7 @@
         templateUrl: '/partials/mail/components/message/message.view.html'
     };
 
-    function MessageController($scope, $state, $stateParams, inboxService, sentService) {
+    function MessageController($scope, $state, $stateParams, inboxService, modalService, sentService, trashService) {
         var ctrl = this;
 
         var returnRoute = $stateParams.returnRoute;
@@ -47,7 +47,19 @@
                             $state.go(ctrl.viewModel.returnRoute);
                         });
                     break;
+
+                case 4: //Trash
+                    modalService.confirm('Are you sure you want this message permanently?', deleteTrashMessage, 'md');
+                    break;
             }
+        };
+
+        var deleteTrashMessage = function() {
+            var message = ctrl.viewModel.message;
+            trashService.deleteMessage(message.displayId)
+                .then(function(response) {
+                    $state.go(ctrl.viewModel.returnRoute);
+                });
         };
 
         ctrl.subjectStyle = function() {

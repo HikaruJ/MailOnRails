@@ -16,11 +16,13 @@
     var sidebarComponent = require('./components/sidebar/sidebar.component');
     var templateComponent = require('./components/template/template.component');
     var topbarComponent = require('./components/topbar/topbar.component');
+    var trashComponent = require('./components/trash/trash.component');
 
     //Factory
     var composeService = require('./components/compose/compose.factory');
     var inboxService = require('./components/inbox/inbox.factory');
     var sentService = require('./components/sent/sent.factory');
+    var trashService = require('./components/trash/trash.factory');
 
     //Filters
     var html2StringFilter = require('./components/filters/html2string.filter');
@@ -38,8 +40,10 @@
         .component('mailSidebar', sidebarComponent)
         .component('mailTemplate', templateComponent)
         .component('mailTopbar', topbarComponent)
+        .component('mailTrash', trashComponent)
         .factory('composeService', composeService)
         .factory('inboxService', inboxService)
         .factory('sentService', sentService)
+        .factory('trashService', trashService)
         .filter('html2string', html2StringFilter);
 }());

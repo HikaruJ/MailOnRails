@@ -39,13 +39,14 @@
                     <i class="icons-alerts-05"></i>
                     <span>Spam</span>
                 </a>
-            </li>
-            <li class="tm">
-                <a data-ui-sref="mail.trash">
+            </li>-->
+            <li data-ng-class="$ctrl.setActive('trash')">
+                <a data-ui-sref="mail.trash.index" data-ui-sref-opts="{reload: true}">
+                    <span class="pull-right badge badge-primary" style="margin-right:0px;">{{$ctrl.viewModel.trashCount}}</span>
                     <i class="icons-office-57"></i>
                     <span>Trash</span>
                 </a>
-            </li>-->
+            </li>
         </ul>
     </div>
 </div>

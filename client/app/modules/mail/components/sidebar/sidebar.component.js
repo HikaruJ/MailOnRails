@@ -7,12 +7,13 @@
         templateUrl: '/partials/mail/components/sidebar/sidebar.view.html'
     };
 
-    function SidebarComponent($interval, $location, $scope, inboxService, sentService) {
+    function SidebarComponent($interval, $location, $scope, inboxService, sentService, trashService) {
         var ctrl = this;
 
         ctrl.viewModel = {
             inboxCount: '',
-            sentCount: ''
+            sentCount: '',
+            trashCount: ''
         };
 
         ctrl.setActive = function(viewLocation) {
@@ -39,6 +40,15 @@
                 ctrl.viewModel.sentCount = sentCount;
             } else {
                 ctrl.viewModel.sentCount = '';
+            }
+        }, 500);
+
+        $interval(function() {
+            var trashCount = trashService.messagesCount;
+            if (trashCount > 0) {
+                ctrl.viewModel.trashCount = trashCount;
+            } else {
+                ctrl.viewModel.trashCount = '';
             }
         }, 500);
     }

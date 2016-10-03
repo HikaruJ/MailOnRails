@@ -77,6 +77,29 @@
                 returnRoute: null,
                 user: null
             }
+        })
+
+        .state('mail.trash', {
+            template: '<mail-template></mail-template>',
+            abstract: true
+        })
+
+        .state('mail.trash.index', {
+            template: '<mail-trash></mail-trash>',
+            url: '/trash',
+            params: {
+                user: null
+            }
+        })
+
+        .state('mail.trash.message', {
+            template: '<mail-message></mail-message>',
+            url: '/trash/:displayId',
+            params: {
+                message: null,
+                returnRoute: null,
+                user: null
+            }
         });
 
         $urlRouterProvider.otherwise('/');

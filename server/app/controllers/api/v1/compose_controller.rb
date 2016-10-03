@@ -1,7 +1,4 @@
 class Api::V1::ComposeController < Api::V1::BaseController
-    before_action :doorkeeper_authorize!
-    before_action :authenticate_user!
-
     include MessageHelper
 
     def create

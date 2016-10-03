@@ -1,9 +1,6 @@
 class Api::V1::SentController < Api::V1::BaseController
     include MessageHelper
 
-    before_action :doorkeeper_authorize!, except: :show
-    before_action :authenticate_user!, except: :show
-
     #Set message read status 
     def create
         user = current_user
@@ -29,7 +26,9 @@ class Api::V1::SentController < Api::V1::BaseController
         user = current_user
         if user.present?
             message = user.messages.sent.where(display_id: sent_params[:id]).first
-            message.destroy if message.present?
+            category = message.message_categories.first
+            category.message_type = MessageType.trash.first
+            category.save
 
             render status: 200,
                 json: { response: true }, root: 'sent'
@@ -55,7 +54,7 @@ class Api::V1::SentController < Api::V1::BaseController
         end
     end
 
-     #Get unread messages
+    #Get unread messages
     def show
         user = current_user
         if user.present?
@@ -74,6 +73,6 @@ class Api::V1::SentController < Api::V1::BaseController
 private
 
     def sent_params
-        @sent_params ||=  params.permit(:id, :is_read)
+        @sent_params ||= params.permit(:id, :is_read)
     end
 end

@@ -1,9 +1,6 @@
 class Api::V1::InboxController < Api::V1::BaseController
     include MessageHelper
 
-    before_action :doorkeeper_authorize!, except: :show
-    before_action :authenticate_user!, except: :show
-
     #Set message read status 
     def create
         user = current_user
@@ -29,7 +26,9 @@ class Api::V1::InboxController < Api::V1::BaseController
         user = current_user
         if user.present?
             message = user.messages.inbox.where(display_id: inbox_params[:id]).first
-            message.destroy if message.present?
+            category = message.message_categories.first
+            category.message_type = MessageType.trash.first
+            category.save
 
             render status: 200,
                 json: { response: true }, root: 'user'
