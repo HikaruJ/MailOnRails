@@ -4,10 +4,6 @@
 Mail on Rails is an ongoing project to study Ruby on Rails.  
 The project aim is to develop a web-based email service using Ruby on Rails and AngularJS.  
 
-## Demo
-http://mailonrails.com:5000/#/
-The demo is hosted on Amazon AWS.
-
 ## Project Status
 The project is currently still in early stages of development.
 - **Landing Page** [100%].
