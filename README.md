@@ -1,7 +1,7 @@
 ![alt tag](https://github.com/HikaruJ/Mail_on_Rails/blob/master/Mail_on_Rails_logo_small.png)
 
 # Mail on Rails
-Mail on Rails is an ongoing project to study Ruby on Rails.  
+Mail on Rails is a project to study Ruby on Rails.  
 The project aim is to develop a web-based email service using Ruby on Rails and AngularJS.  
 
 ## Project Status
