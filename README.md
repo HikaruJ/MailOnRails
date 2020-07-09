@@ -2,7 +2,7 @@
 
 # Mail on Rails
 Mail on Rails is a project to study Ruby on Rails.  
-The project aim is to develop a web-based email service using Ruby on Rails and AngularJS.  
+The project aim was to develop a web-based email service using Ruby on Rails and AngularJS.  
 
 ## Project Status
 The project is currently still in early stages of development.
